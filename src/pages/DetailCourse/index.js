@@ -20,7 +20,7 @@ function DetailCourse() {
         }).catch(e => {
             console.log(e);
         })
-    }, []);
+    }, [id]);
 
     console.log(data);
     return (
@@ -52,10 +52,10 @@ function DetailCourse() {
                                 <FaBookOpen className="mr-3" />
                                 <span>Start Courses</span>
                             </Link>
-                            <a className="bg-white text-blue-600 border border-blue-600 rounded-lg font-semibold w-full text-center p-3 inline-flex items-center justify-center hover:underline" href="#">
+                            <Link className="bg-white text-blue-600 border border-blue-600 rounded-lg font-semibold w-full text-center p-3 inline-flex items-center justify-center hover:underline" to="/courses">
                                 <FaHeart className="mr-3" />
                                 <span>Add Favourite</span>
-                            </a>
+                            </Link>
                         </div>
                         <hr className="my-11" />
                         <div className="text-center mb-8">

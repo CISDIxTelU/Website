@@ -64,10 +64,10 @@ function Course() {
                                     });
                                     // datax.
                                     // console.log('hasil map : ', datax);
-                                    console.log('hasil foreach : ', lesson, index);
+                                    // console.log('hasil foreach : ', lesson, index);
                                     if (index === 2) {
                                         return lesson.map((data, idx) => {
-                                            if (data.id == id_course) {
+                                            if (data.id === id_course) {
                                                 return (
                                                     <>
                                                         <h1 className="font-bold text-3xl">{data.name}</h1>
@@ -80,8 +80,10 @@ function Course() {
                                                     </>
                                                 )
                                             }
+                                            return '';
                                         })
                                     }
+                                    return '';
                                 })
                             }
                         </div>
