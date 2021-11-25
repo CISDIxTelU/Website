@@ -1,8 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { LogoNavbar } from '../../assets'
 
-function Navbar({ isLogged }) {
+function Navbar() {
+    const navigate = useNavigate();
+    const logout = () => {
+        localStorage.removeItem('token');
+        return navigate('/login');
+    }
     return (
         <div className="shadow-md bg-white sticky top-0 z-1">
             <div className="container flex wrap justify-between items-center mx-auto py-4">
@@ -12,7 +17,7 @@ function Navbar({ isLogged }) {
                     <input type="text" className="p-3 px-5 border rounded-full w-5/12" placeholder="Search here..."></input>
                 </div>
                 <div className="flex flex-2">
-                    <Link to="/login" className="bg-blue-600 py-2 px-5 rounded-lg text-white hover:bg-blue-700">Log Out</Link>
+                    <button onClick={logout} className="bg-blue-600 py-2 px-5 rounded-lg text-white hover:bg-blue-700">Log Out</button>
                 </div>
             </div>
         </div>

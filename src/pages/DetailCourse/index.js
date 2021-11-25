@@ -16,6 +16,7 @@ function DetailCourse() {
 
         axios.post(`https://api.storeximi.com/api/topic/${id}`, {}, config).then(res => {
             setData(res.data.data_topic);
+            console.log(res.data.data_topic)
         }).catch(e => {
             console.log(e);
         })

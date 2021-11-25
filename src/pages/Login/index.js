@@ -5,23 +5,32 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 function Login({ setToken }) {
 
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
     const navigate = useNavigate();
 
     const handleSubmit = async e => {
         e.preventDefault();
 
+        const config = {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Accept': 'application/json',
+            }
+        }
+        axios.get('https://api.storeximi.com/sanctum/csrf-cookie').then(res => {
+            console.log(res);
+        })
         axios.post('https://api.storeximi.com/api/login', {
             phone_number: username,
             password: password,
-        }).then(res => {
+        }, config).then(res => {
             localStorage.setItem('token', res.data.access_token)
             navigate('/courses');
             console.log('success')
-        }).catch(e => {
-            console.log(e);
+        }).catch(res => {
+            console.log(res);
         })
     }
 
@@ -47,7 +56,7 @@ function Login({ setToken }) {
                         <button className="bg-blue-600 rounded-lg p-2 w-full hover:bg-blue-700 text-white" type="submit" onSubmit={handleSubmit}>Sign In</button>
                     </form>
                 </div>
-                <p className="text-white text-center mt-20 text-gray-50">created with ♥️ by OfflanerTeam.</p>
+                <p className="text-white text-center mt-20 text-gray-50">created with ♥️ by ZDF.</p>
             </div>
         </div>
     )
