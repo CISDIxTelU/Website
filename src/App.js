@@ -1,6 +1,6 @@
 import { Navbar } from "./components";
 import { Login, Courses, Course, DetailCourse, NotFound } from "./pages";
-import { Routes, Route, useLocation, Navigate, Outlet } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate, Outlet, Redirect } from "react-router-dom";
 import React from "react";
 
 function App() {
@@ -27,6 +27,7 @@ function App() {
         location.pathname === '/login' ? '' : <Navbar />
       }
       <Routes>
+      <Route path="/" element={<Navigate replace to="/login" />} />
         <Route exact path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/course/:id_topic" element={<PrivateOutlet />}>
