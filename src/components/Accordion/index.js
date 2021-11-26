@@ -40,15 +40,9 @@ export const Dropdown = ({ dataLesson, index, id }) => {
                         slice.push(element);
                     });
                     return slice.map(data => {
-                        return (<Link className="py-3 block" to={`/course/${id}/${data.id_lo}/${data.id}`}>{data.name}</Link>);
+                        return (<Link className="py-3 block active:font-bold" to={`/course/${id}/${data.id_lo}/${data.id}`}>{data.name}</Link>);
                     })
                 }
-                // slice.forEach(data => {
-                //     console.log(data.name)
-                //     return (
-                // <p>{data.name}</p>
-                // )
-                // })
             })}
         </div>
     )
@@ -73,11 +67,6 @@ const Accordion = ({ dataLo, dataLesson, id }) => {
             <AccordionSection>
                 <Container>
                     {dataLo.map((item, index) => {
-                        // console.log(item);
-                        // console.log('index lo : ', index)
-                        // console.log('index lesson : ', idx);
-                        // console.log(element)
-
                         return (
                             <>
                                 <Wrap onClick={() => toggle(index)} key={index}>

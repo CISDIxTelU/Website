@@ -20,9 +20,8 @@ function DetailCourse() {
         }).catch(e => {
             console.log(e);
         })
-    }, [id]);
+    }, []);
 
-    console.log(data);
     return (
         <div className="container mx-auto py-11">
             <h1 className="text-3xl font-bold w-1/2">{data.title}</h1>

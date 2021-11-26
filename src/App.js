@@ -1,5 +1,5 @@
 import { Navbar } from "./components";
-import { Login, Courses, Course, DetailCourse } from "./pages";
+import { Login, Courses, Course, DetailCourse, NotFound } from "./pages";
 import { Routes, Route, useLocation, Navigate, Outlet } from "react-router-dom";
 import React from "react";
 
@@ -28,6 +28,7 @@ function App() {
       }
       <Routes>
         <Route exact path="/login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
         <Route path="/course/:id_topic" element={<PrivateOutlet />}>
           <Route path="" element={<Course />} />
         </Route>
