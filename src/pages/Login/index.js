@@ -57,7 +57,7 @@ function Login({ setToken }) {
                     <form onSubmit={handleSubmit}>
                         <div className="border rounded-lg flex wrap items-center content-center mb-5">
                             <FaEnvelope className="text-blue-600 mx-5 " />
-                            <input type="text" onChange={e => setUsername(e.target.value)} className="appearance-none w-full h-full p-3 rounded-lg focus:outline-none" placeholder="Enter your username"></input>
+                            <input type="text" onChange={e => setUsername(e.target.value)} className="appearance-none w-full h-full p-3 rounded-lg focus:outline-none" placeholder="Enter your phone number"></input>
                         </div>
                         <div className="border rounded-lg flex wrap items-center content-center mb-11">
                             <FaLock className="text-blue-600 mx-5 " />

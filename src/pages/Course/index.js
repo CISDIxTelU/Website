@@ -42,19 +42,43 @@ function Course() {
                                 datax.forEach(element => {
                                     return lesson.push(element)
                                 });
-                                if (index === datax.length) {
-                                    return lesson.map((data, idx) => {
-                                        if (data.id === parseInt(id_course)) {
-                                            return (
-                                                <>
-                                                    <h1 className="font-bold text-3xl">{data.name}</h1>
-                                                    <div dangerouslySetInnerHTML={{ __html: data.lesson_text }} />
+                                if (index === 0) {
+                                    index += 1;
+                                    if (index === datax.length) {
+                                        return lesson.map((data, idx) => {
+                                            if (data.id === parseInt(id_course)) {
+                                                console.log(data);
+                                                return (
+                                                    <>
+                                                        <h1 className="font-bold text-3xl my-3">{data.name}</h1>
+                                                        {data.video_url != null ? <iframe src={data.video_url} title="description" className="h-96 w-full"></iframe> : ''}
+                                                        {data.lesson_attachment != null ? <img src={data.lesson_attachment} alt="foto" className="h-96 w-full" /> : ''}
+                                                        <div dangerouslySetInnerHTML={{ __html: data.lesson_text }} />
 
-                                                </>
-                                            )
-                                        }
-                                        return '';
-                                    })
+                                                    </>
+                                                )
+                                            }
+                                            return '';
+                                        })
+                                    }
+                                } else {
+                                    if (index === datax.length) {
+                                        return lesson.map((data, idx) => {
+                                            if (data.id === parseInt(id_course)) {
+                                                console.log(data);
+                                                return (
+                                                    <>
+                                                        <h1 className="font-bold text-3xl my-3">{data.name}</h1>
+                                                        {data.video_url != null ? <iframe src={data.video_url} title="description" className="h-96 w-full"></iframe> : ''}
+                                                        {data.lesson_attachment != null ? <img src={`https://api.storeximi.com/storage/${data.lesson_attachment}`} alt="foto" className="bg-cover w-full" /> : ''}
+                                                        <div dangerouslySetInnerHTML={{ __html: data.lesson_text }} />
+
+                                                    </>
+                                                )
+                                            }
+                                            return '';
+                                        })
+                                    }
                                 }
                                 return '';
                             })
@@ -63,7 +87,7 @@ function Course() {
                 </div>
 
             </div>
-        </div>
+        </div >
     )
 }
 
