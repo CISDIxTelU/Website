@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { FaBookOpen, FaHeart } from "react-icons/fa";
 import { Link, useParams } from 'react-router-dom';
+import { Lottie } from 'reactjs-lottie';
+import { animation } from '../../assets';
 import axios from 'axios';
 
 function DetailCourse() {
     const [data, setData] = useState([]);
     let { id } = useParams();
+    // const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        // setLoading(true);
         const config = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -17,10 +21,12 @@ function DetailCourse() {
         axios.post(`https://api.storeximi.com/api/topic/${id}`, {}, config).then(res => {
             setData(res.data.data_topic);
             console.log(res.data.data_topic)
+            // setLoading(false);
         }).catch(e => {
             console.log(e);
         })
-    }, []);
+    }, [id]);
+
     return (
         <div className="container mx-auto py-11">
             <h1 className="text-3xl font-bold w-1/2">{data.title}</h1>

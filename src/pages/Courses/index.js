@@ -36,8 +36,7 @@ function Courses() {
                 </div>
             </div>
         )
-    } 
-    else {
+    } else {
         return (
             <div>
                 <div className="bg-blue-600 p-3 h-80 flex flex-col wrap items-center justify-center" style={{ backgroundImage: `url(${BgLogin})` }}>

@@ -11,7 +11,9 @@ function Navbar() {
     return (
         <div className="shadow-md bg-white sticky top-0 z-1">
             <div className="container flex wrap justify-between items-center mx-auto py-4">
-                <img src={LogoNavbar} alt="foto" />
+                <Link to="/courses">
+                    <img src={LogoNavbar} alt="foto" />
+                </Link>
                 <div className="flex flex-1 items-center justify-center">
                     <Link to="/courses" className="mr-10 h-auto">Courses</Link>
                     <input type="text" className="p-3 px-5 border rounded-full w-5/12" placeholder="Search here..."></input>
