@@ -1,6 +1,6 @@
 import { Navbar } from "./components";
-import { Login, Courses, Course, DetailCourse, NotFound } from "./pages";
-import { Routes, Route, useLocation, Navigate, Outlet, Redirect } from "react-router-dom";
+import { Login, Courses, Course, DetailCourse, NotFound, Favorite } from "./pages";
+import { Routes, Route, useLocation, Navigate, Outlet } from "react-router-dom";
 import React from "react";
 
 function App() {
@@ -27,7 +27,14 @@ function App() {
         location.pathname === '/login' ? '' : <Navbar />
       }
       <Routes>
-      <Route path="/" element={<Navigate replace to="/login" />} />
+        {
+          useAuth() === true ?
+            <Route path="/courses" element={<PrivateOutlet />}>
+              <Route path="" element={<Courses />} />
+            </Route>
+            :
+            <Route path="/" element={<Navigate replace to="/login" />}/>
+        }
         <Route exact path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/course/:id_topic" element={<PrivateOutlet />}>
@@ -41,6 +48,9 @@ function App() {
         </Route>
         <Route path="/detail-course/:id" element={<PrivateOutlet />}>
           <Route path="" element={<DetailCourse />} />
+        </Route>
+        <Route path="/favorite" element={<PrivateOutlet />}>
+          <Route path="" element={<Favorite />} />
         </Route>
       </Routes>
     </div>

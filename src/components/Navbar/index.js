@@ -9,7 +9,7 @@ function Navbar() {
         return navigate('/login');
     }
     return (
-        <div className="shadow-md bg-white sticky top-0 z-1">
+        <div className="shadow-md bg-white sticky top-0 z-50">
             <div className="container flex wrap justify-between items-center mx-auto py-4">
                 <Link to="/courses">
                     <img src={LogoNavbar} alt="foto" />
