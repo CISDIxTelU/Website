@@ -24,7 +24,6 @@ function Login({ setToken }) {
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-
             }
         }
         axios.post('https://api.storeximi.com/api/login', {

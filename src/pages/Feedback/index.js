@@ -9,10 +9,8 @@ const Feedback = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [message, setMessage] = useState('');
-    const id = useParams();
+    const {id} = useParams();
     const navigate = useNavigate();
-
-    console.log(id)
 
     const handleSubmit = async e => {
         setLoading(true);
@@ -20,13 +18,16 @@ const Feedback = () => {
 
         const config = {
             headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }
         axios.post(`https://api.storeximi.com/api/feedback/${id}`, {
+            id_lesson: id,
             feedback: feedback,
         }, config).then(res => {
-            navigate(`courses`);
+            navigate(`/courses`);
             console.log('success');
         }).catch(error => {
             setLoading(false);
