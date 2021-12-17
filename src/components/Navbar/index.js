@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { LogoNavbar } from '../../assets'
+import { Menu, Transition } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/solid'
 
-function Navbar() {
+function Navbar({name}) {
     const navigate = useNavigate();
     const logout = () => {
         localStorage.removeItem('token');
         return navigate('/login');
     }
+
     return (
         <div className="shadow-md bg-white sticky top-0 z-50">
             <div className="container flex wrap justify-between items-center mx-auto py-4">
@@ -19,11 +22,164 @@ function Navbar() {
                     <input type="text" className="p-3 px-5 border rounded-full w-5/12" placeholder="Search here..."></input>
                 </div>
                 <div className="flex flex-2">
-                    <button onClick={logout} className="bg-blue-600 py-2 px-5 rounded-lg text-white hover:bg-blue-700">Log Out</button>
+                    {/* Profile dropdown */}
+                    <div className="w-56 text-right">
+                        <Menu as="div" className="relative inline-block text-left">
+                            <div>
+                                <Menu.Button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+                                    {name}
+                                    <ChevronDownIcon
+                                        className="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
+                                        aria-hidden="true"
+                                    />
+                                </Menu.Button>
+                            </div>
+                            <Transition
+                                as={Fragment}
+                                enter="transition ease-out duration-100"
+                                enterFrom="transform opacity-0 scale-95"
+                                enterTo="transform opacity-100 scale-100"
+                                leave="transition ease-in duration-75"
+                                leaveFrom="transform opacity-100 scale-100"
+                                leaveTo="transform opacity-0 scale-95"
+                            >
+                                <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                    <div className="px-1 py-1 ">
+                                        <Menu.Item>
+                                            {({ active }) => (
+                                                <button
+                                                    className={`${active ? 'bg-violet-500 text-blue-600 underline' : 'text-gray-900'
+                                                        } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                                                >
+                                                    {active ? (
+                                                        <EditActiveIcon
+                                                            className="w-5 h-5 mr-2"
+                                                            aria-hidden="true"
+                                                        />
+                                                    ) : (
+                                                        <EditInactiveIcon
+                                                            className="w-5 h-5 mr-2"
+                                                            aria-hidden="true"
+                                                        />
+                                                    )}
+                                                    Profile
+                                                </button>
+                                            )}
+                                        </Menu.Item>
+                                    </div>
+                                    <div className="px-1 py-1">
+                                        <Menu.Item>
+                                            {({ active }) => (
+                                                <button
+                                                    className={`${active ? 'bg-violet-500 text-blue-600 underline' : 'text-gray-900'
+                                                        } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                                                onClick={logout}>
+                                                    {active ? (
+                                                        <DeleteActiveIcon
+                                                            className="w-5 h-5 mr-2 text-violet-400"
+                                                            aria-hidden="true"
+                                                        />
+                                                    ) : (
+                                                        <DeleteInactiveIcon
+                                                            className="w-5 h-5 mr-2 text-violet-400"
+                                                            aria-hidden="true"
+                                                        />
+                                                    )}
+                                                    Logout
+                                                </button>
+                                            )}
+                                        </Menu.Item>
+                                    </div>
+                                </Menu.Items>
+                            </Transition>
+                        </Menu>
+                    </div>
                 </div>
             </div>
         </div>
     )
 }
 
-export default Navbar
+function EditInactiveIcon(props) {
+    return (
+        <svg
+            {...props}
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M4 13V16H7L16 7L13 4L4 13Z"
+                fill="#9eacdb"
+                stroke="#768acc"
+                strokeWidth="2"
+            />
+        </svg>
+    )
+}
+
+function EditActiveIcon(props) {
+    return (
+        <svg
+            {...props}
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M4 13V16H7L16 7L13 4L4 13Z"
+                fill="#153ec2"
+                stroke="#5670c7"
+                strokeWidth="2"
+            />
+        </svg>
+    )
+}
+
+function DeleteInactiveIcon(props) {
+    return (
+        <svg
+            {...props}
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <rect
+                x="5"
+                y="6"
+                width="10"
+                height="10"
+                fill="#9eacdb"
+                stroke="#768acc"
+                strokeWidth="2"
+            />
+            <path d="M3 6H17" stroke="#9eacdb" strokeWidth="2" />
+            <path d="M8 6V4H12V6" stroke="#9eacdb" strokeWidth="2" />
+        </svg>
+    )
+}
+
+function DeleteActiveIcon(props) {
+    return (
+        <svg
+            {...props}
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <rect
+                x="5"
+                y="6"
+                width="10"
+                height="10"
+                fill="#153ec2"
+                stroke="#5670c7"
+                strokeWidth="2"
+            />
+            <path d="M3 6H17" stroke="#153ec2" strokeWidth="2" />
+            <path d="M8 6V4H12V6" stroke="#153ec2" strokeWidth="2" />
+        </svg>
+    )
+}
+
+export default Navbar;

@@ -36,11 +36,12 @@ export const Dropdown = ({ dataLesson, index, id }) => {
             {dataLesson.map((data, idx) => {
                 if (idx === index) {
                     data.forEach(element => {
-                        // console.log(element)
                         slice.push(element);
                     });
                     return slice.map(data => {
-                        return (<Link className="py-3 block active:font-bold" to={`/course/${id}/${data.id_lo}/${data.id}`}>{data.name}</Link>);
+                        return (
+                            <Link className="py-3 block active:font-bold" to={`/course/${id}/${data.id_lo}/${data.id}`}>{data.name}</Link>
+                        );
                     })
                 }
             })}
@@ -70,13 +71,18 @@ const Accordion = ({ dataLo, dataLesson, id }) => {
                         return (
                             <>
                                 <Wrap onClick={() => toggle(index)} key={index}>
-                                    <h1 className="font-semibold">{item.name}</h1>
+                                    <h1 className="text-left font-semibold">{item.name}</h1>
                                     <span>{clicked === index ? <FiMinus /> : <FiPlus />}</span>
                                 </Wrap>
                                 {clicked === index ? <Dropdown dataLesson={dataLesson} index={index} id={id} /> : null}
                             </>
                         );
                     })}
+                    <Wrap onClick={() => toggle(100)} key={100}>
+                        <Link to={`/feedback/${id}`}>
+                            <h1 className="text-left font-semibold">Feedback</h1>
+                        </Link>
+                    </Wrap>
                 </Container>
             </AccordionSection>
         </IconContext.Provider >

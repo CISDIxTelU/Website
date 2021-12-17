@@ -1,14 +1,27 @@
-import { data } from 'autoprefixer';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Accordion } from '../../components';
+import { useNavigate } from 'react-router-dom';
 
 function Course() {
     const [dataLo, setDataLo] = useState([]);
+    const [pages, setPages] = useState(0);
     const [dataLesson, setDataLesson] = useState([]);
     let { id_topic, id_course } = useParams();
     let lesson = [];
+    const navigate = useNavigate();
+
+    const prevPage = () => {
+        if (pages !== 0) {
+            setPages(pages - 1);
+        }
+
+    }
+    const nextPage = () => {
+        setPages(pages + 1)
+    }
 
     useEffect(() => {
         const config = {
@@ -42,19 +55,26 @@ function Course() {
                                 datax.forEach(element => {
                                     return lesson.push(element)
                                 });
+                                // console.log(lesson);
                                 if (index === 0) {
                                     index += 1;
                                     if (index === datax.length) {
                                         return lesson.map((data, idx) => {
                                             if (data.id === parseInt(id_course)) {
-                                                console.log(data);
                                                 return (
                                                     <>
                                                         <h1 className="font-bold text-3xl my-3">{data.name}</h1>
                                                         {data.video_url != null ? <iframe src={data.video_url} title="description" className="h-96 w-full"></iframe> : ''}
                                                         {data.lesson_attachment != null ? <img src={data.lesson_attachment} alt="foto" className="h-96 w-full" /> : ''}
                                                         <div dangerouslySetInnerHTML={{ __html: data.lesson_text }} />
-
+                                                        <div className='mt-10 flex justify-between'>
+                                                            <button className='border border-blue-600 text-blue-600 p-3' onClick={prevPage}>
+                                                                Previous
+                                                            </button>
+                                                            <button className='bg-blue-600 text-white p-3' onClick={nextPage}>
+                                                                Next
+                                                            </button>
+                                                        </div>
                                                     </>
                                                 )
                                             }
@@ -65,14 +85,20 @@ function Course() {
                                     if (index === datax.length) {
                                         return lesson.map((data, idx) => {
                                             if (data.id === parseInt(id_course)) {
-                                                console.log(data);
                                                 return (
                                                     <>
                                                         <h1 className="font-bold text-3xl my-3">{data.name}</h1>
                                                         {data.video_url != null ? <iframe src={data.video_url} title="description" className="h-96 w-full"></iframe> : ''}
                                                         {data.lesson_attachment != null ? <img src={`https://api.storeximi.com/storage/${data.lesson_attachment}`} alt="foto" className="bg-cover w-full" /> : ''}
                                                         <div dangerouslySetInnerHTML={{ __html: data.lesson_text }} />
-
+                                                        <div className='mt-10 flex justify-between'>
+                                                            <button className='border border-blue-600 text-blue-600 p-3' onClick={prevPage}>
+                                                                Previous
+                                                            </button>
+                                                            <button className='bg-blue-600 text-white p-3' onClick={nextPage}>
+                                                                Next
+                                                            </button>
+                                                        </div>
                                                     </>
                                                 )
                                             }
