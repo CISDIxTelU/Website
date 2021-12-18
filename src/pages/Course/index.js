@@ -52,59 +52,30 @@ function Course() {
                     <div className="border rounded-lg bg-white p-6">
                         {
                             dataLesson.map((datax, index) => {
-                                datax.forEach(element => {
+                                return datax.forEach(element => {
                                     return lesson.push(element)
                                 });
-                                // console.log(lesson);
-                                if (index === 0) {
-                                    index += 1;
-                                    if (index === datax.length) {
-                                        return lesson.map((data, idx) => {
-                                            if (data.id === parseInt(id_course)) {
-                                                return (
-                                                    <>
-                                                        <h1 className="font-bold text-3xl my-3">{data.name}</h1>
-                                                        {data.video_url != null ? <iframe src={data.video_url} title="description" className="h-96 w-full"></iframe> : ''}
-                                                        {data.lesson_attachment != null ? <img src={data.lesson_attachment} alt="foto" className="h-96 w-full" /> : ''}
-                                                        <div dangerouslySetInnerHTML={{ __html: data.lesson_text }} />
-                                                        <div className='mt-10 flex justify-between'>
-                                                            <button className='border border-blue-600 text-blue-600 p-3' onClick={prevPage}>
-                                                                Previous
-                                                            </button>
-                                                            <button className='bg-blue-600 text-white p-3' onClick={nextPage}>
-                                                                Next
-                                                            </button>
-                                                        </div>
-                                                    </>
-                                                )
-                                            }
-                                            return '';
-                                        })
-                                    }
-                                } else {
-                                    if (index === datax.length) {
-                                        return lesson.map((data, idx) => {
-                                            if (data.id === parseInt(id_course)) {
-                                                return (
-                                                    <>
-                                                        <h1 className="font-bold text-3xl my-3">{data.name}</h1>
-                                                        {data.video_url != null ? <iframe src={data.video_url} title="description" className="h-96 w-full"></iframe> : ''}
-                                                        {data.lesson_attachment != null ? <img src={`https://api.storeximi.com/storage/${data.lesson_attachment}`} alt="foto" className="bg-cover w-full" /> : ''}
-                                                        <div dangerouslySetInnerHTML={{ __html: data.lesson_text }} />
-                                                        <div className='mt-10 flex justify-between'>
-                                                            <button className='border border-blue-600 text-blue-600 p-3' onClick={prevPage}>
-                                                                Previous
-                                                            </button>
-                                                            <button className='bg-blue-600 text-white p-3' onClick={nextPage}>
-                                                                Next
-                                                            </button>
-                                                        </div>
-                                                    </>
-                                                )
-                                            }
-                                            return '';
-                                        })
-                                    }
+                            })
+                        }
+                        {
+                            lesson.map((data, idx) => {
+                                if (data.id === parseInt(id_course)) {
+                                    return (
+                                        <>
+                                            <h1 className="font-bold text-3xl my-3">{data.name}</h1>
+                                            {data.video_url != null ? <iframe src={data.video_url} title="description" className="h-96 w-full"></iframe> : ''}
+                                            {data.lesson_attachment != null ? <img src={data.lesson_attachment} alt="foto" className="h-96 w-full" /> : ''}
+                                            <div dangerouslySetInnerHTML={{ __html: data.lesson_text }} />
+                                            <div className='mt-10 flex justify-between'>
+                                                <button className='border border-blue-600 text-blue-600 p-3' onClick={prevPage}>
+                                                    Previous
+                                                </button>
+                                                <button className='bg-blue-600 text-white p-3' onClick={nextPage}>
+                                                    Next
+                                                </button>
+                                            </div>
+                                        </>
+                                    )
                                 }
                                 return '';
                             })
