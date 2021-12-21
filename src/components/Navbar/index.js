@@ -1,37 +1,39 @@
 import React, { Fragment } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { LogoNavbar } from '../../assets'
+import { Hero, LogoCisdi, LogoNavbar } from '../../assets'
 import { Menu, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/solid'
+import { FaBars } from 'react-icons/fa'
 
-function Navbar({name}) {
+function Navbar({ name }) {
     const navigate = useNavigate();
+    const [navbarOpen, setNavbarOpen] = React.useState(false);
     const logout = () => {
         localStorage.removeItem('token');
         return navigate('/login');
     }
 
     return (
-        <div className="shadow-md bg-white sticky top-0 z-50">
-            <div className="container flex wrap justify-between items-center mx-auto py-4">
-                <Link to="/courses">
-                    <img src={LogoNavbar} alt="foto" />
-                </Link>
-                <div className="flex flex-1 items-center justify-center">
-                    <Link to="/courses" className="mr-10 h-auto">Courses</Link>
-                    <input type="text" className="p-3 px-5 border rounded-full w-5/12" placeholder="Search here..."></input>
-                </div>
-                <div className="flex flex-2">
-                    {/* Profile dropdown */}
-                    <div className="w-56 text-right">
+        <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 sticky top-0 z-50" style={{ backgroundColor: '#404042' }}>
+            <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+                <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+                    <Link
+                        className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
+                        to="/courses"
+                    >
+                        <img src={LogoCisdi} className='w-20 lg:w-27' />
+                    </Link>
+                    <div className='flex items-center'>
+                    <button
+                        className="text-white cursor-pointer text-xl leading-none px-3 py-1 mr-5 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+                        type="button"
+                        onClick={() => setNavbarOpen(!navbarOpen)}
+                    >
+                        <FaBars />
+                    </button>
+                    <div className="text-right flex lg:hidden">
                         <Menu as="div" className="relative inline-block text-left">
                             <div>
-                                <Menu.Button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-                                    {name}
-                                    <ChevronDownIcon
-                                        className="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
-                                        aria-hidden="true"
-                                    />
+                                <Menu.Button className="text-sm relative font-medium text-white bg-blue-200 rounded-full hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75" style={{ backgroundImage: `url(${Hero})`, backgroundSize: '60px', backgroundPosition: 'center center', objectFit: 'cover', backgroundRepeat: 'no-repeat', width: '40px', height: '40px' }}>
                                 </Menu.Button>
                             </div>
                             <Transition
@@ -73,7 +75,7 @@ function Navbar({name}) {
                                                 <button
                                                     className={`${active ? 'bg-violet-500 text-blue-600 underline' : 'text-gray-900'
                                                         } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                                                onClick={logout}>
+                                                    onClick={logout}>
                                                     {active ? (
                                                         <DeleteActiveIcon
                                                             className="w-5 h-5 mr-2 text-violet-400"
@@ -94,9 +96,121 @@ function Navbar({name}) {
                             </Transition>
                         </Menu>
                     </div>
+                    </div>
+                </div>
+                <div
+                    className={
+                        "lg:flex flex-grow items-center" +
+                        (navbarOpen ? " flex" : " hidden")
+                    }
+                    id="example-navbar-danger"
+                >
+                    <ul className="flex flex-col w-full justify-around align-center lg:flex-row list-none lg:ml-auto">
+                        <li className="nav-item">
+                            <Link
+                                className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                                to="/materi"
+                            >
+                                <span className="ml-2">Beranda</span>
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link
+                                className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                                to="/materi"
+                            >
+                                <span className="ml-2">Riwayat</span>
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link
+                                className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                                to="/materi"
+                            >
+                                <span className="ml-2">Favorit</span>
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link
+                                className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                                to="/materi"
+                            >
+                                <span className="ml-2">Pemberitahuan</span>
+                            </Link>
+                        </li>
+                        <li className='nav-item'>
+                            {/* Profile dropdown */}
+                            <div className="text-right hidden lg:inline">
+                                <Menu as="div" className="relative inline-block text-left">
+                                    <div>
+                                        <Menu.Button className="text-sm relative font-medium text-white bg-blue-200 rounded-full hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75" style={{ backgroundImage: `url(${Hero})`, backgroundSize: '60px', backgroundPosition: 'center center', objectFit: 'cover', backgroundRepeat: 'no-repeat', width: '40px', height: '40px' }}>
+                                        </Menu.Button>
+                                    </div>
+                                    <Transition
+                                        as={Fragment}
+                                        enter="transition ease-out duration-100"
+                                        enterFrom="transform opacity-0 scale-95"
+                                        enterTo="transform opacity-100 scale-100"
+                                        leave="transition ease-in duration-75"
+                                        leaveFrom="transform opacity-100 scale-100"
+                                        leaveTo="transform opacity-0 scale-95"
+                                    >
+                                        <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                            <div className="px-1 py-1 ">
+                                                <Menu.Item>
+                                                    {({ active }) => (
+                                                        <button
+                                                            className={`${active ? 'bg-violet-500 text-blue-600 underline' : 'text-gray-900'
+                                                                } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                                                        >
+                                                            {active ? (
+                                                                <EditActiveIcon
+                                                                    className="w-5 h-5 mr-2"
+                                                                    aria-hidden="true"
+                                                                />
+                                                            ) : (
+                                                                <EditInactiveIcon
+                                                                    className="w-5 h-5 mr-2"
+                                                                    aria-hidden="true"
+                                                                />
+                                                            )}
+                                                            Profile
+                                                        </button>
+                                                    )}
+                                                </Menu.Item>
+                                            </div>
+                                            <div className="px-1 py-1">
+                                                <Menu.Item>
+                                                    {({ active }) => (
+                                                        <button
+                                                            className={`${active ? 'bg-violet-500 text-blue-600 underline' : 'text-gray-900'
+                                                                } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                                                            onClick={logout}>
+                                                            {active ? (
+                                                                <DeleteActiveIcon
+                                                                    className="w-5 h-5 mr-2 text-violet-400"
+                                                                    aria-hidden="true"
+                                                                />
+                                                            ) : (
+                                                                <DeleteInactiveIcon
+                                                                    className="w-5 h-5 mr-2 text-violet-400"
+                                                                    aria-hidden="true"
+                                                                />
+                                                            )}
+                                                            Logout
+                                                        </button>
+                                                    )}
+                                                </Menu.Item>
+                                            </div>
+                                        </Menu.Items>
+                                    </Transition>
+                                </Menu>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
+        </nav>
     )
 }
 

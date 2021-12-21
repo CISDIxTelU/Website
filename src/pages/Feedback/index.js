@@ -8,7 +8,7 @@ const Feedback = () => {
     const [feedback, setFeedback] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
-    const [success, setSuccess] = useState(true);
+    const [success, setSuccess] = useState(false);
     const [message, setMessage] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();
@@ -27,15 +27,15 @@ const Feedback = () => {
         axios.post(`https://api.storeximi.com/api/feedback/${id}`, {
             feedback: feedback,
         }, config).then(res => {
-            setSuccess(true);
-            return navigate(`/feedback/${id}`);
+            setLoading(false)
+            setSuccess(true)
         }).catch(error => {
             setLoading(false);
             let errorData = error.response.data.message;
             console.log(errorData)
             if (errorData) {
                 setError(true);
-                // setMessage(errorData);
+                setMessage(errorData);
             }
         })
     }

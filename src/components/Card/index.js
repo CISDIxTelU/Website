@@ -1,24 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-function Card({materi, judul, foto, linkTo}) {
+function Card({ materi, judul, foto, linkTo }) {
     return (
-        <div className="filter drop-shadow-lg bg-white rounded-xl">
-            <img src={foto} alt="" className="w-full rounded-t-xl h-52 object-cover" />
-            <div className="p-4">
-                <h2 className="text-lg font-semibold mb-5">
-                    {judul}
-                </h2>
-                <div className="flex wrap justify-between items-center">
-                    <div>
-                        <p className="text-gray-300 font-semibold">Materi : </p>
-                        <p className="text-blue-600 font-semibold">{materi}</p>
+        <>
+        <Link to={linkTo}>
+        <div class="max-w-md mx-auto rounded-xl bg-white shadow-md overflow-hidden md:max-w-2xl md:h-52">
+                <div class="md:flex h-full">
+                    <div class="md:shrink-0">
+                        <img class="h-full w-full object-cover md:w-48" src={foto} alt="Man looking at item at a store" />
                     </div>
-
-                    <Link to={linkTo} className="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700">See more</Link>
+                    <div class="p-8">
+                        <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"> {judul}</a>
+                        <p class="my-2 text-gray-500">Getting a new business off the ground is a lot of hard work. Here are five ideas you can use to find your first customers.</p>
+                        <div className='flex justify-between'>
+                            <p className="text-gray-400 font-semibold">Materi : </p>
+                            <p className="text-red-600 font-semibold">{materi}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </Link>
+        </>
     )
 }
 

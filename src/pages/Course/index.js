@@ -13,14 +13,17 @@ function Course() {
     let lesson = [];
     const navigate = useNavigate();
 
-    const prevPage = () => {
-        if (pages !== 0) {
-            setPages(pages - 1);
+    const prevPage = (e) => {
+            setPages(parseInt(e.target.value) - 1);
+            if(pages){
+                navigate(`/course/${id_topic}/${lesson[pages].id_lo}/${lesson[pages].id}`)
+            }
         }
-
-    }
-    const nextPage = () => {
-        setPages(pages + 1)
+    const nextPage = (e) => {
+        setPages(parseInt(e.target.value) + 1);
+        if(pages){
+            navigate(`/course/${id_topic}/${lesson[pages].id_lo}/${lesson[pages].id}`)
+        }
     }
 
     useEffect(() => {
@@ -67,10 +70,10 @@ function Course() {
                                             {data.lesson_attachment != null ? <img src={data.lesson_attachment} alt="foto" className="h-96 w-full" /> : ''}
                                             <div dangerouslySetInnerHTML={{ __html: data.lesson_text }} />
                                             <div className='mt-10 flex justify-between'>
-                                                <button className='border border-blue-600 text-blue-600 p-3' onClick={prevPage}>
+                                                <button className='border border-blue-600 text-blue-600 p-3 rounded-lg' value={idx} onClick={prevPage}>
                                                     Previous
                                                 </button>
-                                                <button className='bg-blue-600 text-white p-3' onClick={nextPage}>
+                                                <button className='bg-blue-600 text-white p-3 rounded-lg' value={idx} onClick={nextPage}>
                                                     Next
                                                 </button>
                                             </div>
