@@ -57,7 +57,7 @@ function Login({ setToken }) {
         return (
             <div className="h-screen relative bg-cover bg-no-repeat flex items-center" style={{ backgroundImage: `url(${BgLogin})`, backgroundColor: '#404042'}}>
                 <div className="container mx-auto z-50 mt-10 pt-10 h-2/12">
-                    <img src={LogoCisdi} className="object-cover mx-auto w-40" />
+                    <img src={LogoCisdi} className="object-cover mx-auto w-40" alt='logo-cisdi' />
                     <div class="filter mx-auto rounded-md py-11 w-64 mt-5 lg:w-4/12">
                         {error === true ? <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative my-3" role="alert">
                             <span class="block sm:inline">{message}</span>

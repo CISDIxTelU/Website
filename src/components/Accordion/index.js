@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { IconContext } from 'react-icons';
 import { FiPlus, FiMinus } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import { FaRegCheckCircle } from 'react-icons/fa';
 
 const AccordionSection = styled.div`
 `;
@@ -18,7 +19,10 @@ const Wrap = styled.div`
   width: 100%;
   text-align: center;
   cursor: pointer;
-  border-bottom: 1px solid #0101;
+  border: 1px solid #0101;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  background-color: #fff;
   h1 {
     padding: 1rem;
     font-size: 1rem;
@@ -32,15 +36,18 @@ export const Dropdown = ({ dataLesson, index, id }) => {
     let slice = [];
 
     return (
-        <div style={{ width: "100 %", padding: "10px 25px", borderBottom: "1px solid #0101", borderTop: "1px solid #0101" }} key={index}>
+        <div style={{ width: "100 %", marginBottom: '30px' }} key={index}>
             {dataLesson.map((data, idx) => {
-                if (idx === index) {
+                    if (idx === index) {
                     data.forEach(element => {
                         slice.push(element);
                     });
                     return slice.map(data => {
                         return (
-                            <Link className="py-3 block active:font-bold" to={`/course/${id}/${data.id_lo}/${data.id}`}>{data.name}</Link>
+                            <div className='border-b py-3 px-6 border-gray-200 flex justify-between'>
+                                <Link className="block active:font-bold hover:underline" to={`/course/${id}/${data.id_lo}/${data.id}`}>{data.name}</Link>
+                                <FaRegCheckCircle />
+                            </div>
                         );
                     })
                 }
@@ -48,8 +55,6 @@ export const Dropdown = ({ dataLesson, index, id }) => {
         </div>
     )
 }
-
-// 321654987
 
 const Accordion = ({ dataLo, dataLesson, id }) => {
     const [clicked, setClicked] = useState(false);
@@ -78,11 +83,11 @@ const Accordion = ({ dataLo, dataLesson, id }) => {
                             </>
                         );
                     })}
-                    <Wrap onClick={() => toggle(100)} key={100}>
-                        <Link to={`/feedback/${id}`}>
+                    <Link to={`/feedback/${id}`}>
+                        <Wrap onClick={() => toggle(100)} key={100}>
                             <h1 className="text-left font-semibold">Feedback</h1>
-                        </Link>
-                    </Wrap>
+                        </Wrap>
+                    </Link>
                 </Container>
             </AccordionSection>
         </IconContext.Provider >

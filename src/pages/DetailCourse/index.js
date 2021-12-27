@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { FaBookOpen, FaHeart } from "react-icons/fa";
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Lottie from 'reactjs-lottie';
 import { animation } from '../../assets';
 import axios from 'axios';
+import { Accordion } from '../../components';
 
 function DetailCourse() {
     const [data, setData] = useState([]);
+    const [dataLo, setDataLo] = useState([]);
+    const [dataLesson, setDataLesson] = useState([]);
     let { id } = useParams();
     const [loading, setLoading] = useState(false);
 
@@ -16,14 +18,20 @@ function DetailCourse() {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
-        };
-
+        }
         axios.post(`https://api.storeximi.com/api/topic/${id}`, {}, config).then(res => {
             setData(res.data.data_topic);
             console.log(res.data.data_topic)
             setLoading(false)
         }).catch(e => {
             console.log(e);
+        })
+
+        axios.post(`https://api.storeximi.com/api/lo/${id}`, {}, config).then(e => {
+            setDataLo(e.data.data_lo);
+            setDataLesson(e.data.data_lesson);
+        }).catch(e => {
+            console.log(e)
         })
     }, [id]);
 
@@ -40,44 +48,32 @@ function DetailCourse() {
     }
     else {
         return (
-            <div className="container mx-auto py-11">
-                <h1 className="text-3xl font-bold w-1/2">{data.title}</h1>
-                <div className="flex wrap justify-between bg-white py-3 gap-10">
-                    <div className="w-9/12 py-2">
-                        <img src={`https://api.storeximi.com/storage/${data.cover_image}`} alt="data" className="w-full h-1/2 object-cover rounded-xl border" />
-                        <div className="bg-white mt-5 border rounded-xl p-10">
-                            <h2 className="text-2xl font-semibold">Overview</h2>
-                            <p className="mt-3">{data.description}</p>
-                        </div>
-                        <div className="bg-white mt-5 border rounded-xl p-10">
-                            <h2 className="text-2xl font-semibold">What you’ll learn</h2>
-                            <ul class="list-none leading-loose mt-3 md:list-disc ml-5">
-                                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit</li>
-                                <li>Assumenda, quia temporibus eveniet a libero incidunt suscipit</li>
-                                <li>Quidem, ipsam illum quis sed voluptatum quae eum fugit earum</li>
-                            </ul>
-                        </div>
+            <div className='bg-gray-100'>
+                <div className='sm:container mx-auto pt-8'>
+                    <h1 className='font-bold text-3xl text-center text-red-600'>CISDI</h1>
+                    <h2 className='font-bold text-2xl mt-5 mb-3'>Peningkatan Peran Kader dan Pendamping Kelompok dalam Respon Covid-19</h2>
+                    <p className='text-base text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tempor mus risus arcu ac, vitae nunc.
+                        Non diam gravida pulvinar nisi nunc dignissim. Sed parturient elementum urna non velit, neque. Mauris consectetur pretium ullamcorper
+                        tortor ut dui amet. Lacus, posuere quis suscipit id gravida elit massa. Eget augue sit enim malesuada massa molestie tristique blandit
+                        egestas. Feugiat mattis lectus neque ut leo ornare feugiat. Ut adipiscing justo, lectus amet eu condimentum integer metus nullam.
+                        Diam ac ac aliquam scelerisque at risus, tellus. Diam dui feugiat aliquam placerat sodales nunc. Lectus enim, nunc vitae, sed consequat
+                        vitae fames est dui. Neque egestas fermentum elit est arcu. Suspendisse elementum quis id sed orci. Nec elementum bibendum elementum tellus
+                        sit nulla.
+                    </p>
+                    <div className='flex justify-between my-4'>
+                        <p className='font-bold'>By : CISDI</p>
+                        <p className='font-light'>Diterbitkan: 18 Oktober 2021</p>
                     </div>
-                    <div className="w-4/12 py-2">
-                        <div className="bg-white border rounded-xl p-10">
-                            <h2 className="text-2xl font-semibold mb-10">are you interest with this
-                                courses? let’s start !</h2>
-                            <div className=" flex wrap flex-col gap-4">
-                                <Link to={`/course/${data.id}`} className="bg-blue-600 text-white rounded-lg font-semibold w-full text-center p-3 inline-flex items-center justify-center hover:bg-blue-700" href="#">
-                                    <FaBookOpen className="mr-3" />
-                                    <span>Start Courses</span>
-                                </Link>
-                                <Link className="bg-white text-blue-600 border border-blue-600 rounded-lg font-semibold w-full text-center p-3 inline-flex items-center justify-center hover:underline" to="/courses">
-                                    <FaHeart className="mr-3" />
-                                    <span>Add Favourite</span>
-                                </Link>
-                            </div>
-                            <hr className="my-11" />
-                            <div className="text-center mb-8">
-                                <Link to="/courses" className="text-blue-600 underline" href="#">back to courses</Link>
-                            </div>
-                        </div>
+                    <hr />
+                    <div className='flex justify-between my-4'>
+                        <p className='font-bold'>Kursus Topik Ini</p>
+                        <p className='font-light'>19 Materi</p>
+                        <p className='font-light'>5j 23m</p>
                     </div>
+                    <Accordion dataLesson={dataLesson} dataLo={dataLo} id_topic={id}/>
+                    <h2 className='font-bold text-lg mt-7 mb-3'>Beri Ulasan</h2>
+                    <textarea className='resize-y rounded-md border w-full h-32 p-3 focus:border-red-600' placeholder='tulis disini'></textarea>
+                    <button className='bg-red-600 w-full py-3 text-white rounded-md mt-3 mb-10 hover:bg-opacity-75'>Kirim</button>
                 </div>
             </div>
         )
