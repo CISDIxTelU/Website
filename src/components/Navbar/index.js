@@ -1,24 +1,28 @@
 import React, { Fragment } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Hero, LogoCisdi, LogoNavbar } from '../../assets'
+import { Hero, LogoCisdi } from '../../assets'
 import { Menu, Transition } from '@headlessui/react'
-import { FaBars } from 'react-icons/fa'
+import { FaBars, FaChevronDown } from 'react-icons/fa'
 
 function Navbar({ name }) {
     const navigate = useNavigate();
     const [navbarOpen, setNavbarOpen] = React.useState(false);
     const logout = () => {
         localStorage.removeItem('token');
-        return navigate('/login');
+        return navigate('/');
+    }
+
+    const profile = () => {
+        return navigate('/profile');
     }
 
     return (
-        <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 sticky top-0 z-50" style={{ backgroundColor: '#404042' }}>
+        <nav className="flex flex-wrap items-center justify-between px-2 py-3 sticky z-50" style={{ backgroundColor: '#404042' }}>
             <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
                 <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
                     <Link
                         className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-                        to="/courses"
+                        to="/materi"
                     >
                         <img src={LogoCisdi} className='w-20 lg:w-27' />
                     </Link>
@@ -32,9 +36,10 @@ function Navbar({ name }) {
                     </button>
                     <div className="text-right flex lg:hidden">
                         <Menu as="div" className="relative inline-block text-left">
-                            <div>
+                            <div className='flex'>
                                 <Menu.Button className="text-sm relative font-medium text-white bg-blue-200 rounded-full hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75" style={{ backgroundImage: `url(${Hero})`, backgroundSize: '60px', backgroundPosition: 'center center', objectFit: 'cover', backgroundRepeat: 'no-repeat', width: '40px', height: '40px' }}>
                                 </Menu.Button>
+                                <FaChevronDown className='text-white relative' />
                             </div>
                             <Transition
                                 as={Fragment}
@@ -49,10 +54,10 @@ function Navbar({ name }) {
                                     <div className="px-1 py-1 ">
                                         <Menu.Item>
                                             {({ active }) => (
-                                                <button
+                                                <Link
                                                     className={`${active ? 'bg-violet-500 text-blue-600 underline' : 'text-gray-900'
                                                         } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                                                >
+                                                        to="/profile">
                                                     {active ? (
                                                         <EditActiveIcon
                                                             className="w-5 h-5 mr-2"
@@ -65,7 +70,7 @@ function Navbar({ name }) {
                                                         />
                                                     )}
                                                     Profile
-                                                </button>
+                                                </Link>
                                             )}
                                         </Menu.Item>
                                     </div>
@@ -117,7 +122,7 @@ function Navbar({ name }) {
                         <li className="nav-item">
                             <Link
                                 className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                                to="/materi"
+                                to="/history"
                             >
                                 <span className="ml-2">Riwayat</span>
                             </Link>
@@ -162,6 +167,7 @@ function Navbar({ name }) {
                                                         <button
                                                             className={`${active ? 'bg-violet-500 text-blue-600 underline' : 'text-gray-900'
                                                                 } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                                                                onClick={profile}
                                                         >
                                                             {active ? (
                                                                 <EditActiveIcon

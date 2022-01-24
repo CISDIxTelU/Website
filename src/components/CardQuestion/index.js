@@ -1,26 +1,26 @@
 import React from 'react'
 
-function CardQuestion({question, answer}) {
+function CardQuestion({ data }) {
     return (
         <div className='rounded-lg bg-white border-l-8 shadow p-3 border-red-600 mb-3'>
-            <h2 className='font-bold text-base mb-3'>{question}</h2>
+            <div className='font-bold text-base mb-3' dangerouslySetInnerHTML={{ __html: data.question }} />
+            {data.anse}
             <div className='mb-2 flex items-center'>
-            <input type="checkbox" className='mr-3'/>
-            <label>Jawaban 1</label>
+                <input type="radio" className='mr-3' name={`answer_${data.id}`} value="answer_1" />
+                <label>{data.answer_1}</label>
             </div>
             <div className='mb-2 flex items-center'>
-            <input type="checkbox" className='mr-3'/>
-            <label>Jawaban 2</label>
+                <input type="radio" className='mr-3' name={`answer_${data.id}`} value="answer_2" />
+                <label>{data.answer_2}</label>
             </div>
             <div className='mb-2 flex items-center'>
-            <input type="checkbox" className='mr-3'/>
-            <label>Jawaban 3</label>
+                <input type="radio" className='mr-3' name={`answer_${data.id}`} value="answer_3" />
+                <label>{data.answer_3}</label>
             </div>
             <div className='mb-2 flex items-center'>
-            <input type="checkbox" className='mr-3'/>
-            <label>Jawaban 4</label>
+                <input type="radio" className='mr-3' name={`answer_${data.id}`} value="answer_4" />
+                <label>{data.answer_4}</label>
             </div>
-           
         </div>
     )
 }

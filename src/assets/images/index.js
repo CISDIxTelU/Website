@@ -10,5 +10,6 @@ import Hero from './bg-hero.jpeg'
 import LogoCisdiPrimary from './logo-cisdi-rgb.png'
 import BgFooter from './bg-footer.png'
 import BgSuccess from './bg-success.png'
+import Banner1 from './banner-1.png'
 
-export {BgLogin, LogoCisdi, LogoNavbar, TitleCourses, DummyCard, DummyDetail, BannerCourse, BgFooter, BannerHero, Hero, LogoCisdiPrimary, BgSuccess};
+export {BgLogin, LogoCisdi, LogoNavbar, TitleCourses, DummyCard, DummyDetail, BannerCourse, BgFooter, BannerHero, Hero, LogoCisdiPrimary, BgSuccess, Banner1};

@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Lottie from 'reactjs-lottie';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function Login({ setToken }) {
 
     const [username, setUsername] = useState('');
@@ -26,12 +28,12 @@ function Login({ setToken }) {
                 'Content-Type': 'application/json',
             }
         }
-        axios.post('https://api.storeximi.com/api/login', {
-            phone_number: username,
+        axios.post(`${BASE_URL}/login`, {
+            username: username,
             password: password,
         }, config).then(res => {
             localStorage.setItem('token', res.data.access_token)
-            navigate('/courses');
+            navigate('/materi');
             console.log('success');
         }).catch(error => {
             setLoading(false);
