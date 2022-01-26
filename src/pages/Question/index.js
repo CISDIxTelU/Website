@@ -1,17 +1,25 @@
 import axios from 'axios'
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { CardQuestion } from '../../components'
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function Question() {
-    const {id} = useParams();
+    const { id } = useParams();
     const [question, setQuestion] = useState([]);
-    const [data, setData] = useState({
-        id: 0,
-        answer: '',
-    })
+    const [userAnswer, setUserAnswer] = useState({
+        data: []
+    });
+
+    const selectAnswer = (answer, id) => {
+
+        const data = {
+            id: id,
+            answerUser: answer,
+        }
+        setUserAnswer({...userAnswer.data, data});
+    };
 
     useEffect(() => {
         const config = {
@@ -24,7 +32,7 @@ function Question() {
             setQuestion(response)
             console.log(response)
         })
-    }, [id])
+    }, [id]);
 
     return (
         <div className='container mx-auto p-3 py-10'>
@@ -32,13 +40,11 @@ function Question() {
             <p className='text-gray-600'>berikut pertanyaan yang harus dijawab : </p>
             <hr className='my-5' />
             {question.map((data, idx) => {
-                return(
-                <CardQuestion data={data} key={idx} />
+                return (
+                    <CardQuestion data={data} key={idx} selected={answer => selectAnswer(answer, data.id)} />
                 )
             })}
-            <Link to="/complete">
-                <button className='w-full bg-red-600 text-white font-bold py-3 hover:bg-opacity-75 rounded-lg'>Kirim Jawaban dan Lihat Hasil</button>
-            </Link>
+                <button type="submit" className='w-full bg-red-600 text-white font-bold py-3 hover:bg-opacity-75 rounded-lg' onClick={()=> console.log(userAnswer)}>Kirim Jawaban dan Lihat Hasil</button>
         </div>
     )
 }

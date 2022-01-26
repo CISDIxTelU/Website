@@ -5,7 +5,7 @@ function Card({ materi, judul, foto, linkTo }) {
     return (
         <>
         <Link to={linkTo}>
-        <div class="max-w-md mx-auto rounded-xl bg-white shadow-md overflow-hidden md:max-w-2xl md:h-52">
+        <div class="max-w-md mx-auto rounded-xl bg-white shadow-md overflow-hidden md:max-w-2xl md:h-52 transition duration-300 ease-in-out hover:bg-gray-100">
                 <div class="md:flex h-full md:p-4">
                     <div class="md:shrink-0">
                         <img class="h-full w-full object-cover md:w-48 md:rounded-l-xl" src={foto} alt="Man looking at item at a store" />

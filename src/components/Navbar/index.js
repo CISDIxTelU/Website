@@ -24,7 +24,7 @@ function Navbar({ name }) {
                         className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
                         to="/materi"
                     >
-                        <img src={LogoCisdi} className='w-20 lg:w-27' />
+                        <img src={LogoCisdi} className='w-32 lg:w-27' />
                     </Link>
                     <div className='flex items-center'>
                     <button

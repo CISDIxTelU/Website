@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import { Banner1, BannerCourse, BannerHero } from '../../assets'
-import Lottie from 'reactjs-lottie';
+import Lottie from 'reactjs-lottie'; 
 import { animation } from '../../assets';
 import { Card } from '../../components';
 

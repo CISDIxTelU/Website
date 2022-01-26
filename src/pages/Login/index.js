@@ -24,8 +24,8 @@ function Login({ setToken }) {
 
         const config = {
             headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
+                Accept: 'application/json', 
+                'Content-Type': 'app             ,,,lication/json',
             }
         }
         axios.post(`${BASE_URL}/login`, {
