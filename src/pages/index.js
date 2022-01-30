@@ -12,6 +12,7 @@ import Profile from './Profile';
 import QuestionDetail from "./QuestionDetail";
 import QuestionGrade from "./QuestionGrade";
 import LandingPage from "./LandingPage";
+import ForgotPassword from "./ForgotPassword";
 
 export {
     Login,
@@ -27,5 +28,6 @@ export {
     Profile,
     QuestionDetail,
     QuestionGrade,
-    LandingPage
+    LandingPage,
+    ForgotPassword
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { animation, BgLogin, LogoCisdi } from '../../assets'
 import { FaEnvelope, FaLock } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Lottie from 'reactjs-lottie';
 
@@ -24,7 +24,7 @@ function Login({ setToken }) {
 
         const config = {
             headers: {
-                Accept: 'application/json', 
+                Accept: 'application/json',
                 'Content-Type': 'application/json',
             }
         }
@@ -58,7 +58,7 @@ function Login({ setToken }) {
     }
     else {
         return (
-            <div className="h-screen relative bg-cover bg-no-repeat flex items-center" style={{ backgroundImage: `url(${BgLogin})`, backgroundColor: '#404042'}}>
+            <div className="h-screen relative bg-cover bg-no-repeat flex items-center" style={{ backgroundImage: `url(${BgLogin})`, backgroundColor: '#404042' }}>
                 <div className="container mx-auto z-50 mt-10 pt-10 h-2/12">
                     <img src={LogoCisdi} className="object-cover mx-auto w-40" alt='logo-cisdi' />
                     <div class="filter mx-auto rounded-md py-11 w-64 mt-5 lg:w-4/12">
@@ -77,7 +77,12 @@ function Login({ setToken }) {
                                 <FaLock className="text-white mx-5 " />
                                 <input type="password" onChange={e => setPassword(e.target.value)} className="appearance-none bg-transparent text-white w-full h-full p-3 rounded-lg focus:outline-none text-sm lg:text-base" placeholder="Enter your password"></input>
                             </div>
-                            <button className="bg-white text-red-600 rounded-lg p-2 w-full font-bold hover:bg-red-700 hover:text-white" type="submit" onSubmit={handleSubmit}>LOGIN</button>
+                            <button className="bg-white text-red-600 rounded-lg p-2 w-full mb-5 font-bold hover:bg-red-700 hover:text-white" type="submit" onSubmit={handleSubmit}>LOGIN</button>
+                            <div className='text-right'>
+                                <Link to='/forgot-password'>
+                                    <a className='text-base hover:underline text-white'>Lupa password?</a>
+                                </Link>
+                            </div>
                         </form>
                     </div>
                     <p className="text-white text-center mt-20 text-gray-50">created with ♥️ by ZDF.</p>

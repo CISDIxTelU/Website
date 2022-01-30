@@ -15,23 +15,29 @@ import BgGrade1 from './bg-grade.svg'
 import BgGrade2 from './bg-grade-2.svg'
 import BgGrade3 from './bg-grade-3.svg'
 import BgLanding from './bg-landing.svg'
+import BgForgot1 from './bg-forgot.svg'
+import BgForgot2 from './bg-forgot-1.svg'
+import BgForgot3 from './bg-forgot-2.svg'
 
-export { 
-    BgLogin, 
-    LogoCisdi, 
-    LogoNavbar, 
-    TitleCourses, 
-    DummyCard, 
-    DummyDetail, 
-    BannerCourse, 
-    BgFooter, 
-    BannerHero, 
-    Hero, 
-    LogoCisdiPrimary, 
-    BgSuccess, 
-    Banner1, 
-    BgGrade1, 
-    BgGrade2, 
+export {
+    BgLogin,
+    LogoCisdi,
+    LogoNavbar,
+    TitleCourses,
+    DummyCard,
+    DummyDetail,
+    BannerCourse,
+    BgFooter,
+    BannerHero,
+    Hero,
+    LogoCisdiPrimary,
+    BgSuccess,
+    Banner1,
+    BgGrade1,
+    BgGrade2,
     BgGrade3,
-    BgLanding
+    BgLanding,
+    BgForgot1,
+    BgForgot2,
+    BgForgot3
 };
