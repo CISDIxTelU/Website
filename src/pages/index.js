@@ -9,5 +9,23 @@ import History from './History';
 import Question from './Question';
 import Complete from './Complete'
 import Profile from './Profile';
+import QuestionDetail from "./QuestionDetail";
+import QuestionGrade from "./QuestionGrade";
+import LandingPage from "./LandingPage";
 
-export {Login, Courses, Course, DetailCourse, NotFound, Favorite, Feedback, History, Question, Complete, Profile};
+export {
+    Login,
+    Courses,
+    Course,
+    DetailCourse,
+    NotFound,
+    Favorite,
+    Feedback,
+    History,
+    Question,
+    Complete,
+    Profile,
+    QuestionDetail,
+    QuestionGrade,
+    LandingPage
+};

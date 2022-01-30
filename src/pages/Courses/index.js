@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
-import { Banner1, BannerCourse, BannerHero } from '../../assets'
+import { Banner1 } from '../../assets'
 import Lottie from 'reactjs-lottie'; 
 import { animation } from '../../assets';
 import { Card } from '../../components';
@@ -44,12 +44,13 @@ function Courses() {
                 </div>
 
                 <div className="container p-3 mx-auto mb-10 h-full">
+                    <p className='font-bold text-4xl mb-4 mt-8'>Hai, Zulfa Ulinuha</p>
+                    <p className='text-lg font-normal'>Selamat datang di CISDI, jelajahi kursus</p>
                     <h2 className="text-3xl my-5 font-bold">Topik Pembahasan</h2>
                     <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
                         {data.map(obj => {
-                            // let foto = `https://api.storeximi.com/storage/${obj.cover_image}`;
-                            // console.log(foto)
-                            let foto = 'https://images.unsplash.com/photo-1593642532454-e138e28a63f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80'
+                            console.log(obj)
+                            let foto = `${process.env.REACT_APP_IMAGE_URL}/${obj.cover_image}`;
                             return (
                                 <Card foto={foto} judul={obj.title} materi={obj.author} linkTo={`/detail-course/${obj.id}`} />
                             )

@@ -25,7 +25,7 @@ function Login({ setToken }) {
         const config = {
             headers: {
                 Accept: 'application/json', 
-                'Content-Type': 'app             ,,,lication/json',
+                'Content-Type': 'application/json',
             }
         }
         axios.post(`${BASE_URL}/login`, {
@@ -35,7 +35,8 @@ function Login({ setToken }) {
             localStorage.setItem('token', res.data.access_token)
             navigate('/materi');
             console.log('success');
-        }).catch(error => {
+        }).catch(res => {
+            console.log(res)
             setLoading(false);
             let errorData = error.response.data.message;
             if (errorData) {

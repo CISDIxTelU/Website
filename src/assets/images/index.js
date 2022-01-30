@@ -11,5 +11,27 @@ import LogoCisdiPrimary from './logo-cisdi-rgb.png'
 import BgFooter from './bg-footer.png'
 import BgSuccess from './bg-success.png'
 import Banner1 from './banner-1.png'
+import BgGrade1 from './bg-grade.svg'
+import BgGrade2 from './bg-grade-2.svg'
+import BgGrade3 from './bg-grade-3.svg'
+import BgLanding from './bg-landing.svg'
 
-export {BgLogin, LogoCisdi, LogoNavbar, TitleCourses, DummyCard, DummyDetail, BannerCourse, BgFooter, BannerHero, Hero, LogoCisdiPrimary, BgSuccess, Banner1};
+export { 
+    BgLogin, 
+    LogoCisdi, 
+    LogoNavbar, 
+    TitleCourses, 
+    DummyCard, 
+    DummyDetail, 
+    BannerCourse, 
+    BgFooter, 
+    BannerHero, 
+    Hero, 
+    LogoCisdiPrimary, 
+    BgSuccess, 
+    Banner1, 
+    BgGrade1, 
+    BgGrade2, 
+    BgGrade3,
+    BgLanding
+};

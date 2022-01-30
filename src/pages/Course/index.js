@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { animationCourse } from '../../assets';
 import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Lottie from 'reactjs-lottie'
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -12,6 +12,7 @@ function Course() {
     const [dataLesson, setDataLesson] = useState([]);
     let { id_topic } = useParams();
     const [loading, setLoading] = useState(false);
+    const history = useNavigate()
 
     useEffect(() => {
         setLoading(true)
@@ -45,9 +46,9 @@ function Course() {
                                 {dataLesson.lesson_attachment != null ? <img src={`${IMAGE_URL}/${dataLesson.lesson_attachment}`} alt="foto" className="h-96 w-full" /> : ''}
                                 <div dangerouslySetInnerHTML={{ __html: dataLesson.lesson_text }} />
                                 <div className='mt-10 flex justify-between'>
-                                    <Link className='bg-red-600 text-center text-white p-3 rounded-lg w-full font-bold hover:bg-opacity-75' value={dataLesson.id} to='/question'>
-                                        Tandakan Selesai & Lanjut Kuis
-                                    </Link>
+                                    <button className='bg-red-600 text-center text-white p-3 rounded-lg w-full font-bold hover:bg-opacity-75' value={dataLesson.id} onClick={() => history(-1, {replace: true})}>
+                                        Tandakan Selesai & Lanjut Materi
+                                    </button>
                                 </div>
                             </>
                         )}

@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { config } from 'dotenv';
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { CardQuestion } from '../../components'
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -9,17 +10,29 @@ function Question() {
     const { id } = useParams();
     const [question, setQuestion] = useState([]);
     const [userAnswer, setUserAnswer] = useState({
-        data: []
+        "content": []
     });
+    const navigate = useNavigate()
 
     const selectAnswer = (answer, id) => {
-
-        const data = {
-            id: id,
-            answerUser: answer,
-        }
-        setUserAnswer({...userAnswer.data, data});
+        // setUserAnswer(prev => ({...prev.content, [id]: {id, answer}}));
+        setUserAnswer({ content: [...userAnswer.content, {'id': id, 'answerUser': answer},] })
     };
+
+    const onClick = () => {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        }
+        console.log(userAnswer)
+        axios.post(`${BASE_URL}/test`, userAnswer, config).then(res => {
+            console.log("success sent", res)
+            return navigate(`/question/detail/${id}`)
+        }).catch(e => {
+            console.log("something wrong")
+        })
+    }
 
     useEffect(() => {
         const config = {
@@ -30,7 +43,6 @@ function Question() {
         axios.get(`${BASE_URL}/question/${id}`, config).then(res => {
             let response = res.data.question
             setQuestion(response)
-            console.log(response)
         })
     }, [id]);
 
@@ -44,7 +56,7 @@ function Question() {
                     <CardQuestion data={data} key={idx} selected={answer => selectAnswer(answer, data.id)} />
                 )
             })}
-                <button type="submit" className='w-full bg-red-600 text-white font-bold py-3 hover:bg-opacity-75 rounded-lg' onClick={()=> console.log(userAnswer)}>Kirim Jawaban dan Lihat Hasil</button>
+            <button type="submit" className='w-full bg-red-600 text-white font-bold py-3 hover:bg-opacity-75 rounded-lg' onClick={onClick}>Kirim Jawaban dan Lihat Hasil</button>
         </div>
     )
 }
