@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { config } from 'dotenv';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { CardQuestion } from '../../components'
@@ -15,7 +14,6 @@ function Question() {
     const navigate = useNavigate()
 
     const selectAnswer = (answer, id) => {
-        // setUserAnswer(prev => ({...prev.content, [id]: {id, answer}}));
         setUserAnswer({ content: [...userAnswer.content, {'id': id, 'answerUser': answer},] })
     };
 
@@ -25,10 +23,8 @@ function Question() {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }
-        console.log(userAnswer)
-        axios.post(`${BASE_URL}/test`, userAnswer, config).then(res => {
-            console.log("success sent", res)
-            return navigate(`/question/detail/${id}`)
+        axios.post(`${BASE_URL}/answer-question/${id}/post_test`, userAnswer, config).then(res => {
+            return navigate(`/question-detail/${id}`,{state: {data: res.data}})
         }).catch(e => {
             console.log("something wrong")
         })
@@ -40,7 +36,7 @@ function Question() {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }
-        axios.get(`${BASE_URL}/question/${id}`, config).then(res => {
+        axios.get(`${BASE_URL}/question/${id}/post_test`, config).then(res => {
             let response = res.data.question
             setQuestion(response)
         })

@@ -52,14 +52,6 @@ export const Dropdown = ({ dataLesson, id }) => {
                         </div>
                     </div>
                 );
-                // return slice.map(data => {
-                //     return (
-                //         <div className='border-b py-3 px-6 border-gray-200 flex justify-between'>
-                //             <Link className="block active:font-bold hover:underline" to={`/course/${data.id_lo}}`}>{data.name}</Link>
-                //             <FaRegCheckCircle />
-                //         </div>
-                //     );
-                // })
             })
             }
         </div>
@@ -93,9 +85,9 @@ const Accordion = ({ dataLo, id }) => {
                             </>
                         );
                     })}
-                    <Link to={`/question/${id}`}>
+                    <Link to={`/question/${id}/post-test`}>
                         <Wrap onClick={() => toggle(100)} key={100}>
-                            <h1 className="text-left font-semibold">Question</h1>
+                            <h1 className="text-left font-semibold">Post test</h1>
                         </Wrap>
                     </Link>
                 </Container>

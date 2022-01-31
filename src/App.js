@@ -48,7 +48,7 @@ function App() {
           <Route path="/feedback/:id" element={<PrivateOutlet />}>
             <Route path="" element={<Feedback />} />
           </Route>
-          <Route path="/question/:id" element={<PrivateOutlet />}>
+          <Route path="/question/:id/post-test" element={<PrivateOutlet />}>
             <Route path="" element={<Question />} />
           </Route>
           <Route path="/complete" element={<PrivateOutlet />}>
@@ -57,7 +57,7 @@ function App() {
           <Route path="/profile" element={<PrivateOutlet />}>
             <Route path="" element={<Profile />} />
           </Route>
-          <Route path="/question/detail/:id" element={<PrivateOutlet />}>
+          <Route path="/question-detail/:id" element={<PrivateOutlet />}>
             <Route path="" element={<QuestionDetail />} />
           </Route>
           <Route path="/question/grade/:id" element={<PrivateOutlet />}>

@@ -5,5 +5,6 @@ import Icon from './Icon';
 import Footer from './Footer'
 import CardQuestion from "./CardQuestion";
 import CardQuestionDetail from './CardQuestionDetail'
+import Modal from "./Modal";
 
-export {Card, Navbar, Accordion, Icon, Footer, CardQuestion, CardQuestionDetail};
+export {Card, Navbar, Accordion, Icon, Footer, CardQuestion, CardQuestionDetail, Modal};

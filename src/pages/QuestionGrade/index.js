@@ -3,9 +3,14 @@ import { FaCalendar, FaTrophy } from 'react-icons/fa';
 import { BgGrade1, BgGrade2, BgGrade3 } from '../../assets';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { useLocation } from 'react-router-dom';
 
 function QuestionGrade() {
-    const percentage = 60;
+    const data = useLocation()
+    const grade = data.state.grade.grade;
+    const final = grade * 100;
+
+    console.log(grade)
 
     return (
         <div className='container mx-auto'>
@@ -41,9 +46,9 @@ function QuestionGrade() {
                                 <p className='text-lg'>Nilai Kamu</p>
                                 <p className='text-base'>Lorem Ipsum</p>
                             </div>
-                            <p className='text-lg text-red-600'>60/100</p>
+                            <p className='text-lg text-red-600'>{final}/100</p>
                         </div>
-                        <CircularProgressbar value={percentage} text={`${percentage}%`} styles={buildStyles({
+                        <CircularProgressbar value={final} text={`${final}%`} styles={buildStyles({
                             pathColor: '#B6000D',
                             textColor: '#404042',
                             trailColor: '#404042',

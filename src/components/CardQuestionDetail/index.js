@@ -1,10 +1,10 @@
 import React from 'react'
 import { FaCheckSquare } from 'react-icons/fa'
 
-function CardQuestionDetail({ data, selected }) {
+function CardQuestionDetail({ data, selected, answer }) {
     return (
         <div className='rounded-lg bg-white border-l-8 shadow p-3 border-red-600 mb-3'>
-            <div className='font-bold text-base mb-3' dangerouslySetInnerHTML={{ __html: data.question }} />
+            <div className='font-bold text-base mb-3' dangerouslySetInnerHTML={{ __html: data.question  }} />
             <div className='mb-2 flex items-center border border-2 border-red-400 rounded-lg p-2'>
                 <b className='mr-2 ml-3'>A.</b>
                 <label>{data.answer_1}</label>
@@ -20,7 +20,7 @@ function CardQuestionDetail({ data, selected }) {
                 <label>{data.answer_3}</label>
                 {data.key === 'answer_3' ? <FaCheckSquare className='text-green-600 ml-auto text-xl'/> : ''}
             </div>
-            <div className='mb-2 flex items-center border border-2 border-red-400 rounded-lg p-2'>
+            <div className={answer === data.key ? 'mb-2 flex items-center border border-2 border-green-400 rounded-lg p-2' : 'mb-2 flex items-center border border-2 border-red-400 rounded-lg p-2'}>
                 <b className='mr-2 ml-3'>D.</b>
                 <label>{data.answer_4}</label>
                 {data.key === 'answer_4' ? <FaCheckSquare className='text-green-600 ml-auto text-xl'/> : ''}
