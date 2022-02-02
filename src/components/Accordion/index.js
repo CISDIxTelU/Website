@@ -12,7 +12,6 @@ const Container = styled.div`
 `;
 
 const Wrap = styled.div`
-  color: #000;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,7 +21,6 @@ const Wrap = styled.div`
   border: 1px solid #0101;
   border-radius: 15px;
   margin-bottom: 10px;
-  background-color: #fff;
   h1 {
     padding: 1rem;
     font-size: 1rem;
@@ -74,10 +72,15 @@ const Accordion = ({ dataLo, id }) => {
         <IconContext.Provider value={{ color: 'gray', size: '20px' }}>
             <AccordionSection>
                 <Container>
+                    <Link to={`/question/${id}/pre_test`}>
+                        <Wrap className='bg-red-600 text-white' onClick={() => toggle(100)} key={100}>
+                            <h1 className="text-left font-semibold">Pre test</h1>
+                        </Wrap>
+                    </Link>
                     {dataLo.map((item, index) => {
                         return (
                             <>
-                                <Wrap onClick={() => toggle(index)} key={index}>
+                                <Wrap className='bg-white' onClick={() => toggle(index)} key={index}>
                                     <h1 className="text-left font-semibold">{item.name}</h1>
                                     <span>{clicked === index ? <FiMinus /> : <FiPlus />}</span>
                                 </Wrap>
@@ -85,9 +88,19 @@ const Accordion = ({ dataLo, id }) => {
                             </>
                         );
                     })}
-                    <Link to={`/question/${id}/post-test`}>
-                        <Wrap onClick={() => toggle(100)} key={100}>
+                    <Link to={`/question/${id}/post_test`}>
+                        <Wrap className='bg-red-600 text-white' onClick={() => toggle(100)} key={100}>
                             <h1 className="text-left font-semibold">Post test</h1>
+                        </Wrap>
+                    </Link>
+                    <Link to={`#`}>
+                        <Wrap className='bg-red-600 text-white' onClick={() => toggle(100)} key={100}>
+                            <h1 className="text-left font-semibold">Unggah Tugas</h1>
+                        </Wrap>
+                    </Link>
+                    <Link to={`/feedback`}>
+                        <Wrap className='bg-red-600 text-white' onClick={() => toggle(100)} key={100}>
+                            <h1 className="text-left font-semibold">Feedback</h1>
                         </Wrap>
                     </Link>
                 </Container>

@@ -1,12 +1,13 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { NotFound } from '..';
 import { CardQuestion } from '../../components'
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function Question() {
-    const { id } = useParams();
+    const { id, slug } = useParams();
     const [question, setQuestion] = useState([]);
     const [userAnswer, setUserAnswer] = useState({
         "content": []
@@ -23,7 +24,7 @@ function Question() {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }
-        axios.post(`${BASE_URL}/answer-question/${id}/post_test`, userAnswer, config).then(res => {
+        axios.post(`${BASE_URL}/answer-question/${id}/${slug}`, userAnswer, config).then(res => {
             return navigate(`/question-detail/${id}`,{state: {data: res.data}})
         }).catch(e => {
             console.log("something wrong")
@@ -36,11 +37,13 @@ function Question() {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }
-        axios.get(`${BASE_URL}/question/${id}/post_test`, config).then(res => {
+        axios.get(`${BASE_URL}/question/${id}/${slug}`, config).then(res => {
             let response = res.data.question
             setQuestion(response)
+        }).catch(e => {
+            return navigate(<NotFound />)
         })
-    }, [id]);
+    }, [id, slug]);
 
     return (
         <div className='container mx-auto p-3 py-10'>

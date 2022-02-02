@@ -3,9 +3,10 @@ import { FaCalendar, FaTrophy } from 'react-icons/fa';
 import { BgGrade1, BgGrade2, BgGrade3 } from '../../assets';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 function QuestionGrade() {
+    const { id } = useParams()
     const data = useLocation()
     const grade = data.state.grade.grade;
     const final = grade * 100;
@@ -55,6 +56,21 @@ function QuestionGrade() {
                         })} />
                     </div>
                 </div>
+            </div>
+            <div className='flex justify-center my-5'>
+            <Link to={`/detail-course/${id}`}>
+                <button
+                    className='
+                bg-red-600 
+                p-3 rounded-lg 
+                text-white border-2 
+                hover:bg-white 
+                hover:border-red-600 
+                hover:text-red-600'
+                >
+                    Kembali ke course
+                </button>
+            </Link>
             </div>
         </div>
     )

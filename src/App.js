@@ -48,7 +48,7 @@ function App() {
           <Route path="/feedback/:id" element={<PrivateOutlet />}>
             <Route path="" element={<Feedback />} />
           </Route>
-          <Route path="/question/:id/post-test" element={<PrivateOutlet />}>
+          <Route path="/question/:id/:slug" element={<PrivateOutlet />}>
             <Route path="" element={<Question />} />
           </Route>
           <Route path="/complete" element={<PrivateOutlet />}>
