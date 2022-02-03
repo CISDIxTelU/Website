@@ -1,8 +1,9 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { NotFound } from '..';
 import { CardQuestion } from '../../components'
+import Lottie from 'reactjs-lottie';
+import { animation } from '../../assets';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -13,6 +14,7 @@ function Question() {
         "content": []
     });
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false);
 
     const selectAnswer = (answer, id) => {
         setUserAnswer({ content: [...userAnswer.content, {'id': id, 'answerUser': answer},] })
@@ -30,19 +32,35 @@ function Question() {
     }
 
     useEffect(() => {
+        setLoading(true)
         const config = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }
         axios.get(`${BASE_URL}/question/${id}/${slug}`, config).then(res => {
+            console.log(res)
+            setLoading(false)
+            if(res.data.status === 'failed'){
+                return navigate(`/detail-course/${id}`)
+            }
             let response = res.data.question
             setQuestion(response)
-        }).catch(e => {
-            return navigate(<NotFound />)
         })
+
     }, [id, slug]);
 
+    if(loading) {
+        return (
+            <div className="bg-white w-full h-screen absolute top-0 z-50 flex justify-center items-center">
+                <div className="w-40">
+                    <Lottie options={{
+                        animationData: animation,
+                    }} className="" />
+                </div>
+            </div>
+        )
+    }
     return (
         <div className='container mx-auto p-3 py-10'>
             <h1 className='font-bold text-3xl mb-3'>Sesi Pertanyaan</h1>

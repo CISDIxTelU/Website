@@ -10,7 +10,7 @@ function CardLanding({ foto, judul }) {
         setOpen(false)
     }
     return (
-        <>
+        <div style={{width: 'fit-content'}}>
         <div className="w-80 rounded-xl bg-red-600 shadow-md overflow-hidden">
             <div>
                 <div className="md:shrink-0">
@@ -28,7 +28,7 @@ function CardLanding({ foto, judul }) {
             </div>
         </div>
         <Modal handleClose={handleClose} title={judul} description="hello world" open={open} />
-        </>
+        </div>
     )
 }
 

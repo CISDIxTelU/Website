@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { animation, BgLogin, LogoCisdi } from '../../assets'
-import { FaEnvelope, FaLock } from "react-icons/fa";
+import { FaAt, FaEnvelope, FaLock, FaMailBulk } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Lottie from 'reactjs-lottie';
@@ -34,11 +34,9 @@ function Login({ setToken }) {
         }, config).then(res => {
             localStorage.setItem('token', res.data.access_token)
             navigate('/materi');
-            console.log('success');
         }).catch(res => {
-            console.log(res)
             setLoading(false);
-            let errorData = error.response.data.message;
+            let errorData = res.response.data.message;
             if (errorData) {
                 setError(true);
                 setMessage(errorData);
@@ -70,14 +68,14 @@ function Login({ setToken }) {
                         </div> : ''}
                         <form onSubmit={handleSubmit}>
                             <div className="border rounded-lg flex wrap items-center content-center mb-5">
-                                <FaEnvelope className="text-white mx-5 " />
+                                <FaAt className="text-white mx-5 " />
                                 <input type="text" onChange={e => setUsername(e.target.value)} className="appearance-none bg-transparent text-white w-full h-full p-3 rounded-lg focus:outline-none text-sm lg:text-base" placeholder="Enter your phone number"></input>
                             </div>
                             <div className="border rounded-lg flex wrap items-center content-center mb-11">
-                                <FaLock className="text-white mx-5 " />
+                                <FaLock className="text-white mx-5" />
                                 <input type="password" onChange={e => setPassword(e.target.value)} className="appearance-none bg-transparent text-white w-full h-full p-3 rounded-lg focus:outline-none text-sm lg:text-base" placeholder="Enter your password"></input>
                             </div>
-                            <button className="bg-white text-red-600 rounded-lg p-2 w-full mb-5 font-bold hover:bg-red-700 hover:text-white" type="submit" onSubmit={handleSubmit}>LOGIN</button>
+                            <button className="bg-white text-red-600 rounded-lg p-2 w-full mb-5 hover:bg-red-700 hover:text-white" type="submit" onSubmit={handleSubmit}>Masuk</button>
                             <div className='text-right'>
                                 <Link to='/forgot-password'>
                                     <a className='text-base hover:underline text-white'>Lupa password?</a>

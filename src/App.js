@@ -40,10 +40,10 @@ function App() {
           <Route path="/materi" element={<PrivateOutlet />}>
             <Route path="" element={<Courses />} />
           </Route>
-          <Route path="/history" element={<PrivateOutlet />}>
+          <Route path="/riwayat" element={<PrivateOutlet />}>
             <Route path="" element={<History />} />
           </Route>
-          <Route path="/detail-course/:id" element={<PrivateOutlet />}>
+          <Route path="/detail-materi/:id" element={<PrivateOutlet />}>
             <Route path="" element={<DetailCourse />} />
           </Route>
           <Route path="/feedback/:id" element={<PrivateOutlet />}>
@@ -58,7 +58,7 @@ function App() {
           <Route path="/profile" element={<PrivateOutlet />}>
             <Route path="" element={<Profile />} />
           </Route>
-          <Route path="/question-detail/:id" element={<PrivateOutlet />}>
+          <Route path="/detail-question/:id" element={<PrivateOutlet />}>
             <Route path="" element={<QuestionDetail />} />
           </Route>
           <Route path="/question/grade/:id" element={<PrivateOutlet />}>

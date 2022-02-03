@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { config } from 'dotenv';
 import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 

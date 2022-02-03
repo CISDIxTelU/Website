@@ -46,7 +46,7 @@ function DetailCourse() {
     }
     else {
         return (
-            <div className='bg-gray-100'>
+            <div className='bg-gray-100 p-10'>
                 <div className='sm:container mx-auto pt-8 pb-10'>
                     <h1 className='font-bold text-3xl text-center text-red-600'>Topik Pembahasan</h1>
                     <h2 className='font-bold text-2xl mt-5 mb-3'>{data.title}</h2>
