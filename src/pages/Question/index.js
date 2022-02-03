@@ -26,8 +26,6 @@ function Question() {
         }
         axios.post(`${BASE_URL}/answer-question/${id}/${slug}`, userAnswer, config).then(res => {
             return navigate(`/question-detail/${id}`,{state: {data: res.data}})
-        }).catch(e => {
-            console.log("something wrong")
         })
     }
 

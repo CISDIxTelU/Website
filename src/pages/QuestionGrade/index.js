@@ -9,7 +9,7 @@ function QuestionGrade() {
     const { id } = useParams()
     const data = useLocation()
     const grade = data.state.grade.grade;
-    const final = grade * 100;
+    const final = grade;
 
     console.log(grade)
 

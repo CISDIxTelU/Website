@@ -1,5 +1,5 @@
 import { Footer, Navbar } from "./components";
-import { Login, Courses, Course, DetailCourse, NotFound, Feedback, History, Question, Complete, Profile, QuestionDetail, QuestionGrade, LandingPage, ForgotPassword } from "./pages";
+import { Login, Courses, Course, DetailCourse, NotFound, Feedback, History, Question, Complete, Profile, QuestionDetail, QuestionGrade, LandingPage, ForgotPassword, Users } from "./pages";
 import { Routes, Route, Navigate, Outlet } from "react-router-dom";
 import React from "react";
 import Helmet from "react-helmet";
@@ -31,6 +31,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/login-option" element={<Users />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/course/:id_topic" element={<PrivateOutlet />}>

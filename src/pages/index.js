@@ -13,6 +13,7 @@ import QuestionDetail from "./QuestionDetail";
 import QuestionGrade from "./QuestionGrade";
 import LandingPage from "./LandingPage";
 import ForgotPassword from "./ForgotPassword";
+import Users from "./Users";
 
 export {
     Login,
@@ -29,5 +30,6 @@ export {
     QuestionDetail,
     QuestionGrade,
     LandingPage,
-    ForgotPassword
+    ForgotPassword,
+    Users
 };

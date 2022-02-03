@@ -14,8 +14,6 @@ function DetailCourse() {
     const [dataLo, setDataLo] = useState([]);
     let { id } = useParams();
     const [loading, setLoading] = useState(false);
-    const [dataLesson, setDataLesson] = useState([]);
-    let current;
 
     useEffect(() => {
         setLoading(true)
@@ -27,14 +25,12 @@ function DetailCourse() {
         axios.get(`${BASE_URL}/topic/${id}`, config).then(res => {
             setData(res.data.data_topic);
             setDataLo(res.data.data_lo);
+            console.log(res)
             setLoading(false);
         }).catch(e => {
             console.log(e);
         })
 
-        axios.get(`${BASE_URL}/lo/${id}`)
-
-        axios.get(`${BASE_URL}/lo/${id}`)
     }, [id]);
 
     if (loading) {
