@@ -11,7 +11,6 @@ const Feedback = () => {
     const [success, setSuccess] = useState(false);
     const [message, setMessage] = useState('');
     const { id } = useParams();
-    const navigate = useNavigate();
 
     const handleSubmit = async e => {
         setLoading(true);
@@ -32,7 +31,6 @@ const Feedback = () => {
         }).catch(error => {
             setLoading(false);
             let errorData = error.response.data.message;
-            console.log(errorData)
             if (errorData) {
                 setError(true);
                 setMessage(errorData);

@@ -25,11 +25,8 @@ function Course() {
             setDataLesson(res.data.data);
             setLoading(false)
         }).catch(e => {
-            console.log(e)
         })
     }, [id_topic]);
-
-    console.log(dataLesson)
     return (
         <div className="container mx-auto py-11">
             <div className="flex wrap justify-between py-3 gap-10">

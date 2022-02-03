@@ -43,7 +43,7 @@ function App() {
           <Route path="/riwayat" element={<PrivateOutlet />}>
             <Route path="" element={<History />} />
           </Route>
-          <Route path="/detail-materi/:id" element={<PrivateOutlet />}>
+          <Route path="/detail-course/:id" element={<PrivateOutlet />}>
             <Route path="" element={<DetailCourse />} />
           </Route>
           <Route path="/feedback/:id" element={<PrivateOutlet />}>

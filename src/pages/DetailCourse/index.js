@@ -25,10 +25,8 @@ function DetailCourse() {
         axios.get(`${BASE_URL}/topic/${id}`, config).then(res => {
             setData(res.data.data_topic);
             setDataLo(res.data.data_lo);
-            console.log(res)
             setLoading(false);
         }).catch(e => {
-            console.log(e);
         })
 
     }, [id]);

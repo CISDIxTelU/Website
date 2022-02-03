@@ -11,8 +11,6 @@ function QuestionGrade() {
     const grade = data.state.grade.grade;
     const final = grade;
 
-    console.log(grade)
-
     return (
         <div className='container mx-auto'>
             <div className='my-4'>

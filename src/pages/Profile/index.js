@@ -16,7 +16,6 @@ function Profile() {
         }
         axios.get(`${BASE_URL}/profile`, config).then(res => {
             setProfile(res.data)
-            console.log(res.data)
         })
     }, [])
 

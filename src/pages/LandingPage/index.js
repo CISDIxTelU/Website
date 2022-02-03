@@ -17,7 +17,6 @@ function LandingPage() {
         }
         axios.get(`${BASE_URL}/landing`, config).then(res => {
             const data = res.data.data
-            console.log(data)
             setData(data)
         })
     }, [])
@@ -25,7 +24,7 @@ function LandingPage() {
         <>
             <div style={{ backgroundImage: `url(${BgLanding})` }}>
                 <div className='container mx-auto flex flex-col items-center'>
-                    <img src={LogoCisdi} className='mb-24 mt-10' width={200} height={200} />
+                    <img src={LogoCisdi} className='mb-24 mt-10' alt='foto' width={200} height={200} />
                     <h1 className='font-bold text-3xl text-white mb-56'>Ayo Belajar Bersama di CISDI!</h1>
                 </div>
                 <div className='w-fit py-12 bg-gray-100'>

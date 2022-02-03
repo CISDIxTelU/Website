@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { IconContext } from 'react-icons';
 import { FiPlus, FiMinus } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import { FaCheckCircle, FaRegCheckCircle, FaRegHeart } from 'react-icons/fa';
+import { FaCheckCircle, FaRegHeart } from 'react-icons/fa';
 
 const AccordionSection = styled.div`
 `;
@@ -31,7 +31,6 @@ const Wrap = styled.div`
 `;
 
 export const Dropdown = ({ dataLesson, id }) => {
-
     return (
         <div style={{ width: "100 %", marginBottom: '30px' }}>
             {dataLesson.map((data, idx) => {
@@ -61,7 +60,6 @@ const Accordion = ({ dataLo, id }) => {
 
         setClicked(index);
     };
-    console.log(dataLo);
     return (
         <IconContext.Provider value={{ color: 'gray', size: '20px' }}>
             <AccordionSection>

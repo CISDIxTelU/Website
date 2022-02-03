@@ -39,7 +39,6 @@ function Question() {
             }
         }
         axios.get(`${BASE_URL}/question/${id}/${slug}`, config).then(res => {
-            console.log(res)
             setLoading(false)
             if(res.data.status === 'failed'){
                 return navigate(`/detail-course/${id}`)
@@ -48,7 +47,7 @@ function Question() {
             setQuestion(response)
         })
 
-    }, [id, slug]);
+    }, [id, navigate, slug]);
 
     if(loading) {
         return (
