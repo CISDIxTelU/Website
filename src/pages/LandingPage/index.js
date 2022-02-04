@@ -35,8 +35,8 @@ function LandingPage() {
                         })}
                     </div>
                     <div className='text-center'>
-                        <Link to='/login'>
-                            <a className='flex-1 text-white bg-red-600 p-4 px-28 rounded-lg w-56 transition duration-300 ease-in-out hover:bg-gray-100 hover:text-red-600 hover:border-red-600 border-2'>Masuk</a>
+                        <Link to='/login-option'>
+                            <a href className='flex-1 text-white bg-red-600 p-4 px-28 rounded-lg w-56 transition duration-300 ease-in-out hover:bg-gray-100 hover:text-red-600 hover:border-red-600 border-2'>Masuk</a>
                         </Link>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Hero, LogoCisdi } from '../../assets'
+import { DummyProfile, LogoCisdi } from '../../assets'
 import { Menu, Transition } from '@headlessui/react'
 import { FaBars, FaChevronDown, FaRegBell } from 'react-icons/fa'
 
@@ -24,7 +24,7 @@ function Navbar({ name }) {
                         className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
                         to="/materi"
                     >
-                        <img src={LogoCisdi} className='w-32 lg:w-27' />
+                        <img alt='foto' src={LogoCisdi} className='w-32 lg:w-27' />
                     </Link>
                     <div className='flex items-center'>
                         <button
@@ -37,7 +37,7 @@ function Navbar({ name }) {
                         <div className="text-right flex lg:hidden">
                             <Menu as="div" className="relative inline-block text-left">
                                 <div className='flex items-center'>
-                                    <Menu.Button className="text-sm relative font-medium text-white bg-blue-200 mr-3 rounded-full hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75" style={{ backgroundImage: `url(${Hero})`, backgroundSize: '60px', backgroundPosition: 'center center', objectFit: 'cover', backgroundRepeat: 'no-repeat', width: '40px', height: '40px' }}>
+                                    <Menu.Button className="text-sm relative font-medium text-white bg-blue-200 mr-3 rounded-full hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75" style={{ backgroundImage: `url(${DummyProfile})`, backgroundSize: '60px', backgroundPosition: 'center center', objectFit: 'cover', backgroundRepeat: 'no-repeat', width: '40px', height: '40px' }}>
                                         <FaChevronDown className='text-white absolute -right-5 top-3' />
                                     </Menu.Button>
                                 </div>
@@ -140,7 +140,7 @@ function Navbar({ name }) {
                             <div className="text-right hidden lg:inline">
                                 <Menu as="div" className="relative inline-block text-left">
                                     <div>
-                                        <Menu.Button className="text-sm relative font-medium text-white bg-blue-200 rounded-full hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75" style={{ backgroundImage: `url(${Hero})`, backgroundSize: '60px', backgroundPosition: 'center center', objectFit: 'cover', backgroundRepeat: 'no-repeat', width: '40px', height: '40px' }}>
+                                        <Menu.Button className="text-sm relative font-medium text-white bg-blue-200 rounded-full hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75" style={{ backgroundImage: `url(${DummyProfile})`, backgroundSize: '60px', backgroundPosition: 'center center', objectFit: 'cover', backgroundRepeat: 'no-repeat', width: '40px', height: '40px' }}>
                                         </Menu.Button>
                                     </div>
                                     <Transition
@@ -210,42 +210,6 @@ function Navbar({ name }) {
                 </div>
             </div>
         </nav>
-    )
-}
-
-function EditInactiveIcon(props) {
-    return (
-        <svg
-            {...props}
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-            <path
-                d="M4 13V16H7L16 7L13 4L4 13Z"
-                fill="#9eacdb"
-                stroke="#768acc"
-                strokeWidth="2"
-            />
-        </svg>
-    )
-}
-
-function EditActiveIcon(props) {
-    return (
-        <svg
-            {...props}
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-            <path
-                d="M4 13V16H7L16 7L13 4L4 13Z"
-                fill="#153ec2"
-                stroke="#5670c7"
-                strokeWidth="2"
-            />
-        </svg>
     )
 }
 

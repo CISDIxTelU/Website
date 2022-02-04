@@ -18,11 +18,11 @@ function CardLanding({ foto, judul }) {
                 </div>
                 <div className="text-white">
                     <div className='p-8'>
-                        <a className="block mt-1 text-lg leading-tight font-medium hover:underline"> {judul}</a>
+                        <p className="block mt-1 text-lg leading-tight font-medium hover:underline"> {judul}</p>
                         <p className="my-2">Getting a new business off the ground is a lot of hard work. Here are five ideas you can use to find your first customers.</p>
                     </div>
                     <button className='flex justify-center w-full bg-red-600 py-5 border-t-2 hover:underline' onClick={handleOpen}>
-                        <a className="font-semibold">deskripsi</a>
+                        <p className="font-semibold hover:underline">deskripsi</p>
                     </button>
                 </div>
             </div>

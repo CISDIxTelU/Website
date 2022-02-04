@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { animation, BgLogin, LogoCisdi } from '../../assets'
-import { FaAt, FaEnvelope, FaLock, FaMailBulk } from "react-icons/fa";
+import { FaAt, FaLock } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Lottie from 'reactjs-lottie';
@@ -78,7 +78,7 @@ function Login({ setToken }) {
                             <button className="bg-white text-red-600 rounded-lg p-2 w-full mb-5 hover:bg-red-700 hover:text-white" type="submit" onSubmit={handleSubmit}>Masuk</button>
                             <div className='text-right'>
                                 <Link to='/forgot-password'>
-                                    <a className='text-base hover:underline text-white'>Lupa password?</a>
+                                    <button className='text-base hover:underline text-white'>Lupa password?</button>
                                 </Link>
                             </div>
                         </form>

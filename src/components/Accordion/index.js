@@ -4,6 +4,7 @@ import { IconContext } from 'react-icons';
 import { FiPlus, FiMinus } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { FaCheckCircle, FaRegHeart } from 'react-icons/fa';
+import { FeedbackModal } from '..';
 
 const AccordionSection = styled.div`
 `;
@@ -51,6 +52,14 @@ export const Dropdown = ({ dataLesson, id }) => {
 
 const Accordion = ({ dataLo, id }) => {
     const [clicked, setClicked] = useState(false);
+    const [open, setOpen] = useState(false)
+
+    const handleOpen = () => {
+        setOpen(true)
+    }
+    const handleClose = () => {
+        setOpen(false)
+    }
 
     const toggle = index => {
         if (clicked === index) {
@@ -91,11 +100,12 @@ const Accordion = ({ dataLo, id }) => {
                         </Wrap>
                     </Link>
                     
-                    <Link to={`/feedback`}>
+                    <button className='w-full' onClick={() => handleOpen()}>
                         <Wrap className='bg-red-600 text-white' onClick={() => toggle(100)} key={100}>
                             <h1 className="text-left font-semibold">Feedback</h1>
                         </Wrap>
-                    </Link>
+                    </button>
+                    <FeedbackModal handleClose={handleClose} open={open} id={id} />
                 </Container>
             </AccordionSection>
         </IconContext.Provider >

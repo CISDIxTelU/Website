@@ -1,7 +1,6 @@
 import React from 'react'
 import { BgFooter, LogoCisdiPrimary } from '../../assets';
 import { Icon } from '../../components'
-import { Link } from 'react-router-dom';
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 
 function Footer() {

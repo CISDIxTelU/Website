@@ -18,6 +18,7 @@ import BgLanding from './bg-landing.svg'
 import BgForgot1 from './bg-forgot.svg'
 import BgForgot2 from './bg-forgot-1.svg'
 import BgForgot3 from './bg-forgot-2.svg'
+import DummyProfile from './profile-placeholder.png'
 
 export {
     BgLogin,
@@ -39,5 +40,6 @@ export {
     BgLanding,
     BgForgot1,
     BgForgot2,
-    BgForgot3
+    BgForgot3,
+    DummyProfile
 };

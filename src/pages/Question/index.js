@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -15,24 +16,27 @@ function Question() {
     });
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
+    const [data] = useState([])
 
     const selectAnswer = (answer, id) => {
-        setUserAnswer({ content: [...userAnswer.content, {'id': id, 'answerUser': answer},] })
+        setUserAnswer({ content: [...userAnswer.content, { 'id': id, 'answerUser': answer },] })
     };
 
-    const onClick = () => {
+    const onClick = (e) => {
+        e.preventDefault()
         const config = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }
         axios.post(`${BASE_URL}/answer-question/${id}/${slug}`, userAnswer, config).then(res => {
-            return navigate(`/question-detail/${id}`,{state: {data: res.data}})
+            console.log(res)
+            return navigate(`/detail-question/${id}`,{state: {data: res.data}})
         })
+        console.log(data)
     }
 
-    useEffect(() => {
-        setLoading(true)
+    const getData = () => {
         const config = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -40,16 +44,17 @@ function Question() {
         }
         axios.get(`${BASE_URL}/question/${id}/${slug}`, config).then(res => {
             setLoading(false)
-            if(res.data.status === 'failed'){
-                return navigate(`/detail-course/${id}`)
-            }
             let response = res.data.question
             setQuestion(response)
         })
+    }
 
-    }, [id, navigate, slug]);
+    useEffect(() => {
+        setLoading(true)
+        getData();
+    }, []);
 
-    if(loading) {
+    if (loading) {
         return (
             <div className="bg-white w-full h-screen absolute top-0 z-50 flex justify-center items-center">
                 <div className="w-40">

@@ -11,7 +11,7 @@ function Card({ materi, judul, foto, linkTo }) {
                         <img class="h-full w-full object-cover md:w-48 md:rounded-l-xl" src={foto} alt="Man looking at item at a store" />
                     </div>
                     <div class="p-8">
-                        <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"> {judul}</a>
+                        <button class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"> {judul}</button>
                         <p class="my-2 text-gray-500">Getting a new business off the ground is a lot of hard work. Here are five ideas you can use to find your first customers.</p>
                         <div className='flex justify-between'>
                             <p className="text-gray-400 font-semibold">19 Materi</p>

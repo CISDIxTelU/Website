@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import Lottie from 'reactjs-lottie';
 import { animation } from '../../assets';
 import axios from 'axios';
@@ -12,6 +12,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 function DetailCourse() {
     const [data, setData] = useState([]);
     const [dataLo, setDataLo] = useState([]);
+    const errors = useLocation();
     let { id } = useParams();
     const [loading, setLoading] = useState(false);
 
@@ -22,11 +23,12 @@ function DetailCourse() {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             }
         }
+        
         axios.get(`${BASE_URL}/topic/${id}`, config).then(res => {
             setData(res.data.data_topic);
             setDataLo(res.data.data_lo);
             setLoading(false);
-        }).catch(e => {
+            console.log()
         })
 
     }, [id]);
@@ -45,6 +47,9 @@ function DetailCourse() {
     else {
         return (
             <div className='bg-gray-100 p-10'>
+                {errors.data && <div className='bg-red-300 p-3'>
+                    {errors.data}   
+                </div>}
                 <div className='sm:container mx-auto pt-8 pb-10'>
                     <h1 className='font-bold text-3xl text-center text-red-600'>Topik Pembahasan</h1>
                     <h2 className='font-bold text-2xl mt-5 mb-3'>{data.title}</h2>
@@ -59,7 +64,7 @@ function DetailCourse() {
                         <p className='font-light'>{dataLo.length} Materi</p>
                         <p className='font-light'>5j 23m</p>
                     </div>
-                    <Accordion dataLo={dataLo} id={id} />
+                    <Accordion dataLo={dataLo} id={id}  />
                 </div>
             </div>
         )
