@@ -54,23 +54,13 @@ function Navbar({ name }) {
                                         <div className="px-1 py-1 ">
                                             <Menu.Item>
                                                 {({ active }) => (
-                                                    <Link
-                                                        className={`${active ? 'bg-violet-500 text-blue-600 underline' : 'text-gray-900'
+                                                    <button
+                                                        className={`${active ? 'bg-violet-500 text-red-600 underline' : 'text-gray-900'
                                                             } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                                                        to="/profile">
-                                                        {active ? (
-                                                            <FaRegBell
-                                                                className="w-5 h-5 mr-2"
-                                                                aria-hidden="true"
-                                                            />
-                                                        ) : (
-                                                            <FaRegBell
-                                                                className="w-5 h-5 mr-2"
-                                                                aria-hidden="true"
-                                                            />
-                                                        )}
-                                                        Profile
-                                                    </Link>
+                                                        onClick={profile}
+                                                    >
+                                                        Buka Profil Diri
+                                                    </button>
                                                 )}
                                             </Menu.Item>
                                         </div>
@@ -78,21 +68,33 @@ function Navbar({ name }) {
                                             <Menu.Item>
                                                 {({ active }) => (
                                                     <button
-                                                        className={`${active ? 'bg-violet-500 text-blue-600 underline' : 'text-gray-900'
+                                                        className={`${active ? 'bg-violet-500 text-red-600 underline' : 'text-gray-900'
                                                             } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                                                        onClick={logout}>
+                                                        onClick={() => navigate('/materi')}>
                                                         {active ? (
-                                                            <DeleteActiveIcon
+                                                            <FaRegBell
                                                                 className="w-5 h-5 mr-2 text-violet-400"
                                                                 aria-hidden="true"
                                                             />
                                                         ) : (
-                                                            <DeleteInactiveIcon
+                                                            <FaRegBell
                                                                 className="w-5 h-5 mr-2 text-violet-400"
                                                                 aria-hidden="true"
                                                             />
                                                         )}
-                                                        Logout
+                                                        Pemberitahuan
+                                                    </button>
+                                                )}
+                                            </Menu.Item>
+                                        </div>
+                                        <div className="px-1 py-1">
+                                            <Menu.Item>
+                                                {({ active }) => (
+                                                    <button
+                                                        className={`${active ? 'bg-violet-500 text-red-600 underline' : 'text-gray-900'
+                                                            } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                                                        onClick={logout}>
+                                                        Keluar
                                                     </button>
                                                 )}
                                             </Menu.Item>
@@ -172,7 +174,7 @@ function Navbar({ name }) {
                                                         <button
                                                             className={`${active ? 'bg-violet-500 text-red-600 underline' : 'text-gray-900'
                                                                 } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                                                            onClick={() => navigate('materi')}>
+                                                            onClick={() => navigate('/materi')}>
                                                             {active ? (
                                                                 <FaRegBell
                                                                     className="w-5 h-5 mr-2 text-violet-400"

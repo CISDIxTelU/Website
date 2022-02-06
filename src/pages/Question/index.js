@@ -45,7 +45,11 @@ function Question() {
         axios.get(`${BASE_URL}/question/${id}/${slug}`, config).then(res => {
             setLoading(false)
             let response = res.data.question
-            setQuestion(response)
+            if(response){
+                setQuestion(response)
+            }else {
+                return navigate(`/detail-course/${id}`)
+            }
         })
     }
 

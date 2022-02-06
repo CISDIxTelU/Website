@@ -27,7 +27,7 @@ function CardLanding({ foto, judul }) {
                 </div>
             </div>
         </div>
-        <Modal handleClose={handleClose} title={judul} description="hello world" open={open} />
+        <Modal handleClose={handleClose} title={judul} description="hello world" open={open} foto={foto} />
         </div>
     )
 }

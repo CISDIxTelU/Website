@@ -5,6 +5,7 @@ import Modal from '@mui/material/Modal';
 import axios from 'axios';
 import { Navigate, useParams } from 'react-router-dom';
 import { FaRegWindowClose } from 'react-icons/fa';
+import { MdOutlineClose } from 'react-icons/md';
 
 const style = {
     position: 'absolute',
@@ -59,9 +60,10 @@ const FeedbackModal = ({ handleClose, open, id }) => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box className='bg-gray-50 rounded-md' style={style}>
+                <Box className='bg-gray-50 rounded-md relative' style={style}>
                     <form onSubmit={onSubmit}>
                         <h1 className='font-bold text-xl'>Feedback</h1>
+                        <MdOutlineClose className='absolute right-2 top-2 text-red-600 cursor-pointer' size={30} onClick={handleClose} />
                         <textarea rows={8} className='my-3 p-2 w-full border border-gray-100 rounded-md shadow-sm' placeholder='tulis ulasanmu...' onChange={(e) => setFeedback(e.target.value)} />
                         <div className='bg-white p-3 rounded-lg shadow-sm my-5'>
                             <h2 className='font-bold text-center text-2xl'>Berapa bintang yang ingin anda berikan kepada kami?</h2>
