@@ -1,16 +1,13 @@
 import BgLogin from './bg-login.svg'
 import LogoCisdi from './logo-cisdi.png'
-import LogoNavbar from './logo-navbar.svg'
+import LogoNavbar from './logo-navbar.png'
 import TitleCourses from './Courses.svg'
-import DummyCard from './dummy-card.png'
-import DummyDetail from './dummy-detail.png'
 import BannerCourse from './banner-course.svg'
 import BannerHero from './bro.png'
-import Hero from './bg-hero.jpeg'
 import LogoCisdiPrimary from './logo-cisdi-rgb.png'
 import BgFooter from './bg-footer.png'
 import BgSuccess from './bg-success.png'
-import Banner1 from './banner-1.png'
+import Banner1 from './banner-1.webp'
 import BgGrade1 from './bg-grade.svg'
 import BgGrade2 from './bg-grade-2.svg'
 import BgGrade3 from './bg-grade-3.svg'
@@ -25,12 +22,9 @@ export {
     LogoCisdi,
     LogoNavbar,
     TitleCourses,
-    DummyCard,
-    DummyDetail,
     BannerCourse,
     BgFooter,
     BannerHero,
-    Hero,
     LogoCisdiPrimary,
     BgSuccess,
     Banner1,

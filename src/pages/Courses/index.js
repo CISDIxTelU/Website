@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import { Banner1 } from '../../assets'
-import Lottie from 'reactjs-lottie'; 
+import Lottie from 'reactjs-lottie';
 import { animation } from '../../assets';
 import { Card } from '../../components';
 
@@ -40,7 +40,7 @@ function Courses() {
         return (
             <div className='bg-gray-50'>
                 <div className="bg-red-600 h-full flex flex-col wrap items-center justify-center">
-                    <img src={Banner1} alt='banner course' />
+                        <img src={Banner1} alt='banner course' />
                 </div>
 
                 <div className="container p-3 mx-auto mb-10 h-full">

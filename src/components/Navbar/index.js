@@ -55,7 +55,7 @@ function Navbar({ name }) {
                                             <Menu.Item>
                                                 {({ active }) => (
                                                     <button
-                                                        className={`${active ? 'bg-violet-500 text-red-600 underline' : 'text-gray-900'
+                                                        className={`${active ? ' text-red-600 underline' : 'text-gray-900'
                                                             } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                                                         onClick={profile}
                                                     >
@@ -68,17 +68,17 @@ function Navbar({ name }) {
                                             <Menu.Item>
                                                 {({ active }) => (
                                                     <button
-                                                        className={`${active ? 'bg-violet-500 text-red-600 underline' : 'text-gray-900'
+                                                        className={`${active ? 'text-red-600 underline' : 'text-gray-900'
                                                             } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                                                         onClick={() => navigate('/materi')}>
                                                         {active ? (
                                                             <FaRegBell
-                                                                className="w-5 h-5 mr-2 text-violet-400"
+                                                                className="w-5 h-5 mr-2 text-red-400"
                                                                 aria-hidden="true"
                                                             />
                                                         ) : (
                                                             <FaRegBell
-                                                                className="w-5 h-5 mr-2 text-violet-400"
+                                                                className="w-5 h-5 mr-2"
                                                                 aria-hidden="true"
                                                             />
                                                         )}
@@ -91,7 +91,7 @@ function Navbar({ name }) {
                                             <Menu.Item>
                                                 {({ active }) => (
                                                     <button
-                                                        className={`${active ? 'bg-violet-500 text-red-600 underline' : 'text-gray-900'
+                                                        className={`${active ? ' text-red-600 underline' : 'text-gray-900'
                                                             } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                                                         onClick={logout}>
                                                         Keluar
@@ -159,7 +159,7 @@ function Navbar({ name }) {
                                                 <Menu.Item>
                                                     {({ active }) => (
                                                         <button
-                                                            className={`${active ? 'bg-violet-500 text-red-600 underline' : 'text-gray-900'
+                                                            className={`${active ? 'text-red-600 underline' : 'text-gray-900'
                                                                 } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                                                             onClick={profile}
                                                         >
@@ -172,17 +172,17 @@ function Navbar({ name }) {
                                                 <Menu.Item>
                                                     {({ active }) => (
                                                         <button
-                                                            className={`${active ? 'bg-violet-500 text-red-600 underline' : 'text-gray-900'
+                                                            className={`${active ? 'text-red-600 underline' : 'text-gray-900'
                                                                 } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                                                             onClick={() => navigate('/materi')}>
                                                             {active ? (
                                                                 <FaRegBell
-                                                                    className="w-5 h-5 mr-2 text-violet-400"
+                                                                    className="w-5 h-5 mr-2 text-red-400"
                                                                     aria-hidden="true"
                                                                 />
                                                             ) : (
                                                                 <FaRegBell
-                                                                    className="w-5 h-5 mr-2 text-violet-400"
+                                                                    className="w-5 h-5 mr-2"
                                                                     aria-hidden="true"
                                                                 />
                                                             )}
@@ -195,7 +195,7 @@ function Navbar({ name }) {
                                                 <Menu.Item>
                                                     {({ active }) => (
                                                         <button
-                                                            className={`${active ? 'bg-violet-500 text-red-600 underline' : 'text-gray-900'
+                                                            className={`${active ? 'text-red-600 underline' : 'text-gray-900'
                                                                 } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                                                             onClick={logout}>
                                                             Keluar
@@ -212,52 +212,6 @@ function Navbar({ name }) {
                 </div>
             </div>
         </nav>
-    )
-}
-
-function DeleteInactiveIcon(props) {
-    return (
-        <svg
-            {...props}
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-            <rect
-                x="5"
-                y="6"
-                width="10"
-                height="10"
-                fill="#9eacdb"
-                stroke="#768acc"
-                strokeWidth="2"
-            />
-            <path d="M3 6H17" stroke="#9eacdb" strokeWidth="2" />
-            <path d="M8 6V4H12V6" stroke="#9eacdb" strokeWidth="2" />
-        </svg>
-    )
-}
-
-function DeleteActiveIcon(props) {
-    return (
-        <svg
-            {...props}
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-            <rect
-                x="5"
-                y="6"
-                width="10"
-                height="10"
-                fill="#153ec2"
-                stroke="#5670c7"
-                strokeWidth="2"
-            />
-            <path d="M3 6H17" stroke="#153ec2" strokeWidth="2" />
-            <path d="M8 6V4H12V6" stroke="#153ec2" strokeWidth="2" />
-        </svg>
     )
 }
 
