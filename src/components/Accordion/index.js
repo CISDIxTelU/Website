@@ -54,8 +54,6 @@ const Accordion = ({ dataLo, id }) => {
     const [clicked, setClicked] = useState(false);
     const [open, setOpen] = useState(false)
 
-    console.log(dataLo)
-
     const handleOpen = () => {
         setOpen(true)
     }

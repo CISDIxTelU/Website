@@ -28,7 +28,6 @@ function DetailCourse() {
             setData(res.data.data_topic);
             setDataLo(res.data.data_lo);
             setLoading(false);
-            console.log()
         })
 
     }, [id]);

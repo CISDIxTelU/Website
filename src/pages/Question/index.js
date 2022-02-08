@@ -30,10 +30,8 @@ function Question() {
             }
         }
         axios.post(`${BASE_URL}/answer-question/${id}/${slug}`, userAnswer, config).then(res => {
-            console.log(res)
             return navigate(`/detail-question/${id}`,{state: {data: res.data}})
         })
-        console.log(data)
     }
 
     const getData = () => {

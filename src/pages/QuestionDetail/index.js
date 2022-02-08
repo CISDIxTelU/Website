@@ -10,8 +10,6 @@ function QuestionDetail() {
 
     const value = data.state.data;
 
-    console.log(value)
-
     const onClick = () => {
         navigate('/course')
     }

@@ -45,7 +45,6 @@ const FeedbackModal = ({ handleClose, open, id }) => {
         }).catch(err => {
             setError(err.response.data.message)
         })
-        console.log(error)
     }
 
     const errorClose = () => {

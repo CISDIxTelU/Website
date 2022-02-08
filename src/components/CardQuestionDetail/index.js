@@ -2,7 +2,6 @@ import React from 'react'
 import { FaCheckSquare } from 'react-icons/fa'
 
 function CardQuestionDetail({ data }) {
-    console.log(data.user_answer)
 
     return (
         <div className='rounded-lg bg-gray-100 border-l-8 shadow p-3 border-red-600 mb-3'>
