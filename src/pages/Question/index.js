@@ -16,7 +16,6 @@ function Question() {
     });
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
-    const [data] = useState([])
 
     const selectAnswer = (answer, id) => {
         setUserAnswer({ content: [...userAnswer.content, { 'id': id, 'answerUser': answer },] })

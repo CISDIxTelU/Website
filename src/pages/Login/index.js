@@ -33,6 +33,7 @@ function Login({ setToken }) {
             password: password,
         }, config).then(res => {
             localStorage.setItem('token', res.data.access_token)
+            localStorage.setItem('name', res.data.name)
             navigate('/materi');
         }).catch(res => {
             setLoading(false);

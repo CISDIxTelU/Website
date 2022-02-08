@@ -9,17 +9,18 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 function ForgotPassword() {
 
     const [handphone, setHandphone] = useState()
-    const config = {
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-        }
-    }
 
     useEffect(() => {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        }
         axios.get(`${BASE_URL}/waAdmin`, config).then(res => {
             setHandphone(res.data.data)
         })
     }, [])
+
     return (
         <div className='bg-red-600 relative h-screen'>
             <img src={BgForgot1} className="absolute top-10" alt="bg-forgot"/>

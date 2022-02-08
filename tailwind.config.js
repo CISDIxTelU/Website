@@ -1,7 +1,7 @@
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  enabled: true,
+  mode: 'jit',
+  purge:['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   theme: {
     extend: {
     },

@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Modal from '@mui/material/Modal';
 import axios from 'axios';
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { MdOutlineClose } from 'react-icons/md';
 
