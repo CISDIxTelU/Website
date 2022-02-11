@@ -55,7 +55,7 @@ function App() {
           <Route path="/profile" element={<PrivateOutlet />}>
             <Route path="" element={<Profile />} />
           </Route>
-          <Route path="/detail-question/:id" element={<PrivateOutlet />}>
+          <Route path="/detail-question/:id/:slug" element={<PrivateOutlet />}>
             <Route path="" element={<QuestionDetail />} />
           </Route>
           <Route path="/question/grade/:id" element={<PrivateOutlet />}>

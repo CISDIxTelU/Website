@@ -29,7 +29,7 @@ function Question() {
             }
         }
         axios.post(`${BASE_URL}/answer-question/${id}/${slug}`, userAnswer, config).then(res => {
-            return navigate(`/detail-question/${id}`,{state: {data: res.data}})
+            return navigate(`/detail-question/${id}/${slug}`)
         })
     }
 
@@ -45,7 +45,7 @@ function Question() {
             if(response){
                 setQuestion(response)
             }else {
-                return navigate(`/detail-course/${id}`)
+                return navigate(`/detail-question/${id}/${slug}`, {replace: true})
             }
         })
     }

@@ -28,8 +28,8 @@ function LandingPage() {
                     <h1 className='font-bold text-3xl text-white mb-56'>Ayo Belajar Bersama di CISDI!</h1>
                 </div>
                 <div className='w-full py-12 bg-gray-100'>
-                    <div className='grid md:grid-cols-3 mb-12 gap-x-8 mx-auto' style={{width: 'fit-content'}}>
-                        {data.map((data) => {
+                    <div className='grid md:grid-cols-3 mb-12 gap-x-8 mx-auto' style={{ width: 'fit-content' }}>
+                        {data.slice(0, 3).map((data) => {
                             let foto = `${process.env.REACT_APP_IMAGE_URL}/${data.cover_image}`;
                             return <CardLanding foto={foto} judul={data.title} />
                         })}

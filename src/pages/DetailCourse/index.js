@@ -29,7 +29,6 @@ function DetailCourse() {
             setDataLo(res.data.data_lo);
             setLoading(false);
         })
-
     }, [id]);
 
     if (loading) {
@@ -61,7 +60,7 @@ function DetailCourse() {
                     <div className='flex justify-between my-4'>
                         <p className='font-bold'>Kursus Topik Ini</p>
                         <p className='font-light'>{dataLo.length} Materi</p>
-                        <p className='font-light'>5j 23m</p>
+                        <p className='font-light'>0 / {dataLo.length} Selesai</p>
                     </div>
                     <Accordion dataLo={dataLo} id={id}  />
                 </div>
