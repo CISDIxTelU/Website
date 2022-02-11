@@ -6,7 +6,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { Link, useLocation, useParams } from 'react-router-dom';
 
 function QuestionGrade() {
-    const { id, slug } = useParams()
+    const { id } = useParams()
     const data = useLocation()
     const grade = data.state.grade;
     const final = grade;

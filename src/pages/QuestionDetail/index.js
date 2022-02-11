@@ -31,7 +31,7 @@ function QuestionDetail() {
 
     useEffect(() => {
         getDetailQuestion()
-    }, [])
+    })
 
     return (
         <div className='h-full'>
@@ -41,7 +41,7 @@ function QuestionDetail() {
                     <h1 className='font-bold text-3xl text-red-600'>Pembahasan</h1>
                 </div>
                 <h1 className='font-bold text-3xl mb-3'>Pembahasan</h1>
-                <p className='text-gray-600'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p className='text-gray-600'>Berikut merupakan pembahasan dari pertanyaan yang telah Anda jawab sebelumnya.</p>
                 <hr className='my-5' />
                 {value.map((data, idx) => {
                     return (
