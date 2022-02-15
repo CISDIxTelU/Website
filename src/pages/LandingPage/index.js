@@ -17,6 +17,7 @@ function LandingPage() {
         }
         axios.get(`${BASE_URL}/landing`, config).then(res => {
             const data = res.data.data
+            console.log(data)
             setData(data)
         })
     }, [])
@@ -25,13 +26,13 @@ function LandingPage() {
             <div style={{ backgroundImage: `url(${BgLanding})` }}>
                 <div className='container mx-auto flex flex-col items-center'>
                     <img src={LogoCisdi} className='mb-24 mt-10' alt='foto' width={200} height={200} />
-                    <h1 className='font-bold text-3xl text-white mb-56'>Ayo Belajar Bersama di CISDI!</h1>
+                    <h1 className='font-bold text-3xl text-white mb-56'>Ayo belajar bersama di Health Learning Platform !</h1>
                 </div>
-                <div className='w-full py-12 bg-gray-100'>
+                <div className='w-full py-24 bg-gray-100'>
                     <div className='grid md:grid-cols-3 mb-12 gap-x-8 mx-auto' style={{ width: 'fit-content' }}>
                         {data.slice(0, 3).map((data) => {
                             let foto = `${process.env.REACT_APP_IMAGE_URL}/${data.cover_image}`;
-                            return <CardLanding foto={foto} judul={data.title} />
+                            return <CardLanding foto={foto} judul={data.title} deskripsi={data.description} />
                         })}
                     </div>
                     <div className='text-center'>

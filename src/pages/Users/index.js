@@ -14,7 +14,7 @@ function Users() {
                         <a href='https://adminhlp.pencerahnusantara.org/login'>
                             <div className='border-2 border-white p-3 rounded-lg flex justify-center text-white items-center hover:bg-white hover:text-black'>
                                 <img src={Pelatih} alt='foto' width='70' />
-                                <p className='font-bold ml-5'>pelatih</p>
+                                <p className='font-bold ml-5'>Pelatih</p>
                             </div>
                         </a>
                         <Link to='/login'>

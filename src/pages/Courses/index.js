@@ -44,14 +44,14 @@ function Courses() {
                 </div>
 
                 <div className="container p-3 mx-auto mb-10 h-full">
-                    <p className='font-bold text-4xl mb-4 mt-8'>Hai, Semua</p>
+                    <p className='font-bold text-4xl mb-4 mt-8'>Hai !</p>
                     <p className='text-lg font-normal'>Selamat datang di Health Learning Platform. Mau belajar apa kali ini?</p>
                     <h2 className="text-3xl my-5 font-bold">Topik Pembahasan</h2>
                     <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
                         {data.map(obj => {
                             let foto = `${process.env.REACT_APP_IMAGE_URL}/${obj.cover_image}`;
                             return (
-                                <Card foto={foto} judul={obj.title} materi={obj.author} linkTo={`/detail-course/${obj.id}`} />
+                                <Card foto={foto} deskripsi={obj.description} judul={obj.title} materi={obj.author} linkTo={`/detail-course/${obj.id}`} />
                             )
                         })}
                     </div>

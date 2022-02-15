@@ -26,6 +26,7 @@ function App() {
     <>
       <Helmet>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Health Learning Platform</title>
       </Helmet>
       <div className="lg:container-lg md:mx-auto bg-gray-50">
         <Routes>

@@ -118,7 +118,7 @@ function Navbar({ name }) {
                                 className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                                 to="/materi"
                             >
-                                <span className="ml-2">Beranda</span>
+                                <span className="ml-2 text-xl">Beranda</span>
                             </Link>
                         </li>
                         <li className="nav-item">
@@ -126,7 +126,7 @@ function Navbar({ name }) {
                                 className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                                 to="/materi"
                             >
-                                <span className="ml-2">Riwayat</span>
+                                <span className="ml-2 text-xl">Riwayat</span>
                             </Link>
                         </li>
                         <li className="nav-item">
@@ -134,7 +134,7 @@ function Navbar({ name }) {
                                 className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                                 to="/materi"
                             >
-                                <span className="ml-2">Favorit</span>
+                                <span className="ml-2 text-xl">Favorit</span>
                             </Link>
                         </li>
                         <li className='nav-item'>

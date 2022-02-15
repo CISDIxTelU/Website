@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '..';
 
-function CardLanding({ foto, judul }) {
+function CardLanding({ foto, judul, deskripsi }) {
     const [open, setOpen] = useState(false)
     const handleOpen = () => {
         setOpen(true)
@@ -10,24 +10,21 @@ function CardLanding({ foto, judul }) {
         setOpen(false)
     }
     return (
-        <div style={{width: 'fit-content'}}>
-        <div className="w-80 rounded-xl bg-red-600 shadow-md overflow-hidden">
-            <div>
-                <div className="md:shrink-0">
-                    <img className="h-full w-full object-cover" src={foto} alt="Man looking at item at a store" />
-                </div>
-                <div className="text-white">
-                    <div className='p-8'>
-                        <p className="block mt-1 text-lg leading-tight font-medium hover:underline"> {judul}</p>
-                        <p className="my-2">Getting a new business off the ground is a lot of hard work. Here are five ideas you can use to find your first customers.</p>
+        <div style={{ width: 'fit-content' }}>
+            <div className="w-80 h-full rounded-xl bg-red-600 shadow-md overflow-hidden">
+                <div className='flex flex-col'>
+                    <div className="md:shrink-0 h-44">
+                        <img className="h-full w-full object-cover" src={foto} alt="Man looking at item at a store" />
                     </div>
-                    <button className='flex justify-center w-full bg-red-600 py-5 border-t-2 hover:underline' onClick={handleOpen}>
-                        <p className="font-semibold hover:underline">deskripsi</p>
+                    <div className='p-8 h-32'>
+                        <p className="block mt-1 text-white text-lg leading-tight font-bold text-center hover:underline">{judul}</p>
+                    </div>
+                    <button className='flex justify-center w-full h-auto py-5 border-t-2 border-white hover:underline text-white' onClick={handleOpen}>
+                        <p className="font-semibold hover:underline text-white">deskripsi</p>
                     </button>
                 </div>
             </div>
-        </div>
-        <Modal handleClose={handleClose} title={judul} description="hello world" open={open} foto={foto} />
+            <Modal handleClose={handleClose} title={judul} description={deskripsi} open={open} foto={foto} />
         </div>
     )
 }
