@@ -68,8 +68,8 @@ function Question() {
     }
     return (
         <div className='container mx-auto p-3 py-10'>
-            <h1 className='font-bold text-3xl mb-3'>Sesi Pertanyaan</h1>
-            <p className='text-gray-600'>berikut pertanyaan yang harus dijawab : </p>
+            <h1 className='font-bold text-3xl mb-3'>Sesi Quiz</h1>
+            <p className='text-gray-600'>Silahkan jawab pertanyaan di bawa ini.</p>
             <hr className='my-5' />
             {question.map((data, idx) => {
                 return (
