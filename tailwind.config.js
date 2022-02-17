@@ -4,7 +4,7 @@ module.exports = {
   purge:['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   theme: {
     text: {
-      xl: ['24px', '26px'],
+      xl: ['20px', '26px'],
     }
   },
   variants: {

@@ -14,11 +14,11 @@ function Card({ materi, judul, foto, linkTo, deskripsi }) {
         <>
         <Link to={linkTo}>
         <div class="w-full rounded-xl bg-white shadow-md overflow-hidden md:h-52 transition duration-300 ease-in-out hover:bg-gray-100">
-                <div class="md:flex h-full md:p-4">
+                <div class="md:flex h-full md:p-3">
                     <div class="md:shrink-0">
                         <img class="h-full w-full object-cover md:w-48 md:rounded-l-xl" src={foto} alt="Man looking at item at a store" />
                     </div>
-                    <div className='p-3'>
+                    <div className='p-1'>
                         <button class="block mt-1 text-lg text-left leading-tight font-medium text-black hover:underline"> {judul}</button>
                         <p class="my-2 text-gray-500">{setLengthText(deskripsi, 165)}</p>
                         <div className='flex justify-between'>

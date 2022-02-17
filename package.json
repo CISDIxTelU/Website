@@ -27,6 +27,7 @@
     "reactjs-lottie": "^1.0.6",
     "styled-components": "^5.3.3",
     "svg-parser": "^2.0.4",
+    "swiper": "^8.0.6",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

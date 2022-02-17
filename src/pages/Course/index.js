@@ -38,6 +38,12 @@ function Course() {
     }
 
     getFileExtension(dataLesson.lesson_attachment)
+
+    const createMarkUp = (data) => {
+        return {__html: data};
+    }
+
+    console.log(dataLesson.lesson_text)
     return (
         <div className="container mx-auto py-11">
             <div className="flex wrap justify-between py-3 gap-10">
@@ -51,8 +57,8 @@ function Course() {
                             <>
                                 <h1 className="font-bold text-3xl my-3">{dataLesson.name}</h1>
                                 {dataLesson.video_url != null ? <iframe src={dataLesson.video_url} title="description" className="h-96 w-full"></iframe> : ''}
-                                {extension !== 'pdf' || extension === 'jpg' && <img src={`${IMAGE_URL}/${dataLesson.lesson_attachment}`} alt="foto" className="h-96 w-full bg-gray-400" />}
-                                <div className="w-full" dangerouslySetInnerHTML={{ __html: dataLesson.lesson_text }} />
+                                {extension === 'jpg' && <img src={`${IMAGE_URL}/${dataLesson.lesson_attachment}`} alt="foto" className="h-96 w-full bg-gray-400" />}
+                                <div dangerouslySetInnerHTML={createMarkUp(dataLesson.lesson_text)} />
                                 <br />
                                 <div className='mt-10 flex flex-col justify-between w-full'>
                                     <button className='bg-red-600 text-center text-white p-3 mb-4 rounded-lg w-full font-bold hover:bg-opacity-75' value={dataLesson.id} onClick={() => history(-1, { replace: true })}>

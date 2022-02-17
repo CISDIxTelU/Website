@@ -48,7 +48,7 @@ function QuestionDetail() {
                         <CardQuestionDetail data={data} key={idx} />
                     )
                 })}
-                <button type="submit" className='w-full bg-red-600 text-white font-bold py-3 hover:bg-opacity-75 rounded-lg' disabled={grade ? true : false} onClick={() => navigate(`/question/grade/${id}`, { state: { grade: grade.grade } })}>Selesaikan Quiz</button>
+                <button type="submit" className='w-full bg-red-600 text-white font-bold py-3 hover:bg-opacity-75 rounded-lg' onClick={() => navigate(`/question/grade/${id}`, { state: { grade: grade.grade } })}>Selesaikan Quiz</button>
             </div>
         </div>
     )
