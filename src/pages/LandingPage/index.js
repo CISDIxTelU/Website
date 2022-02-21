@@ -17,7 +17,6 @@ function LandingPage() {
         }
         axios.get(`${BASE_URL}/landing`, config).then(res => {
             const data = res.data.data
-            console.log(data)
             setData(data)
         })
     }, [])

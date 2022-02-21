@@ -39,8 +39,6 @@ function Course() {
     const createMarkUp = (data) => {
         return {__html: data};
     }
-
-    console.log(dataLesson.lesson_text)
     return (
         <div className="container mx-auto py-11">
             <div className="flex wrap justify-between py-3 gap-10">
