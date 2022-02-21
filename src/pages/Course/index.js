@@ -15,22 +15,19 @@ function Course() {
     const [extension, setExtension] = useState('')
     const history = useNavigate()
 
-    const getData = async () => {
+    useEffect(() => {
         setLoading(true)
         const config = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }
-        await axios.get(`${BASE_URL}/lesson/${id_topic}`, config).then(res => {
+        axios.get(`${BASE_URL}/lesson/${id_topic}`, config).then(res => {
             setDataLesson(res.data.data);
             setLoading(false)
         }).catch(e => {
         })
-    }
-    useEffect(() => {
-        getData()
-    }, []);
+    }, [id_topic]);
 
     const getFileExtension = async (filename) => {
         const extension = await filename.split('.').pop();

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
-import { Banner1 } from '../../assets'
 import Lottie from 'reactjs-lottie';
 import { animation } from '../../assets';
 import { Card, Carousel } from '../../components';
@@ -48,10 +47,10 @@ function Courses() {
                     <p className='text-lg font-normal'>Selamat datang di Health Learning Platform. Mau belajar apa kali ini?</p>
                     <h2 className="text-3xl my-5 font-bold">Topik Pembahasan</h2>
                     <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
-                        {data.map(obj => {
+                        {data.map((obj, idx) => {
                             let foto = `${process.env.REACT_APP_IMAGE_URL}/${obj.cover_image}`;
                             return (
-                                <Card foto={foto} deskripsi={obj.description} judul={obj.title} materi={obj.author} linkTo={`/detail-course/${obj.id}`} />
+                                <Card foto={foto} key={idx} deskripsi={obj.description} judul={obj.title} materi={obj.author} linkTo={`/detail-course/${obj.id}`} />
                             )
                         })}
                     </div>

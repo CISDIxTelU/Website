@@ -5,7 +5,6 @@ import React from "react";
 import Helmet from "react-helmet";
 
 function App() {
-  // const location = useLocation();
 
   const useAuth = () => {
     let tokenLogin = localStorage.getItem('token')

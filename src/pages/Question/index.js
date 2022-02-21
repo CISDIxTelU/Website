@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -22,7 +21,6 @@ function Question() {
     };
 
     const onClick = (e) => {
-        e.preventDefault()
         const config = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -33,7 +31,8 @@ function Question() {
         })
     }
 
-    const getData = () => {
+    useEffect(() => {
+        setLoading(true)
         const config = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -42,18 +41,14 @@ function Question() {
         axios.get(`${BASE_URL}/question/${id}/${slug}`, config).then(res => {
             setLoading(false)
             let response = res.data.question
-            if(response){
-                setQuestion(response)
-            }else {
+            
+            if(res.data.status === 'failed'){
                 return navigate(`/detail-question/${id}/${slug}`, {replace: true})
+            }else {
+                return setQuestion(response)
             }
         })
-    }
-
-    useEffect(() => {
-        setLoading(true)
-        getData();
-    }, []);
+    }, [id, slug, navigate]);
 
     if (loading) {
         return (
@@ -61,7 +56,7 @@ function Question() {
                 <div className="w-40">
                     <Lottie options={{
                         animationData: animation,
-                    }} className="" />
+                    }} />
                 </div>
             </div>
         )

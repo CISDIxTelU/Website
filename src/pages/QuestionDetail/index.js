@@ -16,22 +16,23 @@ function QuestionDetail() {
         return navigate(`/detail-course/${id}`)
     }
 
-    const getDetailQuestion = () => {
+    useEffect(() => {
         const config = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }
 
-        axios.get(`${BASE_URL}/result/${id}/${slug}`, config).then(res => {
+        axios.get(`${BASE_URL}/result/${id}/${slug}`, config)
+        .then(res => {
+            console.log(res)
             setValue(res.data.question)
             setGrade(res.data.grade)
         })
-    }
-
-    useEffect(() => {
-        getDetailQuestion()
-    })
+        .catch(err => {
+            console.log(err)
+        })
+    }, [id, slug])
 
     return (
         <div className='h-full'>

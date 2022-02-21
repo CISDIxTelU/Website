@@ -85,7 +85,7 @@ const Accordion = ({ dataLo, id }) => {
                                     <h1 className="text-left font-semibold">{item.name}</h1>
                                     <span>{clicked === index ? <FiMinus /> : <FiPlus />}</span>
                                 </Wrap>
-                                {clicked === index ? <Dropdown dataLesson={item.data_lesson} index={index} id={item.id} /> : null}
+                                {clicked === index ? <Dropdown dataLesson={item.data_lesson} key={item.id} index={index} id={item.id} /> : null}
                             </>
                         );
                     })}
