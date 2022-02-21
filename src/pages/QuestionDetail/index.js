@@ -25,14 +25,13 @@ function QuestionDetail() {
 
         axios.get(`${BASE_URL}/result/${id}/${slug}`, config)
         .then(res => {
-            console.log(res)
             setValue(res.data.question)
             setGrade(res.data.grade)
         })
         .catch(err => {
             console.log(err)
         })
-    }, [id, slug])
+    }, [id ,slug])
 
     return (
         <div className='h-full'>
