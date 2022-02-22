@@ -36,7 +36,7 @@ export const Dropdown = ({ dataLesson, id }) => {
         <div style={{ width: "100 %", marginBottom: '30px' }}>
             {dataLesson.map((data, idx) => {
                 return (
-                    <div className='border-b py-3 px-6 border-gray-200 flex justify-between'>
+                    <div className='border-b py-3 px-6 border-gray-200 flex justify-between' key={idx}>
                         <Link className="block active:font-bold hover:underline" to={`/course/${data.id}`}>{data.name}</Link>
                         <div className='flex gap-x-2'>
                             {data['is_favorit'] ? <FaRegHeart fill='#EB5757' /> : <FaRegHeart />}
@@ -80,13 +80,13 @@ const Accordion = ({ dataLo, id }) => {
                     </Link>
                     {dataLo.map((item, index) => {
                         return (
-                            <>
+                            <div key={index}>
                                 <Wrap className='bg-white' onClick={() => toggle(index)} key={index}>
                                     <h1 className="text-left font-semibold">{item.name}</h1>
                                     <span>{clicked === index ? <FiMinus /> : <FiPlus />}</span>
                                 </Wrap>
                                 {clicked === index ? <Dropdown dataLesson={item.data_lesson} key={item.id} index={index} id={item.id} /> : null}
-                            </>
+                            </div>
                         );
                     })}
                     <Link to={`/question/${id}/post_test`}>

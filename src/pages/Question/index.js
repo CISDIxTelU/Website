@@ -15,6 +15,7 @@ function Question() {
     });
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('') 
 
     const selectAnswer = (answer, id) => {
         setUserAnswer({ content: [...userAnswer.content, { 'id': id, 'answerUser': answer },] })
@@ -26,6 +27,7 @@ function Question() {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }
+        
         axios.post(`${BASE_URL}/answer-question/${id}/${slug}`, userAnswer, config).then(res => {
             return navigate(`/detail-question/${id}/${slug}`)
         })
@@ -41,12 +43,15 @@ function Question() {
         axios.get(`${BASE_URL}/question/${id}/${slug}`, config).then(res => {
             setLoading(false)
             let response = res.data.question
+            console.log(res)
             
             if(res.data.status === 'failed'){
                 return navigate(`/detail-question/${id}/${slug}`, {replace: true})
             }else {
                 return setQuestion(response)
             }
+        }).catch(err => {
+            setError(err)
         })
     }, [id, slug, navigate]);
 

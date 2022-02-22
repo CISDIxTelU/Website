@@ -18,6 +18,7 @@ function DetailCourse() {
 
     useEffect(() => {
         setLoading(true)
+
         const config = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
