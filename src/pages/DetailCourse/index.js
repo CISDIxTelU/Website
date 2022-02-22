@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import Lottie from "lottie-react";
-import { animation } from '../../assets';
 import axios from 'axios';
 import { Accordion } from '../../components';
 import moment from 'moment';
@@ -14,10 +12,8 @@ function DetailCourse() {
     const [dataLo, setDataLo] = useState([]);
     const errors = useLocation();
     let { id } = useParams();
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        setLoading(true)
 
         const config = {
             headers: {
@@ -26,22 +22,11 @@ function DetailCourse() {
         }
         
         axios.get(`${BASE_URL}/topic/${id}`, config).then(res => {
-            setLoading(false);
             setData(res.data.data_topic);
             setDataLo(res.data.data_lo);
         })
     }, [id]);
 
-    if (loading) {
-        return (
-            <div className="bg-white w-full h-screen absolute top-0 z-50 flex justify-center items-center">
-                <div className="w-40">
-                    <Lottie animationData={animation} />
-                </div>
-            </div>
-        )
-    }
-    else {
         return (
             <div className='bg-gray-100 p-10'>
                 {errors.data && <div className='bg-red-300 p-3'>
@@ -66,6 +51,6 @@ function DetailCourse() {
             </div>
         )
     }
-}
+
 
 export default DetailCourse

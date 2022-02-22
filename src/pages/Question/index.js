@@ -2,8 +2,6 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { CardQuestion } from '../../components'
-import Lottie from "lottie-react";
-import { animation } from '../../assets';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -14,7 +12,6 @@ function Question() {
         "content": []
     });
     const navigate = useNavigate()
-    const [loading, setLoading] = useState(false);
     const [error, setError] = useState('') 
 
     const selectAnswer = (answer, id) => {
@@ -34,14 +31,12 @@ function Question() {
     }
 
     useEffect(() => {
-        setLoading(true)
         const config = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }
         axios.get(`${BASE_URL}/question/${id}/${slug}`, config).then(res => {
-            setLoading(false)
             let response = res.data.question
             console.log(res)
             
@@ -55,15 +50,6 @@ function Question() {
         })
     }, [id, slug, navigate]);
 
-    if (loading) {
-        return (
-            <div className="bg-white w-full h-screen absolute top-0 z-50 flex justify-center items-center">
-                <div className="w-40">
-                    <Lottie animationData={animation} />
-                </div>
-            </div>
-        )
-    }
     return (
         <div className='container mx-auto p-3 py-10'>
             <h1 className='font-bold text-3xl mb-3'>Sesi Quiz</h1>
