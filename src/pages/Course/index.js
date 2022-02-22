@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { animationCourse } from '../../assets';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
-import Lottie from 'reactjs-lottie'
+import Lottie from "lottie-react";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const IMAGE_URL = process.env.REACT_APP_IMAGE_URL;
@@ -45,9 +45,7 @@ function Course() {
                 <div className="py-2 w-full">
                     <div className="border rounded-lg bg-white p-6">
                         {loading ? (
-                            <Lottie options={{
-                                animationData: animationCourse,
-                            }} className="" />
+                            <Lottie animationData= {animationCourse} />
                         ) : (
                             <>
                                 <h1 className="font-bold text-3xl my-3">{dataLesson.name}</h1>

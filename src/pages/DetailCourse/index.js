@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import Lottie from 'reactjs-lottie';
+import Lottie from "lottie-react";
 import { animation } from '../../assets';
 import axios from 'axios';
 import { Accordion } from '../../components';
@@ -26,9 +26,9 @@ function DetailCourse() {
         }
         
         axios.get(`${BASE_URL}/topic/${id}`, config).then(res => {
+            setLoading(false);
             setData(res.data.data_topic);
             setDataLo(res.data.data_lo);
-            setLoading(false);
         })
     }, [id]);
 
@@ -36,9 +36,7 @@ function DetailCourse() {
         return (
             <div className="bg-white w-full h-screen absolute top-0 z-50 flex justify-center items-center">
                 <div className="w-40">
-                    <Lottie options={{
-                        animationData: animation,
-                    }} className="" />
+                    <Lottie animationData={animation} />
                 </div>
             </div>
         )

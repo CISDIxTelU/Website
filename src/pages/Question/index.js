@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { CardQuestion } from '../../components'
-import Lottie from 'reactjs-lottie';
+import Lottie from "lottie-react";
 import { animation } from '../../assets';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -59,9 +59,7 @@ function Question() {
         return (
             <div className="bg-white w-full h-screen absolute top-0 z-50 flex justify-center items-center">
                 <div className="w-40">
-                    <Lottie options={{
-                        animationData: animation,
-                    }} />
+                    <Lottie animationData={animation} />
                 </div>
             </div>
         )
