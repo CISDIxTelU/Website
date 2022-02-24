@@ -70,7 +70,7 @@ function Login({ setToken }) {
                         <form onSubmit={handleSubmit}>
                             <div className="border rounded-lg flex wrap items-center content-center mb-5">
                                 <FaAt className="text-white mx-5 " />
-                                <input type="text" onChange={e => setUsername(e.target.value)} className="appearance-none bg-transparent text-white w-full h-full p-3 rounded-lg focus:outline-none text-sm lg:text-base" placeholder="Enter your phone number"></input>
+                                <input type="text" onChange={e => setUsername(e.target.value)} className="appearance-none bg-transparent text-white w-full h-full p-3 rounded-lg focus:outline-none text-sm lg:text-base" placeholder="Enter your username"></input>
                             </div>
                             <div className="border rounded-lg flex wrap items-center content-center mb-11">
                                 <FaLock className="text-white mx-5" />

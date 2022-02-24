@@ -20,7 +20,7 @@ const style = {
 
 const FeedbackModal = ({ handleClose, open, id }) => {
     const [feedback, setFeedback] = useState('')
-    const [rating, setRating] = useState(0)
+    const [rating, setRating] = useState('')
     const [error, setError] = useState('')
 
 
@@ -34,12 +34,16 @@ const FeedbackModal = ({ handleClose, open, id }) => {
             }
         }
 
-        const feedbackPost = axios.post(`${BASE_URL}/feedback/${id}`, {feedback: feedback}, config);
-        const ratingPost = axios.post(`${BASE_URL}/rating/${id}`, {rating: rating}, config);
+        const feedbackPost = () => {
+            return axios.post(`${BASE_URL}/feedback/${id}`, {feedback: feedback}, config);
+        }
+        const ratingPost = () => {
+            return axios.post(`${BASE_URL}/rating/${id}`, {rating: rating}, config);
+        }
 
-        axios.all([feedbackPost, ratingPost])
-        .then(([resFeedback, resRating])=> {
-            if(resFeedback || resRating){
+        Promise.all([feedbackPost(), ratingPost()])
+        .then((res)=> {
+            if(res[0].data.status || res[1].data.status){
                 return Navigate(`detail-course/${id}`)
             }
         }).catch(err => {
@@ -69,7 +73,6 @@ const FeedbackModal = ({ handleClose, open, id }) => {
                             <p className='text-base text-center my-3'>Pelatihan “Peningkatan Peran Kader dan Pendamping Kelompok dalam Respon Covid-19”</p>
                             <div className='w-full flex justify-center'>
                                 <Rating
-                                    value={rating}
                                     defaultValue={0}
                                     precision={0.5}
                                     onChange={(event, newValue) => {
