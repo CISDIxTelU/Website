@@ -20,37 +20,39 @@ function DetailCourse() {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             }
         }
-        
+
         axios.get(`${BASE_URL}/topic/${id}`, config).then(res => {
             setData(res.data.data_topic);
             setDataLo(res.data.data_lo);
         })
     }, [id]);
 
-        return (
-            <div className='bg-gray-100 p-10'>
-                {errors.data && <div className='bg-red-300 p-3'>
-                    {errors.data}   
-                </div>}
-                <div className='sm:container mx-auto pt-8 pb-10'>
-                    <h1 className='font-bold text-3xl text-center text-red-600'>Topik Pembahasan</h1>
-                    <h2 className='font-bold text-2xl mt-5 mb-3'>{data.title}</h2>
-                    <p className='text-base text-justify'>{data.description}</p>
-                    <div className='flex justify-between my-4'>
-                        <p className='font-bold'>By : {data.author}</p>
-                        <p className='font-light'>Diterbitkan: <Moment format="DD MMMM YYYY">{moment(data.created_at)}</Moment></p>
-                    </div>
-                    <hr />
-                    <div className='flex justify-between my-4'>
-                        <p className='font-bold'>Kursus Topik Ini</p>
-                        <p className='font-light'>{dataLo.length} Materi</p>
-                        <p className='font-light'>0 / {dataLo.length} Selesai</p>
-                    </div>
-                    <Accordion dataLo={dataLo} id={id}  />
+    console.log(data.cover_image)
+    return (
+        <div className='bg-gray-100 p-10'>
+            {errors.data && <div className='bg-red-300 p-3'>
+                {errors.data}
+            </div>}
+            <div className='sm:container mx-auto pt-8 pb-10'>
+                <h1 className='font-bold text-3xl text-center text-red-600'>Topik Pembahasan</h1>
+                <img className="h-full w-full my-4" src={`${process.env.REACT_APP_IMAGE_URL}/${data.cover_image}`} alt="Man looking at item at a store" />
+                <h2 className='font-bold text-2xl mt-5 mb-3'>{data.title}</h2>
+                <p className='text-base text-justify'>{data.description}</p>
+                <div className='flex justify-between my-4'>
+                    <p className='font-bold'>By : {data.author}</p>
+                    <p className='font-light'>Diterbitkan: <Moment format="DD MMMM YYYY">{moment(data.created_at)}</Moment></p>
                 </div>
+                <hr />
+                <div className='flex justify-between my-4'>
+                    <p className='font-bold'>Kursus Topik Ini</p>
+                    <p className='font-light'>{dataLo.length} Materi</p>
+                    <p className='font-light'>0 / {dataLo.length} Selesai</p>
+                </div>
+                <Accordion dataLo={dataLo} id={id} />
             </div>
-        )
-    }
+        </div>
+    )
+}
 
 
 export default DetailCourse

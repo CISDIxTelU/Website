@@ -46,6 +46,7 @@ function Courses() {
                         <h2 className="text-3xl my-5 font-bold">Topik Pembahasan</h2>
                         <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
                             {data.map((obj, idx) => {
+                                console.log(obj)
                                 let foto = `${process.env.REACT_APP_IMAGE_URL}/${obj.cover_image}`;
                                 return (
                                     <Card foto={foto} key={idx} deskripsi={obj.description} judul={obj.title} materi={obj.author} linkTo={`/detail-course/${obj.id}`} />

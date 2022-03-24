@@ -25,7 +25,7 @@ function LandingPage() {
             <div style={{ backgroundImage: `url(${BgLanding})` }}>
                 <div className='container mx-auto flex flex-col items-center'>
                     <img src={LogoCisdi} className='mb-24 mt-10' alt='foto' width={200} height={200} />
-                    <h1 className='font-bold text-3xl text-white mb-56'>Ayo belajar bersama di Health Learning Platform !</h1>
+                    <h1 className='font-bold text-3xl text-white mb-56'>Ayo Belajar Bersama di Health Learning Platform!</h1>
                 </div>
                 <div className='w-full py-24 bg-gray-100'>
                     <div className='grid md:grid-cols-3 mb-12 gap-x-8 mx-auto' style={{ width: 'fit-content' }}>

@@ -11,11 +11,11 @@ function QuestionGrade() {
     const grade = data.state.grade;
     const final = grade;
 
+    console.log(data)
     return (
         <div className='container mx-auto p-5'>
             <div className='my-4'>
                 <h2 className='text-4xl font-bold mb-3'>Selamat!</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
             <div className='bg-red-700 w-full p-10 h-96 rounded-lg mb-52 flex flex-col md:flex-row relative'>
                 <img src={BgGrade1} alt='foto' className='absolute bottom-0 left-0' />
@@ -43,7 +43,6 @@ function QuestionGrade() {
                         <div className='flex justify-between mb-3'>
                             <div>
                                 <p className='text-lg'>Nilai Kamu</p>
-                                <p className='text-base'>Lorem Ipsum</p>
                             </div>
                             <p className='text-lg text-red-600'>{final}/100</p>
                         </div>

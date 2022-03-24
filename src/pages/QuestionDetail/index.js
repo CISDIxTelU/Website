@@ -27,6 +27,7 @@ function QuestionDetail() {
         .then(res => {
             setValue(res.data.question)
             setGrade(res.data.grade)
+            console.log(res)
         })
         .catch(err => {
             console.log(err)

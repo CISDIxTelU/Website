@@ -20,7 +20,7 @@ function CardLanding({ foto, judul, deskripsi }) {
                         <p className="block mt-1 text-white text-lg leading-tight font-bold text-center hover:underline">{judul}</p>
                     </div>
                     <button className='flex justify-center w-full h-auto py-5 border-t-2 border-white hover:underline text-white' onClick={handleOpen}>
-                        <p className="font-semibold hover:underline text-white">deskripsi</p>
+                        <p className="font-semibold hover:underline text-white">Deskripsi</p>
                     </button>
                 </div>
             </div>

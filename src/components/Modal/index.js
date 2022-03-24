@@ -35,7 +35,9 @@ const ModalComponent = ({ handleClose, title, description, open, foto }) => {
                             <MdOutlineClose className='absolute right-10 top-5 text-red-600 cursor-pointer' size={30} onClick={handleClose} />
                             <h1 className='font-bold text-4xl mb-3 text-red-600'>Jangan <br/>Lewatkan <br/>Pelatihan Ini!</h1>
                             <button className="block mt-1 text-lg leading-tight text-left font-medium text-black hover:underline"> {title}</button>
-                            <p className="my-2 text-gray-500">{setLengthText(description, 165)}</p>
+                            <p className="my-2 text-gray-500">
+                                {description}
+                                </p>
                         </div>
                     </div>
                 </div>
