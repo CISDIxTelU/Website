@@ -4,6 +4,7 @@ import { animationCourse } from '../../assets';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
+import parse from 'html-react-parser';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const IMAGE_URL = process.env.REACT_APP_IMAGE_URL;
@@ -30,13 +31,16 @@ function Course() {
     }, [id_topic]);
 
     const getFileExtension = async (filename) => {
-        const extension = await filename.split('.').pop();
-        setExtension(extension)
+        if(filename){
+            const extension = await filename.split('.').pop();
+            setExtension(extension)
+        }
     }
 
     getFileExtension(dataLesson.lesson_attachment)
 
     const createMarkUp = (data) => {
+        console.log(parse(data))
         return {__html: data};
     }
     return (

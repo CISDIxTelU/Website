@@ -73,3 +73,7 @@ h5{
 h6{
   font-size: 0.75em;
 }
+
+.table-bordered tbody td{
+  border: 1px solid #000;
+}
