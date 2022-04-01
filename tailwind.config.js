@@ -3,9 +3,14 @@ module.exports = {
   mode: 'jit',
   purge:['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   theme: {
-    text: {
-      xl: ['20px', '26px'],
-    }
+    extend: {
+      text: {
+        xl: ['20px', '26px'],
+      },
+      colors: {
+        'card-task' : '#F6F9FF',
+      }
+    },
   },
   variants: {
     extend: {

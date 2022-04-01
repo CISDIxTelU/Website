@@ -124,7 +124,7 @@ function Navbar({ name }) {
                         <li className="nav-item">
                             <Link
                                 className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                                to="/materi"
+                                to="/riwayat"
                             >
                                 <span className="ml-2 text-xl">Riwayat</span>
                             </Link>
@@ -132,7 +132,7 @@ function Navbar({ name }) {
                         <li className="nav-item">
                             <Link
                                 className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                                to="/materi"
+                                to="/favorit"
                             >
                                 <span className="ml-2 text-xl">Favorit</span>
                             </Link>
@@ -141,8 +141,9 @@ function Navbar({ name }) {
                             {/* Profile dropdown */}
                             <div className="text-right hidden lg:inline">
                                 <Menu as="div" className="relative inline-block text-left">
-                                    <div>
-                                        <Menu.Button className="text-sm relative font-medium text-white bg-blue-200 rounded-full hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75" style={{ backgroundImage: `url(${DummyProfile})`, backgroundSize: '60px', backgroundPosition: 'center center', objectFit: 'cover', backgroundRepeat: 'no-repeat', width: '40px', height: '40px' }}>
+                                    <div className='flex items-center'>
+                                        <Menu.Button className="text-sm relative font-medium text-white bg-blue-200 mr-3 rounded-full hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75" style={{ backgroundImage: `url(${DummyProfile})`, backgroundSize: '60px', backgroundPosition: 'center center', objectFit: 'cover', backgroundRepeat: 'no-repeat', width: '40px', height: '40px' }}>
+                                            <FaChevronDown className='text-white absolute -right-5 top-3' />
                                         </Menu.Button>
                                     </div>
                                     <Transition

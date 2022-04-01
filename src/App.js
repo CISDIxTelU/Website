@@ -1,5 +1,5 @@
 import { Footer, Navbar } from "./components";
-import { Login, Courses, Course, DetailCourse, NotFound, History, Question, Complete, Profile, QuestionDetail, QuestionGrade, LandingPage, ForgotPassword, Users } from "./pages";
+import { Login, Courses, Course, DetailCourse, NotFound, History, Question, Complete, Profile, QuestionDetail, QuestionGrade, LandingPage, ForgotPassword, Users, Favorite } from "./pages";
 import { Routes, Route, Navigate, Outlet } from "react-router-dom";
 import React from "react";
 import Helmet from "react-helmet";
@@ -42,6 +42,9 @@ function App() {
           </Route>
           <Route path="/riwayat" element={<PrivateOutlet />}>
             <Route path="" element={<History />} />
+          </Route>
+          <Route path="/favorit" element={<PrivateOutlet />}>
+            <Route path="" element={<Favorite />} />
           </Route>
           <Route path="/detail-course/:id" element={<PrivateOutlet />}>
             <Route path="" element={<DetailCourse />} />

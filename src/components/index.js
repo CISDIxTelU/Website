@@ -8,5 +8,7 @@ import CardQuestionDetail from './CardQuestionDetail'
 import Modal from "./Modal";
 import FeedbackModal from './FeedbackModal'
 import Carousel from "./Carousel";
+import CardTask from "./CardTask";
+import CardFavorite from './CardFavorite';
 
-export { Card, Navbar, Accordion, Icon, Footer, CardQuestion, CardQuestionDetail, Modal, FeedbackModal, Carousel };
+export { Card, CardFavorite, CardTask, Navbar, Accordion, Icon, Footer, CardQuestion, CardQuestionDetail, Modal, FeedbackModal, Carousel };

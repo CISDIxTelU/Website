@@ -1,13 +1,30 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { FaSistrix } from 'react-icons/fa';
+import { CardTask } from '../../components';
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const History = () => {
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        }
+        axios.get(`${BASE_URL}/landing`, config).then(res => {
+            const data = res.data.data
+            setData(data)
+        })
+    }, [])
+
     return (
-        <div className='bg-white'>
-            <div className='container mx-auto pt-8'>
-                <h1 className='font-bold text-3xl text-center text-red-600'>CISDI</h1>
+        <div className='bg-card-task py-10'>
+            <div className='container bg-white mx-auto py-8 px-8 rounded-lg'>
+                <h1 className='font-bold text-3xl text-center text-red-600 my-5'>Riwayat</h1>
                 <div>
-                    <h2 className='font-bold text-xl mt-10 mb-4'>Riwayat</h2>
                     <div className="border-2 border-red-600 py-2 rounded-lg flex wrap items-center content-center mb-5">
                         <FaSistrix className="text-black mx-5 " />
                         <input type="text" className="appearance-none bg-transparent w-full h-full p-3 rounded-lg focus:outline-none text-sm lg:text-base" placeholder="Temukan Kursus"></input>
@@ -15,11 +32,18 @@ const History = () => {
                 </div>
 
                 <h2 className='font-bold text-lg'>Sedang Berlangsung</h2>
-                <div>
-                    
+                <div className='my-4'>
+                    {data.map(data => {
+                        return <CardTask title={data.title} id={data.id} />
+                    })}
                 </div>
 
                 <h2 className='font-bold text-lg'>Selesai</h2>
+                <div className='my-4'>
+                    {data.map(data => {
+                        return <CardTask title={data.title} id={data.id} isDone={true} />
+                    })}
+                </div>
             </div>
         </div>
     )
