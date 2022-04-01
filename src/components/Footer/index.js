@@ -18,7 +18,7 @@ function Footer() {
                     <Icon linkTo='https://www.instagram.com/cisdi_id/' image={<FaInstagram />} />
                     <Icon linkTo='https://www.facebook.com/cisdi' image={<FaFacebook />} />
                     <Icon linkTo='https://www.youtube.com/c/CISDITV' image={<FaYoutube />} />
-                    <Icon linkTo='https://www.linkedin.com/company/center-for-indonesias-strategic-development-initiatives-cisdi-/' image={<FaLinkedin />} />
+                    <Icon linkTo="https://www.linkedin.com/company/center-for-indonesia's-strategic-development-initiatives-cisdi-/" image={<FaLinkedin />} />
                 </div>
             </div>
             <img src={BgFooter} alt='footer' style={{height: "100px", width: "100%"}} />
