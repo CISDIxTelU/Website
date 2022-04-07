@@ -14,8 +14,9 @@ const History = () => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }
-        axios.get(`${BASE_URL}/landing`, config).then(res => {
+        axios.get(`${BASE_URL}/history`, config).then(res => {
             const data = res.data.data
+            console.log(res.data)
             setData(data)
         })
     }, [])
@@ -34,7 +35,7 @@ const History = () => {
                 <h2 className='font-bold text-lg'>Sedang Berlangsung</h2>
                 <div className='my-4'>
                     {data.map(data => {
-                        return <CardTask title={data.title} id={data.id} />
+                        return <CardTask title={data.title} id={data.id} percentage={data.precentage_done} />
                     })}
                 </div>
 

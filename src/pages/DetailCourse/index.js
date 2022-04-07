@@ -27,7 +27,6 @@ function DetailCourse() {
         })
     }, [id]);
 
-    console.log(data.cover_image)
     return (
         <div className='bg-gray-100 p-10'>
             {errors.data && <div className='bg-red-300 p-3'>
@@ -35,7 +34,7 @@ function DetailCourse() {
             </div>}
             <div className='sm:container mx-auto pt-8 pb-10'>
                 <h1 className='font-bold text-3xl text-center text-red-600'>Topik Pembahasan</h1>
-                <img className="h-full w-full my-4" src={`${process.env.REACT_APP_IMAGE_URL}/${data.cover_image}`} alt="Man looking at item at a store" />
+                <img className="h-96 object-cover w-full my-4" src={`${process.env.REACT_APP_IMAGE_URL}/${data.cover_image}`} alt="Man looking at item at a store" />
                 <h2 className='font-bold text-2xl mt-5 mb-3'>{data.title}</h2>
                 <p className='text-base text-justify'>{data.description}</p>
                 <div className='flex justify-between my-4'>

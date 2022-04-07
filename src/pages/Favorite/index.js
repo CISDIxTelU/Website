@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { FaSistrix } from 'react-icons/fa';
-import { CardFavorite, CardTask } from '../../components';
+import { CardFavorite } from '../../components';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -14,12 +14,12 @@ const Favorite = () => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }
-        axios.get(`${BASE_URL}/landing`, config).then(res => {
+        axios.get(`${BASE_URL}/favorit`, config).then(res => {
             const data = res.data.data
+            console.log(res)
             setData(data)
         })
     }, [])
-    // console.log(data)
     return (
         <div className='bg-card-task py-10'>
             <div className='container bg-white mx-auto py-8 px-8 rounded-lg'>
@@ -33,9 +33,11 @@ const Favorite = () => {
 
                 <h2 className='font-bold text-lg my-5'>Daftar Materi Favorit</h2>
                 <div className='grid grid-cols-2 gap-5'>
-                    <CardFavorite />
-                    <CardFavorite />
-                    <CardFavorite />
+                    {data.map(data => {
+                        return (
+                            <CardFavorite />
+                        )
+                    })}
                 </div>
             </div>
         </div>

@@ -50,7 +50,7 @@ function Courses() {
                             {data.map((obj, idx) => {
                                 let foto = `${process.env.REACT_APP_IMAGE_URL}/${obj.cover_image}`;
                                 return (
-                                    <Card foto={foto} key={idx} deskripsi={obj.description} judul={obj.title} materi={obj.author} linkTo={`/detail-course/${obj.id}`} />
+                                    <Card foto={foto} key={idx} deskripsi={obj.description} judul={obj.title} materi={obj.author} linkTo={`/detail-course/${obj.id}`} count={obj.count_lesson} />
                                 )
                             })}
                         </div>
