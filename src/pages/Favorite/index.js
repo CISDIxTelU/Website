@@ -9,17 +9,21 @@ const Favorite = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        const config = {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`
+        const fetchData = () => {
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
             }
+            axios.get(`${BASE_URL}/favorit`, config).then(res => {
+                const data = res.data.data
+                setData(data)
+            })
         }
-        axios.get(`${BASE_URL}/favorit`, config).then(res => {
-            const data = res.data.data
-            console.log(res)
-            setData(data)
-        })
+
+        fetchData()
     }, [])
+
     return (
         <div className='bg-card-task py-10'>
             <div className='container bg-white mx-auto py-8 px-8 rounded-lg'>

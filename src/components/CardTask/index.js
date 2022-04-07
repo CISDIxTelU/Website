@@ -15,24 +15,24 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   },
 }));
 
-function CardTask({title, progress, isDone, percentage}) {
+function CardTask({ title, progress, isDone, percentage }) {
   return (
-    <div className='bg-card-task px-5 py-7 border-0 rounded-lg flex items-center mb-4'>
+    <div className='bg-card-task px-4 py-7 border-0 rounded-lg flex items-center mb-4'>
       {isDone ? (
-        <div>
-          <div className='bg-gray-700 py-2 px-10 rounded-t-lg'>
+        <div className='flex-2'>
+          <div className='bg-gray-700 py-2 px-7 rounded-t-lg'>
             <b className='text-white'>Nilai</b>
           </div>
-          <div className='bg-red-700 text-center py-5 rounded-b-lg'>
+          <div className='bg-red-700 text-center py-4 rounded-b-lg'>
             <b className='text-white text-5xl'>20</b>
           </div>
         </div>
-      ) 
-      : 
-      <img src={PlayCircle} alt="circle play button" />
+      )
+        :
+        <img src={PlayCircle} alt="circle play button" />
       }
       <div className='flex-1 mx-6'>
-      <b className='text-xl'>{title}</b>
+        <b className='text-xl'>{title}</b>
       </div>
       <div className='flex-1'>
         <b className='text-lg'>{percentage}% Complete</b>

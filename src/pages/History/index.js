@@ -16,7 +16,7 @@ const History = () => {
         }
         axios.get(`${BASE_URL}/history`, config).then(res => {
             const data = res.data.data
-            console.log(res.data)
+            console.log(data)
             setData(data)
         })
     }, [])
@@ -35,14 +35,18 @@ const History = () => {
                 <h2 className='font-bold text-lg'>Sedang Berlangsung</h2>
                 <div className='my-4'>
                     {data.map(data => {
-                        return <CardTask title={data.title} id={data.id} percentage={data.precentage_done} />
+                        return (
+                        <CardTask title={data.topic.title} id={data.id} percentage={data.precentage_done} key={data.id} />
+                        )
                     })}
                 </div>
 
                 <h2 className='font-bold text-lg'>Selesai</h2>
                 <div className='my-4'>
                     {data.map(data => {
-                        return <CardTask title={data.title} id={data.id} isDone={true} />
+                        if(data.status === 'completed'){
+                            return <CardTask title={data.topic.title} id={data.id} isDone={true} percentage={data.precentage_done} key={data.id} />
+                        }
                     })}
                 </div>
             </div>
