@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-function Card({ materi, judul, foto, linkTo, deskripsi }) {
+function Card({ materi, judul, foto, linkTo, deskripsi, count }) {
 
     const setLengthText = (deskripsi, length) => {
         if(deskripsi.length > length){
@@ -22,7 +22,7 @@ function Card({ materi, judul, foto, linkTo, deskripsi }) {
                         <button className="block mt-1 text-lg text-left leading-tight font-medium text-black hover:underline"> {judul}</button>
                         <p className="my-2 text-gray-500">{setLengthText(deskripsi, 165)}</p>
                         <div className='flex justify-between'>
-                            <p className="text-gray-400 font-semibold">19 Materi</p>
+                            <p className="text-gray-400 font-semibold">{count} Materi</p>
                         </div>
                     </div>
                 </div>

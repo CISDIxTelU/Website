@@ -40,7 +40,7 @@ function Course() {
     getFileExtension(dataLesson.lesson_attachment)
 
     const createMarkUp = (data) => {
-        console.log(parse(data))
+        console.log(parse(toString(data)))
         return {__html: data};
     }
     return (
