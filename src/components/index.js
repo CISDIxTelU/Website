@@ -10,5 +10,6 @@ import FeedbackModal from './FeedbackModal'
 import Carousel from "./Carousel";
 import CardTask from "./CardTask";
 import CardFavorite from './CardFavorite';
+import CardAnnouncement from './CardAnnouncement';
 
-export { Card, CardFavorite, CardTask, Navbar, Accordion, Icon, Footer, CardQuestion, CardQuestionDetail, Modal, FeedbackModal, Carousel };
+export { Card, CardFavorite, CardTask, Navbar, Accordion, Icon, Footer, CardQuestion, CardQuestionDetail, Modal, FeedbackModal, Carousel, CardAnnouncement };

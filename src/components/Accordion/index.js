@@ -5,7 +5,6 @@ import { FiPlus, FiMinus } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { FaCheckCircle, FaRegHeart } from 'react-icons/fa';
 import { FeedbackModal } from '..';
-import axios from 'axios';
 
 const AccordionSection = styled.div`
 `;
