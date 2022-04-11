@@ -24,13 +24,13 @@ function Carousel() {
                 <img src={Banner1} alt='foto1' className='image' />
             </SwiperSlide>
             <SwiperSlide>
+                <img src={Banner2} alt='foto1' className='image' />
+            </SwiperSlide>
+            <SwiperSlide>
                 <img src={Banner3} alt='foto1' className='image' />
             </SwiperSlide>
             <SwiperSlide>
                 <img src={Banner4} alt='foto1' className='image' />
-            </SwiperSlide>
-            <SwiperSlide>
-                <img src={Banner6} alt='foto1' className='image' />
             </SwiperSlide>
         </Swiper>
     )

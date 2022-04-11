@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { IconContext } from 'react-icons';
 import { FiPlus, FiMinus } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import { FaCheckCircle, FaRegHeart } from 'react-icons/fa';
+import { FaCheckCircle, FaHeart, FaRegHeart } from 'react-icons/fa';
 import { FeedbackModal } from '..';
 
 const AccordionSection = styled.div`
@@ -34,17 +34,6 @@ const Wrap = styled.div`
 
 export const Dropdown = ({ dataLesson, id }) => {
 
-    // const onClick = (id) => {
-    //     const config = {
-    //         headers: {
-    //             Authorization: `Bearer ${localStorage.getItem('token')}`,
-    //         }
-    //     }
-    //     axios.post(`${BASE_URL}/favorit/${id}`, config).then(res => {
-    //         console.log(res)
-    //     })
-    // }
-
     return (
         <div style={{ width: "100 %", marginBottom: '30px' }}>
             {dataLesson.map((data, idx) => {
@@ -53,7 +42,7 @@ export const Dropdown = ({ dataLesson, id }) => {
                         <Link className="block active:font-bold hover:underline" to={`/course/${data.id}`}>{data.name}</Link>
                         <div className='flex gap-x-2'>
                             <button>
-                                {data['is_favorit'] ? <FaRegHeart fill='#EB5757' /> : <FaRegHeart />}
+                                {data['is_favorit'] ? <FaHeart fill='#EB5757' /> : <FaRegHeart />}
                             </button>
                             {data['is_done'] === 1 ? <FaCheckCircle fill='#00CE62' /> : <FaCheckCircle />}
                         </div>

@@ -34,20 +34,35 @@ const History = () => {
 
                 <h2 className='font-bold text-lg'>Sedang Berlangsung</h2>
                 <div className='my-4'>
-                    {data.map(data => {
-                        return (
-                        <CardTask title={data.topic.title} id={data.id} percentage={data.precentage_done} key={data.id} />
-                        )
-                    })}
+                    {
+                        data.map(data => {
+                            if (data.status === 'progress') {
+                                return (
+                                    <CardTask title={data.topic.title} id={data.id} percentage={data.precentage_done} key={data.id} />
+                                )
+                            } else {
+                                return (
+                                    <div className='text-center'>
+                                        <b>Tidak ada materi yang dibaca saat ini</b>
+                                    </div>
+                                )
+                            }
+                        })}
                 </div>
 
                 <h2 className='font-bold text-lg'>Selesai</h2>
                 <div className='my-4'>
-                    {data.map(data => {
-                        if(data.status === 'completed'){
-                            return <CardTask title={data.topic.title} id={data.id} isDone={true} percentage={data.precentage_done} key={data.id} />
-                        }
-                    })}
+                    {
+                        data.map(data => {
+                            if (data.status === 'completed') {
+                                return <CardTask title={data.topic.title} id={data.id} isDone={true} percentage={data.precentage_done} key={data.id} />
+                            }
+                            return (
+                                <div className='text-center'>
+                                    <b>Tidak ada materi yang selesai saat ini</b>
+                                </div>
+                            )
+                        })}
                 </div>
             </div>
         </div>
