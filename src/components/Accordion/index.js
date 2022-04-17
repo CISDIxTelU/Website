@@ -14,13 +14,11 @@ const Container = styled.div`
 
 const Wrap = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
   text-align: center;
   cursor: pointer;
   border: 1px solid #0101;
-  border-radius: 15px;
   margin-bottom: 10px;
   h1 {
     padding: 1rem;
@@ -78,14 +76,14 @@ const Accordion = ({ dataLo, id }) => {
             <AccordionSection>
                 <Container>
                     <Link to={`/question/${id}/pre_test`}>
-                        <Wrap className='bg-red-600 text-white' onClick={() => toggle(100)} key={100}>
+                        <Wrap className='bg-red-600 text-white rounded-lg' onClick={() => toggle(100)} key={100}>
                             <h1 className="text-left font-semibold">Pre test</h1>
                         </Wrap>
                     </Link>
                     {dataLo.map((item, index) => {
                         return (
                             <div key={index}>
-                                <Wrap className='bg-white' onClick={() => toggle(index)} key={index}>
+                                <Wrap className='bg-white justify-between rounded-lg' onClick={() => toggle(index)} key={index}>
                                     <h1 className="text-left font-semibold">{item.name}</h1>
                                     <span>{clicked === index ? <FiMinus /> : <FiPlus />}</span>
                                 </Wrap>
@@ -94,19 +92,23 @@ const Accordion = ({ dataLo, id }) => {
                         );
                     })}
                     <Link to={`/question/${id}/post_test`}>
-                        <Wrap className='bg-red-600 text-white' onClick={() => toggle(100)} key={100}>
+                        <Wrap className='bg-red-600 text-white rounded-lg' onClick={() => toggle(100)} key={100}>
                             <h1 className="text-left font-semibold">Post test</h1>
                         </Wrap>
                     </Link>
                     <Link to={`#`}>
-                        <Wrap className='bg-red-600 text-white' onClick={() => toggle(100)} key={100}>
+                        <Wrap className='bg-red-600 text-white rounded-lg' onClick={() => toggle(100)} key={100}>
                             <h1 className="text-left font-semibold">Unggah Tugas</h1>
                         </Wrap>
                     </Link>
-                    
                     <button className='w-full' onClick={() => handleOpen()}>
-                        <Wrap className='bg-red-600 text-white' onClick={() => toggle(100)} key={100}>
+                        <Wrap className='bg-red-600 text-white rounded-lg' onClick={() => toggle(100)} key={100}>
                             <h1 className="text-left font-semibold">Feedback</h1>
+                        </Wrap>
+                    </button>
+                    <button className='w-96 mt-8' onClick>
+                        <Wrap className='bg-red-600 text-white justify-center rounded-full' onClick={() => toggle(100)} key={100}>
+                            <h1 className="font-semibold">Selesaikan Pelatihan</h1>
                         </Wrap>
                     </button>
                     <FeedbackModal handleClose={handleClose} open={open} id={id} />

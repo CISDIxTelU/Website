@@ -32,7 +32,7 @@ function DetailCourse() {
             {errors.data && <div className='bg-red-300 p-3'>
                 {errors.data}
             </div>}
-            <div className='sm:container mx-auto pt-8 pb-10'>
+            <div className='sm:container mx-auto pt-8 pb-10 px-10 bg-white rounded-lg'>
                 <h1 className='font-bold text-3xl text-center text-red-600'>Topik Pembahasan</h1>
                 <img className="h-96 object-cover w-full my-4" src={`${process.env.REACT_APP_IMAGE_URL}/${data.cover_image}`} alt="Man looking at item at a store" />
                 <h2 className='font-bold text-2xl mt-5 mb-3'>{data.title}</h2>
@@ -41,7 +41,7 @@ function DetailCourse() {
                     <p className='font-bold'>By : {data.author}</p>
                     <p className='font-light'>Diterbitkan: <Moment format="DD MMMM YYYY">{moment(data.created_at)}</Moment></p>
                 </div>
-                <hr />
+                <hr className='bg-gray-600' />
                 <div className='flex justify-between my-4'>
                     <p className='font-bold'>Kursus Topik Ini</p>
                     <p className='font-light'>{dataLo.length} Materi</p>
