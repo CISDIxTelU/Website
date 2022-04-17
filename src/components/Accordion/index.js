@@ -106,11 +106,13 @@ const Accordion = ({ dataLo, id }) => {
                             <h1 className="text-left font-semibold">Feedback</h1>
                         </Wrap>
                     </button>
-                    <button className='w-96 mt-8' onClick>
-                        <Wrap className='bg-red-600 text-white justify-center rounded-full' onClick={() => toggle(100)} key={100}>
-                            <h1 className="font-semibold">Selesaikan Pelatihan</h1>
-                        </Wrap>
-                    </button>
+                    <Link to={`/complete/${id}`}>
+                        <button className='w-96 mt-8'>
+                            <Wrap className='bg-red-600 text-white justify-center rounded-full' onClick={() => toggle(100)} key={100}>
+                                <h1 className="font-semibold">Selesaikan Pelatihan</h1>
+                            </Wrap>
+                        </button>
+                    </Link>
                     <FeedbackModal handleClose={handleClose} open={open} id={id} />
                 </Container>
             </AccordionSection>

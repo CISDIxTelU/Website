@@ -52,7 +52,7 @@ function App() {
           <Route path="/question/:id/:slug" element={<PrivateOutlet />}>
             <Route path="" element={<Question />} />
           </Route>
-          <Route path="/complete" element={<PrivateOutlet />}>
+          <Route path="/complete/:id" element={<PrivateOutlet />}>
             <Route path="" element={<Complete />} />
           </Route>
           <Route path="/profile" element={<PrivateOutlet />}>
