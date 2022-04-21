@@ -14,6 +14,7 @@ import LandingPage from "./LandingPage";
 import ForgotPassword from "./ForgotPassword";
 import Users from "./Users";
 import Announcement from "./Announcement";
+import SubmitTask from "./SubmitTask";
 
 export {
     Login,
@@ -31,5 +32,6 @@ export {
     LandingPage,
     ForgotPassword,
     Users,
-    Announcement
+    Announcement,
+    SubmitTask
 };

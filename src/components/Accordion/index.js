@@ -96,7 +96,7 @@ const Accordion = ({ dataLo, id }) => {
                             <h1 className="text-left font-semibold">Post test</h1>
                         </Wrap>
                     </Link>
-                    <Link to={`#`}>
+                    <Link to={`/unggah-tugas/${id}`}>
                         <Wrap className='bg-red-600 text-white rounded-lg' onClick={() => toggle(100)} key={100}>
                             <h1 className="text-left font-semibold">Unggah Tugas</h1>
                         </Wrap>
