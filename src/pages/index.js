@@ -15,6 +15,7 @@ import ForgotPassword from "./ForgotPassword";
 import Users from "./Users";
 import Announcement from "./Announcement";
 import SubmitTask from "./SubmitTask";
+import Certificate from "./Certificate";
 
 export {
     Login,
@@ -33,5 +34,6 @@ export {
     ForgotPassword,
     Users,
     Announcement,
-    SubmitTask
+    SubmitTask,
+    Certificate
 };

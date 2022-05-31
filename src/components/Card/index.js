@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-function Card({ materi, judul, foto, linkTo, deskripsi, count }) {
+function Card({ judul, foto, linkTo, deskripsi, count }) {
 
     const setLengthText = (deskripsi, length) => {
         if(deskripsi.length > length){

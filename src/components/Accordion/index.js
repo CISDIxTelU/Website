@@ -32,6 +32,12 @@ const Wrap = styled.div`
 
 export const Dropdown = ({ dataLesson, id }) => {
 
+    // const [isFavorite, setIsFavorite] = useState(false);
+
+    const favorite = () => {
+        
+    }
+    
     return (
         <div style={{ width: "100 %", marginBottom: '30px' }}>
             {dataLesson.map((data, idx) => {
@@ -39,7 +45,7 @@ export const Dropdown = ({ dataLesson, id }) => {
                     <div className='border-b py-3 px-6 border-gray-200 flex justify-between' key={idx}>
                         <Link className="block active:font-bold hover:underline" to={`/course/${data.id}`}>{data.name}</Link>
                         <div className='flex gap-x-2'>
-                            <button>
+                            <button onClick={favorite}>
                                 {data['is_favorit'] ? <FaHeart fill='#EB5757' /> : <FaRegHeart />}
                             </button>
                             {data['is_done'] === 1 ? <FaCheckCircle fill='#00CE62' /> : <FaCheckCircle />}
@@ -52,7 +58,7 @@ export const Dropdown = ({ dataLesson, id }) => {
     )
 }
 
-const Accordion = ({ dataLo, id }) => {
+const Accordion = ({ dataLo, id, isDone }) => {
     const [clicked, setClicked] = useState(false);
     const [open, setOpen] = useState(false)
 
@@ -68,14 +74,13 @@ const Accordion = ({ dataLo, id }) => {
             //if clicked question is already active, then close it
             return setClicked(null);
         }
-
         setClicked(index);
     };
     return (
         <IconContext.Provider value={{ color: 'gray', size: '20px' }}>
             <AccordionSection>
                 <Container>
-                    <Link to={`/question/${id}/pre_test`}>
+                    <Link to={`/question/${id}/pre_test`} d>
                         <Wrap className='bg-red-600 text-white rounded-lg' onClick={() => toggle(100)} key={100}>
                             <h1 className="text-left font-semibold">Pre test</h1>
                         </Wrap>
@@ -91,12 +96,12 @@ const Accordion = ({ dataLo, id }) => {
                             </div>
                         );
                     })}
-                    <Link to={`/question/${id}/post_test`}>
+                    <Link to={isDone ? `/question/${id}/post_test` : ''}>
                         <Wrap className='bg-red-600 text-white rounded-lg' onClick={() => toggle(100)} key={100}>
                             <h1 className="text-left font-semibold">Post test</h1>
                         </Wrap>
                     </Link>
-                    <Link to={`/unggah-tugas/${id}`}>
+                    <Link to={`/task-upload/${id}`}>
                         <Wrap className='bg-red-600 text-white rounded-lg' onClick={() => toggle(100)} key={100}>
                             <h1 className="text-left font-semibold">Unggah Tugas</h1>
                         </Wrap>

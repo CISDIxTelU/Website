@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import { DummyProfile } from '../../assets';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;

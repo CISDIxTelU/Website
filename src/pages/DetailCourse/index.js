@@ -10,6 +10,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 function DetailCourse() {
     const [data, setData] = useState([]);
     const [dataLo, setDataLo] = useState([]);
+    const [donePreTest, setDonePreTest] = useState(false)
     const errors = useLocation();
     let { id } = useParams();
 
@@ -22,10 +23,13 @@ function DetailCourse() {
         }
 
         axios.get(`${BASE_URL}/topic/${id}`, config).then(res => {
+            console.log(res.data.is_pre_test_done)
+            setDonePreTest(res.data.is_pre_test_done)
             setData(res.data.data_topic);
             setDataLo(res.data.data_lo);
         })
-    }, [id]);
+
+    }, [id. data]);
 
     return (
         <div className='bg-gray-100 p-10'>
@@ -47,7 +51,7 @@ function DetailCourse() {
                     <p className='font-light'>{dataLo.length} Materi</p>
                     <p className='font-light'>0 / {dataLo.length} Selesai</p>
                 </div>
-                <Accordion dataLo={dataLo} id={id} />
+                <Accordion dataLo={dataLo} id={id} isDone={donePreTest} />
             </div>
         </div>
     )

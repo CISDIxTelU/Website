@@ -52,7 +52,7 @@ function Question() {
                 return setQuestion(response)
             }
         }).catch(err => {
-            setError(err)
+            setError('soal gagal diunduh, refresh halaman kembali (jika sudah mengerjakan tidak dapat mengerjakan soal kembali)')
         })
     }, [id, slug, navigate]);
 
@@ -61,6 +61,7 @@ function Question() {
             <h1 className='font-bold text-3xl mb-3'>Sesi Quiz</h1>
             <p className='text-gray-600'>Silahkan jawab pertanyaan di bawa ini.</p>
             <hr className='my-5' />
+            {error && <p className='text-white bg-red-600 font-semibold block rounded p-3'>{error}</p>}
             {question.map((data, idx) => {
                 return (
                     <CardQuestion data={data} key={idx} selected={answer => selectAnswer(answer, data.id)} />
