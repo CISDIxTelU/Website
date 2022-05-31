@@ -19,13 +19,14 @@ function SubmitTask() {
     }
 
     const formatFileName = (data) => {
-        return data.slice(14)
+        return data.slice(6)
     }
 
     useEffect(() => {
         axios.get(`${BASE_URL}/task/${id}`, config)
         .then(res => {
             setDataTask(res.data.task)
+            console.log(dataTask)
             if(res.data.task.user_task !== undefined){
                 setStatus('Sudah Mengirim')
             }
@@ -36,11 +37,12 @@ function SubmitTask() {
 
     return (
         <div className='bg-gray-100 p-10'>
-            <div className='sm:container mx-auto pt-8 pb-10 px-10 bg-white rounded-lg'>
+            <div className='sm:container mx-auto pt-8 pb-10 md:px-10 px-3 bg-white rounded-lg'>
                 <h1 className='font-bold text-3xl text-center text-red-600'>Unggah Tugas</h1>
                 <div className='bg-slate-50 w-full rounded-lg p-4 my-5'>
                     <h3 className='font-semibold'>Uraian Tugas</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Accumsan, nunc fusce quis risus vestibulum. Tellus libero a suspendisse ut. Amet tellus aliquam orci sagittis.</p>
+                    <h4 className='font-semibold mt-4'>{dataTask.title}</h4>
+                    <p>{dataTask.text}</p>
                 </div>
                 <div className='bg-slate-50 w-full rounded-lg p-4 my-5'>
                     <h3 className='font-semibold mb-3'>Unggah Tugas</h3>

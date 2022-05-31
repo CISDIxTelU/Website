@@ -5,6 +5,7 @@ import { FiPlus, FiMinus } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { FaCheckCircle, FaHeart, FaRegHeart } from 'react-icons/fa';
 import { FeedbackModal } from '..';
+import axios from 'axios';
 
 const AccordionSection = styled.div`
 `;
@@ -28,16 +29,34 @@ const Wrap = styled.div`
     margin-right: 1.5rem;
   }
 `;
-// const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export const Dropdown = ({ dataLesson, id }) => {
 
-    // const [isFavorite, setIsFavorite] = useState(false);
-
-    const favorite = () => {
-        
+    const config = {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+        }
     }
-    
+
+    const favorite = (ids) => {
+        axios.post(`${BASE_URL}/favorit/add/${ids}`, {}, config).then(res => {
+            if(res.data.status === 'success'){
+                window.location.reload()
+            }
+            console.log(res.data)
+        })
+    }
+    const deleteFavorite = (ids) => {
+        axios.delete(`${BASE_URL}/favorit/delete/${ids}`, config).then(res => {
+            if(res.data.status === 'success'){
+                window.location.reload()
+            }
+            console.log(res.data)
+        })
+    }
+
     return (
         <div style={{ width: "100 %", marginBottom: '30px' }}>
             {dataLesson.map((data, idx) => {
@@ -45,7 +64,16 @@ export const Dropdown = ({ dataLesson, id }) => {
                     <div className='border-b py-3 px-6 border-gray-200 flex justify-between' key={idx}>
                         <Link className="block active:font-bold hover:underline" to={`/course/${data.id}`}>{data.name}</Link>
                         <div className='flex gap-x-2'>
-                            <button onClick={favorite}>
+                            <button onClick={() => {
+                                if (data['is_favorit'] === 0) {
+                                    favorite(data.id)
+                                }
+                                else if (data['is_favorit'] === 1) {
+                                    deleteFavorite(data.id)
+                                }
+                            }
+                            }
+                            >
                                 {data['is_favorit'] ? <FaHeart fill='#EB5757' /> : <FaRegHeart />}
                             </button>
                             {data['is_done'] === 1 ? <FaCheckCircle fill='#00CE62' /> : <FaCheckCircle />}
@@ -54,7 +82,7 @@ export const Dropdown = ({ dataLesson, id }) => {
                 );
             })
             }
-        </div>
+        </div >
     )
 }
 

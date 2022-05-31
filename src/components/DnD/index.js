@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useCallback, useState } from 'react';
+import React, {useState} from 'react';
 import { useDropzone } from 'react-dropzone';
 import { FaFolderOpen } from 'react-icons/fa';
 import { MdFileCopy, MdOutlineDeleteOutline } from 'react-icons/md';
@@ -9,6 +9,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 function Dropzone(props) {
 
     const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
+    const [Status, setStatus] = useState(false)
     const config = {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -43,9 +44,11 @@ function Dropzone(props) {
         formData.append('user_notes', 'testing dari dev')
         axios.post(`${BASE_URL}/task/${props.id}`, formData, config)
             .then(res => {
-                console.log(res.status)
+                if(res.status === 200){
+                    setStatus(!Status)
+                }
             }).catch(err => {
-                console.log(err)
+                setStatus(false)
             })
     }
 
@@ -57,15 +60,16 @@ function Dropzone(props) {
                     <FaFolderOpen className='text-red-700 w-28 h-28 mx-auto' />
                     <p className='font-semibold text-center'>Seret dokumen, foto, atau video kamu<br /> kesini untuk memulai unggah tugas.</p>
                     <div className='relative w-fit mx-auto'>
-                        <hr className='w-52 border-gray-400 my-8' />
-                        <p className='font-semibold text-gray-700 bg-white absolute -top-3 left-20'>ATAU</p>
+                        <hr className='md:w-52 w-32 border-gray-400 my-8' />
+                        <p className='font-semibold text-gray-700 bg-gray-50 absolute -top-3 md:left-20 left-11'>ATAU</p>
                     </div>
                     <div className='text-center'>
                         <button className='bg-red-700 rounded-lg mx-auto py-3 px-10 text-white hover:bg-red-800'>Jelajahi File</button>
                     </div>
                 </div>
                 <ul>{files}</ul>
-                <button className='bg-red-600 p-3 rounded-xl text-white hover:bg-red-800 w-48 mt-5' type='submit'>Kirim</button>
+                <button className='bg-red-600 p-3 rounded-xl text-white hover:bg-red-800 md:w-48 w-full mt-5' type='submit'>Kirim</button>
+                <p className={`${Status === true ? 'text-green-400': 'text-red-400'}`}>{Status === true ? 'file berhasil dikirim' : 'file tidak berhasil dikirim. coba lagi'}</p>
             </form>
         </section>
     );
