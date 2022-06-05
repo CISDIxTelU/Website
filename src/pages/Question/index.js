@@ -12,22 +12,28 @@ function Question() {
         "content": []
     });
     const navigate = useNavigate()
-    const [error, setError] = useState('') 
+    const [error, setError] = useState('')
 
     const selectAnswer = (answer, id) => {
+        const exist = userAnswer.content.find(idx => idx.id === id);
+        // console.log('id : ', id, 'answer : ', answer)
+        if(exist) return;
         setUserAnswer({ content: [...userAnswer.content, { 'id': id, 'answerUser': answer },] })
     };
 
     const onClick = (e) => {
+        e.preventDefault();
         const config = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }
-        
+
         axios.post(`${BASE_URL}/answer-question/${id}/${slug}`, userAnswer, config).then(res => {
             return navigate(`/detail-question/${id}/${slug}`)
         })
+
+        // console.log(userAnswer)
     }
 
     useEffect(() => {
@@ -39,14 +45,14 @@ function Question() {
         axios.get(`${BASE_URL}/question/${id}/${slug}`, config).then(res => {
             let response = res.data.question
             console.log(res)
-            
-            if(res.data.status === 'failed'){
-                return navigate(`/detail-question/${id}/${slug}`, {replace: true})
-            }else {
+
+            if (res.data.status === 'failed') {
+                return navigate(`/detail-question/${id}/${slug}`, { replace: true })
+            } else {
                 return setQuestion(response)
             }
         }).catch(err => {
-            setError(err)
+            setError('soal gagal diunduh, refresh halaman kembali (jika sudah mengerjakan tidak dapat mengerjakan soal kembali)')
         })
     }, [id, slug, navigate]);
 
@@ -55,6 +61,7 @@ function Question() {
             <h1 className='font-bold text-3xl mb-3'>Sesi Quiz</h1>
             <p className='text-gray-600'>Silahkan jawab pertanyaan di bawa ini.</p>
             <hr className='my-5' />
+            {error && <p className='text-white bg-red-600 font-semibold block rounded p-3'>{error}</p>}
             {question.map((data, idx) => {
                 return (
                     <CardQuestion data={data} key={idx} selected={answer => selectAnswer(answer, data.id)} />

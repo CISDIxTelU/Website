@@ -13,11 +13,12 @@ function QuestionGrade() {
 
     console.log(data)
     return (
-        <div className='container mx-auto p-5'>
+        <div className='container mx-auto p-5 bg-white my-16'>
             <div className='my-4'>
+                <h2 className='text-4xl font-bold mb-3 text-center text-red-700'>Nilai</h2>
                 <h2 className='text-4xl font-bold mb-3'>Selamat!</h2>
             </div>
-            <div className='bg-red-700 w-full p-10 h-96 rounded-lg mb-52 flex flex-col md:flex-row relative'>
+            <div className='bg-red-700 w-full p-10 h-96 rounded-lg mb-52 flex flex-col md:flex-row relative shadow-2xl'>
                 <img src={BgGrade1} alt='foto' className='absolute bottom-0 left-0' />
                 <img src={BgGrade2} alt='foto' className='absolute top-0 right-24' />
                 <img src={BgGrade3} alt='foto' className='absolute bottom-0 right-0' />
@@ -42,7 +43,7 @@ function QuestionGrade() {
                     <div className='bg-white px-3 py-5 shadow-2xl w-full md:w-1/2 md:mx-auto rounded-lg'>
                         <div className='flex justify-between mb-3'>
                             <div>
-                                <p className='text-lg'>Nilai Kamu</p>
+                                <p className='text-lg'>Nilai anda</p>
                             </div>
                             <p className='text-lg text-red-600'>{final}/100</p>
                         </div>
@@ -54,18 +55,18 @@ function QuestionGrade() {
                     </div>
                 </div>
             </div>
-            <div className='flex justify-center pt-10 md:my-5'>
+            <div className='pt-10 md:my-5'>
             <Link to={`/detail-course/${id}`}>
                 <button
                     className='
                 bg-red-600 
-                p-3 rounded-lg 
+                p-3 px-16 rounded-full 
                 text-white border-2 
                 hover:bg-white 
                 hover:border-red-600 
                 hover:text-red-600'
                 >
-                    Kembali ke course
+                    Lanjutkan Pelatihan
                 </button>
             </Link>
             </div>

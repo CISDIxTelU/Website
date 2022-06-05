@@ -2,7 +2,8 @@ import React, { Fragment } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { DummyProfile, LogoCisdi } from '../../assets'
 import { Menu, Transition } from '@headlessui/react'
-import { FaBars, FaChevronDown, FaRegBell } from 'react-icons/fa'
+import { FaBars, FaChevronDown, FaRegBell, FaRegUserCircle } from 'react-icons/fa'
+import {BsBoxArrowRight} from 'react-icons/bs'
 
 function Navbar({ name }) {
     const navigate = useNavigate();
@@ -116,7 +117,7 @@ function Navbar({ name }) {
                         <li className="nav-item">
                             <Link
                                 className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                                to="/materi"
+                                to="/courses"
                             >
                                 <span className="ml-2 text-xl">Beranda</span>
                             </Link>
@@ -124,7 +125,7 @@ function Navbar({ name }) {
                         <li className="nav-item">
                             <Link
                                 className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                                to="/riwayat"
+                                to="/history"
                             >
                                 <span className="ml-2 text-xl">Riwayat</span>
                             </Link>
@@ -132,7 +133,7 @@ function Navbar({ name }) {
                         <li className="nav-item">
                             <Link
                                 className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                                to="/favorit"
+                                to="/favourite"
                             >
                                 <span className="ml-2 text-xl">Favorit</span>
                             </Link>
@@ -164,6 +165,17 @@ function Navbar({ name }) {
                                                                 } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                                                             onClick={profile}
                                                         >
+                                                            {active ? (
+                                                                <FaRegUserCircle
+                                                                    className="w-5 h-5 mr-2 text-red-400"
+                                                                    aria-hidden="true"
+                                                                />
+                                                            ) : (
+                                                                <FaRegUserCircle
+                                                                    className="w-5 h-5 mr-2"
+                                                                    aria-hidden="true"
+                                                                />
+                                                            )}
                                                             Buka Profil Diri
                                                         </button>
                                                     )}
@@ -199,6 +211,17 @@ function Navbar({ name }) {
                                                             className={`${active ? 'text-red-600 underline' : 'text-gray-900'
                                                                 } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                                                             onClick={logout}>
+                                                                {active ? (
+                                                                <BsBoxArrowRight
+                                                                    className="w-5 h-5 mr-2 text-red-400"
+                                                                    aria-hidden="true"
+                                                                />
+                                                            ) : (
+                                                                <BsBoxArrowRight
+                                                                    className="w-5 h-5 mr-2"
+                                                                    aria-hidden="true"
+                                                                />
+                                                            )}
                                                             Keluar
                                                         </button>
                                                     )}

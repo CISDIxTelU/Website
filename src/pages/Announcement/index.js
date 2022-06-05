@@ -30,11 +30,18 @@ const Announcement = () => {
         <h1 className='font-bold text-3xl text-center text-red-600 my-5'>Pemberitahuan</h1>
         <div className='my-4'>
           {
-            data.map(data => {
-              return (
-                <CardAnnouncement title={data.title} description={data.text} key={data.id} />
+            data.length === 0 ?
+              (
+                <div className='text-center'>
+                  <b>Tidak ada pemberitahuan untuk saat ini</b>
+                </div>
               )
-            })
+              :
+              data.map(data => {
+                return (
+                  <CardAnnouncement title={data.title} description={data.text} key={data.id} />
+                )
+              })
           }
         </div>
       </div>

@@ -21,6 +21,7 @@ import BgForgot1 from './bg-forgot.svg'
 import BgForgot2 from './bg-forgot-1.svg'
 import BgForgot3 from './bg-forgot-2.svg'
 import DummyProfile from './profile-placeholder.png'
+import templateCertificate from './sertif.png'
 
 export {
     BgLogin,
@@ -45,5 +46,6 @@ export {
     BgForgot1,
     BgForgot2,
     BgForgot3,
-    DummyProfile
+    DummyProfile,
+    templateCertificate
 };

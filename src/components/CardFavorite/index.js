@@ -2,7 +2,7 @@ import React from 'react'
 import { FaHeart } from 'react-icons/fa'
 import { Banner1 } from '../../assets'
 
-function CardHistory() {
+function CardHistory({title, count}) {
     return (
         <div className='shadow-md p-3 border-l-8 border-red-700'>
             <div className='flex'>
@@ -13,7 +13,7 @@ function CardHistory() {
                 </div>
             </div>
             <hr className='my-3'/>
-            <b className='text-gray-300'>Materi</b>
+            <b className='text-gray-300'>{count} Materi</b>
         </div>
     )
 }

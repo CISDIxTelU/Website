@@ -3,7 +3,7 @@ import { animation, BgLogin, LogoCisdi } from '../../assets'
 import { FaAt, FaLock } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Lottie from 'reactjs-lottie';
+import Lottie from 'lottie-react';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -34,7 +34,7 @@ function Login({ setToken }) {
         }, config).then(res => {
             localStorage.setItem('token', res.data.access_token)
             localStorage.setItem('name', res.data.name)
-            navigate('/materi');
+            navigate('/courses');
         }).catch(res => {
             setLoading(false);
             let errorData = res.response.data.message;

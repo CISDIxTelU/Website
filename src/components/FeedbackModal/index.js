@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Modal from '@mui/material/Modal';
 import axios from 'axios';
-import { Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { MdOutlineClose } from 'react-icons/md';
 
@@ -26,8 +26,7 @@ const FeedbackModal = ({ handleClose, open, id }) => {
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-    const onSubmit = (e) => {
-        e.preventDefault()
+    const onSubmit = () => {
         const config = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -44,7 +43,6 @@ const FeedbackModal = ({ handleClose, open, id }) => {
         Promise.all([feedbackPost(), ratingPost()])
         .then((res)=> {
             if(res[0].data.status || res[1].data.status){
-                return Navigate(`detail-course/${id}`)
             }
         }).catch(err => {
             setError(err.response.data.message)
@@ -64,7 +62,6 @@ const FeedbackModal = ({ handleClose, open, id }) => {
                 aria-describedby="modal-modal-description"
             >
                 <Box className='bg-gray-50 rounded-md relative' style={style}>
-                    <form onSubmit={onSubmit}>
                         <h1 className='font-bold text-xl'>Feedback</h1>
                         <MdOutlineClose className='absolute right-2 top-2 text-red-600 cursor-pointer' size={30} onClick={handleClose} />
                         <textarea rows={8} className='my-3 p-2 w-full border border-gray-100 rounded-md shadow-sm' placeholder='tulis ulasanmu...' onChange={(e) => setFeedback(e.target.value)} />
@@ -86,8 +83,10 @@ const FeedbackModal = ({ handleClose, open, id }) => {
                             <FaRegWindowClose fill='#FFF' className='absolute right-5' onClick={errorClose} />
                             <p className='text-red-900'>{error}</p>
                             </div>}
-                        <button type='submit' className='bg-red-600 p-3 text-white w-full rounded-lg'>Kirim</button>
-                    </form>
+                        <button type='submit' onClick={onSubmit} className='bg-red-600 p-3 text-white w-full rounded-lg'>Kirim</button>
+                        <Link to={`/certificate/${id}`}>
+                        <button className='bg-white border mt-3 border-red-600 p-3 text-red-600 w-full rounded-lg'>Sertifikat</button>
+                    </Link>
                 </Box>
             </Modal>
         </div>

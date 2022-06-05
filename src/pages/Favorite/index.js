@@ -38,8 +38,9 @@ const Favorite = () => {
                 <h2 className='font-bold text-lg my-5'>Daftar Materi Favorit</h2>
                 <div className='grid grid-cols-2 gap-5'>
                     {data.map(data => {
+                        console.log(data)
                         return (
-                            <CardFavorite />
+                            <CardFavorite title={data.title} />
                         )
                     })}
                 </div>
