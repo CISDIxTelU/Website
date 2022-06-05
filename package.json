@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
     "@craco/craco": "^5.9.0",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
@@ -13,10 +15,11 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.24.0",
+    "babel-jest": "^28.1.0",
     "dompurify": "^2.3.6",
     "dotenv": "^11.0.0",
     "html-react-parser": "^1.4.9",
-    "html2canvas": "^1.4.1",
+    "jest": "^28.1.0",
     "lottie-react": "^2.2.1",
     "moment": "^2.29.1",
     "react": "^17.0.2",
@@ -31,7 +34,7 @@
     "react-simple-star-rating": "^4.0.5",
     "styled-components": "^5.3.3",
     "svg-parser": "^2.0.4",
-    "swiper": "^8.1.5",
+    "swiper": "^8.2.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -62,8 +65,12 @@
   "devDependencies": {
     "autoprefixer": "^10.4.7",
     "glob-all": "^3.2.1",
+    "jest-canvas-mock": "^2.4.0",
     "postcss": "^8.4.14",
     "react-test-renderer": "^17.0.2",
     "tailwindcss": "^3.0.24"
-  }
+  },
+  "jest": {
+    "setupFiles": ["jest-canvas-mock"]
+}
 }
