@@ -23,7 +23,7 @@ function DetailCourse() {
         }
 
         axios.get(`${BASE_URL}/topic/${id}`, config).then(res => {
-            console.log(res.data.is_pre_test_done)
+            console.log(res.data)
             setDonePreTest(res.data.is_pre_test_done)
             setData(res.data.data_topic);
             setDataLo(res.data.data_lo);
