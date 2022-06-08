@@ -92,7 +92,6 @@ const Certificate = () => {
 
     const getTemplate = () => {
         axios.get(`${BASE_URL}/certificate/template`, config).then(res => {
-            const certificateSrc = res.data.certificate
             setImage(!image)
             generateCertificate()
         })
@@ -109,12 +108,12 @@ const Certificate = () => {
         axios.get(`${BASE_URL}/certificate/${id}`, config).then(res => {
             console.log(res.data.status)
             if(res.data.status === 'success'){
-                setIsDone(!isDone)
+                setIsDone(true)
                 setMessage('Terima kasih anda sudah mencetak sertifikat anda !')
             }
         })
         getTopic()
-    }, [])
+    }, [id])
 
     return (
         <div className='bg-gray-100 p-10'>

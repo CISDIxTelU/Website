@@ -33,7 +33,7 @@ function SubmitTask() {
         }).catch(err => {
             console.log(err)
         })
-    }, [])
+    })
 
     return (
         <div className='bg-gray-100 p-10'>
