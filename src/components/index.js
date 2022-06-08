@@ -13,4 +13,19 @@ import CardFavorite from './CardFavorite';
 import CardAnnouncement from './CardAnnouncement';
 import Dropzone from "./DnD";
 
-export { Dropzone, Card, CardFavorite, CardTask, Navbar, Accordion, Icon, Footer, CardQuestion, CardQuestionDetail, Modal, FeedbackModal, Carousel, CardAnnouncement };
+export {
+    Dropzone,
+    Card,
+    CardFavorite,
+    CardTask,
+    Navbar,
+    Accordion,
+    Icon,
+    Footer,
+    CardQuestion,
+    CardQuestionDetail,
+    Modal,
+    FeedbackModal,
+    Carousel,
+    CardAnnouncement
+};

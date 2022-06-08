@@ -50,7 +50,7 @@ function Login({ setToken }) {
                 <div className="w-40">
                     <Lottie options={{
                         animationData: animation,
-                    }} className="" />
+                    }} />
                 </div>
             </div>
         )

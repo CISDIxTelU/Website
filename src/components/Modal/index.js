@@ -14,10 +14,6 @@ const style = {
 
 const ModalComponent = ({ handleClose, title, description, open, foto }) => {
 
-    const setLengthText = (deskripsi, length) => {
-        return deskripsi.slice(0, length).concat('...')
-    }
-
     return (
         <div>
             <Modal

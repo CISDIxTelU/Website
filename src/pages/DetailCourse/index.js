@@ -15,7 +15,6 @@ function DetailCourse() {
     let { id } = useParams();
 
     useEffect(() => {
-
         const config = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -29,7 +28,7 @@ function DetailCourse() {
             setDataLo(res.data.data_lo);
         })
 
-    }, [id. data]);
+    }, [id]);
 
     return (
         <div className='bg-gray-100 p-10'>
