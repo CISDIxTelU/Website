@@ -1,5 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+// import 'swiper/css';
+import 'swiper/swiper-bundle.min.css'
+import 'swiper/swiper.min.css'
 import React from "react";
 import { Banner1, Banner2, Banner3, Banner4 } from '../../assets';
 import { Autoplay, Navigation, Pagination } from 'swiper';

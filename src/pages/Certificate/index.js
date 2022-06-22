@@ -73,23 +73,6 @@ const Certificate = () => {
         })
     }
 
-    // const downloadCertificate = () => {
-    //     const canvasSave = document.getElementById('canvas');
-    //     const d = canvasSave.toDataURL('image/png');
-    //     const w = window.open('about:blank', 'image from canvas');
-    //     w.document.write("<img src='" + d + "' alt='from canvas'/>");
-    //     console.log('Saved!');
-        // let formData = new FormData()
-        // formData.append('file', canvas.toDataURL())
-
-        // console.log(formData)
-        // axios.post(`${BASE_URL}/certificate/${id}`, {file: canvas.toDataURL}, config).then(res => {
-        //     console.log(res)
-        // }).catch(err => {
-        //     console.log(err)
-        // })
-    // }
-
     const getTemplate = () => {
         axios.get(`${BASE_URL}/certificate/template`, config).then(res => {
             setImage(!image)
@@ -137,7 +120,7 @@ const Certificate = () => {
                     <p>Pastikan nama Anda sudah benar. Apabila ada kesalahan, silakan tulis ulang nama Anda pada kolom sebelumnya. Apabila sudah sesuai, silakan klik “Unduh Sertifikat” untuk mengunduh sertifikat Anda.</p>
                     <div className='py-5 px-0'>
                         <canvas id="canvas" width="1440px" height="1000px" className='mb-5'>
-                            <img alt="foto" id='sertifikat'></img>
+                            <img alt="foto" id='sertifikat' className='overflow-auto'></img>
                         </canvas>
                         <div className='text-center'>
                             <button

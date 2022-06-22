@@ -12,7 +12,6 @@
     "@heroicons/react": "^1.0.5",
     "@mui/material": "^5.3.1",
     "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.24.0",
     "babel-jest": "^28.1.0",
@@ -34,7 +33,7 @@
     "react-simple-star-rating": "^4.0.5",
     "styled-components": "^5.3.3",
     "svg-parser": "^2.0.4",
-    "swiper": "^8.2.2",
+    "swiper": "^6.8.4",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -63,6 +62,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react": "^12.1.2",
     "autoprefixer": "^10.4.7",
     "glob-all": "^3.2.1",
     "postcss": "^8.4.14",

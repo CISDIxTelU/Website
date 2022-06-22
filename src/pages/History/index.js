@@ -38,13 +38,7 @@ const History = () => {
                         data.map(data => {
                             if (data.status === 'progress') {
                                 return (
-                                    <CardTask title={data.topic.title} id={data.id} percentage={data.precentage_done} key={data.id} />
-                                )
-                            } else {
-                                return (
-                                    <div className='text-center'>
-                                        <b>Tidak ada materi yang dibaca saat ini</b>
-                                    </div>
+                                    <CardTask title={data?.topic?.title} id={data?.id} percentage={data?.precentage_done} key={data?.id} />
                                 )
                             }
                         })}
@@ -57,11 +51,6 @@ const History = () => {
                             if (data.status === 'completed') {
                                 return <CardTask title={data.topic.title} id={data.id} isDone={true} percentage={data.precentage_done} key={data.id} />
                             }
-                            return (
-                                <div className='text-center'>
-                                    <b>Tidak ada materi yang selesai saat ini</b>
-                                </div>
-                            )
                         })}
                 </div>
             </div>

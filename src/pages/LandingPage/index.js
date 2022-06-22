@@ -9,7 +9,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function LandingPage() {
     const [data, setData] = useState([])
-    useEffect(() => {
+    const fetchData = () => {
         const config = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -18,7 +18,12 @@ function LandingPage() {
         axios.get(`${BASE_URL}/landing`, config).then(res => {
             const data = res.data.data
             setData(data)
+            console.log(data)
         })
+    }
+    
+    useEffect(() => {
+        fetchData()
     }, [])
     return (
         <>
@@ -36,7 +41,7 @@ function LandingPage() {
                     </div>
                     <div className='text-center'>
                         <Link to='/login-option'>
-                            <a href className='flex-1 text-white bg-red-600 p-4 px-28 rounded-lg w-56 transition duration-300 ease-in-out hover:bg-gray-100 hover:text-red-600 hover:border-red-600 border-2'>Masuk</a>
+                            <span className='flex-1 text-white bg-red-600 p-4 px-28 rounded-lg w-56 transition duration-300 ease-in-out hover:bg-gray-100 hover:text-red-600 hover:border-red-600 border-2'>Masuk</span>
                         </Link>
                     </div>
                 </div>
