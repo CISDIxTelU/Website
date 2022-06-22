@@ -19,7 +19,7 @@ import {
   SubmitTask,
   Certificate
 } from "./pages";
-import { Routes, Route, Navigate, Outlet } from "react-router-dom";
+import { Routes, Route, Navigate, Outlet, Router } from "react-router-dom";
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
