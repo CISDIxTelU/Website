@@ -7,6 +7,7 @@
 
 import '@testing-library/jest-dom/extend-expect'
 import '@fastly/performance-observer-polyfill/polyfill'
+// import 'jest-canvas-mock'
 
 // PerformanceObserver is now available globally!
 const observer = new PerformanceObserver((list) => {});

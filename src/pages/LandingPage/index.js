@@ -18,7 +18,6 @@ function LandingPage() {
         axios.get(`${BASE_URL}/landing`, config).then(res => {
             const data = res.data.data
             setData(data)
-            console.log(data)
         })
     }
     
@@ -34,9 +33,9 @@ function LandingPage() {
                 </div>
                 <div className='w-full py-24 bg-gray-100'>
                     <div className='grid md:grid-cols-3 mb-12 gap-x-8 mx-auto' style={{ width: 'fit-content' }}>
-                        {data.slice(0, 3).map((data) => {
+                        {data.slice(0, 3).map((data, index) => {
                             let foto = `${process.env.REACT_APP_IMAGE_URL}/${data.cover_image}`;
-                            return <CardLanding foto={foto} judul={data.title} deskripsi={data.description} />
+                            return <CardLanding data-testid='landing-page' foto={foto} judul={data.title} deskripsi={data.description} key={index} />
                         })}
                     </div>
                     <div className='text-center'>

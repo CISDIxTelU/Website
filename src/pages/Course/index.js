@@ -52,13 +52,13 @@ function Course() {
                             <Lottie animationData= {animationCourse} />
                         ) : (
                             <>
-                                <h1 className="font-bold text-3xl my-3">{dataLesson.name}</h1>
+                                <h1 className="font-bold text-3xl my-3" data-testid='course'>{dataLesson.name}</h1>
                                 {dataLesson.video_url != null ? <iframe src={dataLesson.video_url} title="description" className="h-96 w-full"></iframe> : ''}
                                 {extension === 'jpg' && <img src={`${IMAGE_URL}/${dataLesson.lesson_attachment}`} alt="foto" className="h-96 w-full bg-gray-400" />}
                                 <div dangerouslySetInnerHTML={createMarkUp(dataLesson.lesson_text)} />
                                 <br />
                                 <div className='mt-10 flex flex-col justify-between w-full'>
-                                    <button className='bg-red-600 text-center text-white p-3 mb-4 rounded-lg w-full font-bold hover:bg-opacity-75' value={dataLesson.id} onClick={() => history(-1, { replace: true })}>
+                                    <button data-testid="button" className='bg-red-600 text-center text-white p-3 mb-4 rounded-lg w-full font-bold hover:bg-opacity-75' value={dataLesson.id} onClick={() => history(-1, { replace: true })}>
                                         Tandakan Selesai & Lanjut Materi
                                     </button>
                                     {extension === 'pdf' && <a className='bg-transparent border-red-600 border-2 text-center text-red-600 p-3 rounded-lg w-full font-bold hover:bg-opacity-75' href={`${IMAGE_URL}/${dataLesson.lesson_attachment}`} download >

@@ -1,11 +1,7 @@
-import { render, screen, waitFor } from "@testing-library/react";
-import '@testing-library/jest-dom';
-import { BrowserRouter } from "react-router-dom";
+import { render, screen } from "@testing-library/react";
 import axios from "axios";
-import LandingPage from '.';
-// import CardLanding from "../../components/CardLanding";
-
-jest.mock('axios')
+import { BrowserRouter } from "react-router-dom";
+import Courses from ".";
 
 const dummyLanding = [
     {
@@ -49,32 +45,32 @@ const dummyLanding = [
     },
 ]
 
-test('render landing page', async () => {
-    jest.spyOn(axios, 'get').mockResolvedValue({data: {data: dummyLanding}})
-    render(
-        <BrowserRouter>
-            <LandingPage />
-        </BrowserRouter>
-    );
-    // eslint-disable-next-line testing-library/prefer-find-by
-    await waitFor(() => screen.getByRole('heading'));
-    expect(await screen.findByText('Ayo Belajar Bersama di Health Learning Platform!')).toBeInTheDocument();
-})
+describe('courses page', () => { 
+    jest.mock('axios')
+    test('render courses page', async () => {
+        const {getByText} = render(
+            <BrowserRouter>
+                <Courses />
+            </BrowserRouter>
+        )
+    
+        // eslint-disable-next-line testing-library/await-async-utils
+        expect(screen.getByText('Selamat datang di Health Learning Platform. Mau belajar apa kali ini?')).toBeInTheDocument();
+    })
+    
+    test('render card courses page', async () => {
+        jest.spyOn(axios, 'get').mockResolvedValue({
+            data: {
+                data: dummyLanding
+            }
+        })
 
-// test('render card landing page', async () => {
-//     render(<CardLanding />);
-
-//     // eslint-disable-next-line testing-library/await-async-utils
-//     waitFor(() => expect(screen.getByText('Amet Nam porro veli')).toBeInTheDocument())
-// })
-
-test("landing page list", async () => {
-    jest.spyOn(axios, 'get').mockResolvedValue({data: {data: dummyLanding}})
-    render(
-        <BrowserRouter>
-            <LandingPage />
-        </BrowserRouter>
-    );
-
-    expect(await screen.findByText('Nesciunt asperiores')).toBeInTheDocument();
-})
+        const {getByText} = render(
+            <BrowserRouter>
+                <Courses />
+            </BrowserRouter>
+        )
+        // eslint-disable-next-line testing-library/prefer-screen-queries
+        expect(getByText("Amet Nam porro veli")).toBeInTheDocument();
+    })
+ })

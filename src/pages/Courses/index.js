@@ -6,9 +6,9 @@ import { Card, Carousel } from '../../components';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-function Courses() {
+function Courses({loadings}) {
     const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(loadings);
 
     useEffect(() => {
         setLoading(true)
@@ -18,12 +18,9 @@ function Courses() {
             }
         }
 
-        axios.get(`${BASE_URL}/topic`, config).then(e => {
-            if (e) {
-                setLoading(false);
-                setData(e.data.data);
-                console.log(e.data)
-            }
+        axios.get(`${BASE_URL}/topic`, config).then(res => {
+            setLoading(false);
+            setData(res.data.data);
         }).catch(e => {
         })
     }, []);
@@ -48,9 +45,8 @@ function Courses() {
                         <h2 className="text-3xl my-5 font-bold">Topik Pembahasan</h2>
                         <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
                             {data.map((obj, idx) => {
-                                let foto = `${process.env.REACT_APP_IMAGE_URL}/${obj.cover_image}`;
                                 return (
-                                    <Card foto={foto} key={idx} deskripsi={obj.description} judul={obj.title} materi={obj.author} linkTo={`/detail-course/${obj.id}`} count={obj.count_lesson} />
+                                    <Card foto={`${process.env.REACT_APP_IMAGE_URL}/${obj.cover_image}`} key={idx} deskripsi={obj.description} judul={obj.title} materi={obj.author} linkTo={`/detail-course/${obj.id}`} count={obj.count_lesson} />
                                 )
                             })}
                         </div>
