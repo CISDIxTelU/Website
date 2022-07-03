@@ -12,22 +12,23 @@ const IMAGE_URL = process.env.REACT_APP_IMAGE_URL;
 function Course() {
     const [dataLesson, setDataLesson] = useState([]);
     let { id_topic } = useParams();
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
     const [extension, setExtension] = useState('')
     const history = useNavigate()
 
-    useEffect(() => {
-        setLoading(true)
+    const getData = (id) => {
         const config = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }
-        axios.get(`${BASE_URL}/lesson/${id_topic}`, config).then(res => {
+        axios.get(`${BASE_URL}/lesson/${id ?? 1}`, config).then(res => {
             setDataLesson(res.data.data);
-            setLoading(false)
         }).catch(e => {
         })
+    }
+    useEffect(() => {
+        getData(id_topic)
     }, [id_topic]);
 
     const getFileExtension = async (filename) => {
@@ -40,7 +41,6 @@ function Course() {
     getFileExtension(dataLesson.lesson_attachment)
 
     const createMarkUp = (data) => {
-        console.log(DOMPurify.sanitize((data)));
         return {__html: data};
     }
     return (
@@ -48,25 +48,19 @@ function Course() {
             <div className="flex wrap justify-between py-3 gap-10">
                 <div className="py-2 w-full">
                     <div className="border rounded-lg bg-white p-6">
-                        {loading ? (
-                            <Lottie animationData= {animationCourse} />
-                        ) : (
-                            <>
                                 <h1 className="font-bold text-3xl my-3" data-testid='course'>{dataLesson.name}</h1>
                                 {dataLesson.video_url != null ? <iframe src={dataLesson.video_url} title="description" className="h-96 w-full"></iframe> : ''}
                                 {extension === 'jpg' && <img src={`${IMAGE_URL}/${dataLesson.lesson_attachment}`} alt="foto" className="h-96 w-full bg-gray-400" />}
                                 <div dangerouslySetInnerHTML={createMarkUp(dataLesson.lesson_text)} />
                                 <br />
                                 <div className='mt-10 flex flex-col justify-between w-full'>
-                                    <button data-testid="button" className='bg-red-600 text-center text-white p-3 mb-4 rounded-lg w-full font-bold hover:bg-opacity-75' value={dataLesson.id} onClick={() => history(-1, { replace: true })}>
+                                    <button className='bg-red-600 text-center text-white p-3 mb-4 rounded-lg w-full font-bold hover:bg-opacity-75' value={dataLesson.id} onClick={() => history(-1, { replace: true })}>
                                         Tandakan Selesai & Lanjut Materi
                                     </button>
                                     {extension === 'pdf' && <a className='bg-transparent border-red-600 border-2 text-center text-red-600 p-3 rounded-lg w-full font-bold hover:bg-opacity-75' href={`${IMAGE_URL}/${dataLesson.lesson_attachment}`} download >
                                         Download Materi
                                     </a>}
                                 </div>
-                            </>
-                        )}
                     </div>
                 </div>
 

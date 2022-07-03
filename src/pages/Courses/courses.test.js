@@ -1,76 +1,82 @@
-import { render, screen } from "@testing-library/react";
-import axios from "axios";
-import { BrowserRouter } from "react-router-dom";
-import Courses from ".";
+// import dependencies
+import React from 'react'
 
-const dummyLanding = [
-    {
-        "author": "Inventore libero est",
-        "certificate": null,
-        "count_lesson": 1,
-        "cover_image": "topics/Q4cY6k0NQHQy5AMizmN0pHbHLrjK1ZqUOwviRbnU.jpg",
-        "created_at": "2022-06-17T15:08:46.000000Z",
-        "deleted_at": null,
-        "description": "Impedit sed qui cum",
-        "id": 1,
-        "short_description": "Ea quasi culpa nulla",
-        "title": "Amet Nam porro veli",
-        "updated_at": "2022-06-17T15:08:46.000000Z",
-    },
-    {
-        "author": "Magnam est possimus",
-        "certificate": null,
-        "count_lesson": 0,
-        "cover_image": "topics/WYMovXvlJD6eSyvDm2vb68g715RPzbRt23IlBmRA.jpg",
-        "created_at": "2022-06-17T15:10:35.000000Z",
-        "deleted_at": null,
-        "description": "Voluptatem eiusmod",
-        "id": 2,
-        "short_description": "Id libero voluptate",
-        "title": "Voluptatem omnis re",
-        "updated_at": "2022-06-17T15:10:35.000000Z",
-    },
-    {
-        "author": "Necessitatibus volup",
-        "certificate": null,
-        "count_lesson": 0,
-        "cover_image": "topics/uYsEFHXLUfIOMz7oK7VzvkHSzdZKTt9yx7u4In8A.jpg",
-        "created_at": "2022-06-17T15:11:59.000000Z",
-        "deleted_at": null,
-        "description": "Distinctio Pariatur",
-        "id": 3,
-        "short_description": "Consequatur accusant",
-        "title": "Nesciunt asperiores",
-        "updated_at": "2022-06-17T15:11:59.000000Z",
-    },
-]
+// import API mocking utilities from Mock Service Worker
+import { rest } from 'msw'
+import { setupServer } from 'msw/node'
 
-describe('courses page', () => { 
-    jest.mock('axios')
-    test('render courses page', async () => {
-        const {getByText} = render(
-            <BrowserRouter>
-                <Courses />
-            </BrowserRouter>
-        )
-    
-        // eslint-disable-next-line testing-library/await-async-utils
-        expect(screen.getByText('Selamat datang di Health Learning Platform. Mau belajar apa kali ini?')).toBeInTheDocument();
-    })
-    
-    test('render card courses page', async () => {
-        jest.spyOn(axios, 'get').mockResolvedValue({
-            data: {
-                data: dummyLanding
-            }
-        })
+// import react-testing methods
+import { render, waitFor, screen } from '@testing-library/react'
 
-        const {getByText} = render(
-            <BrowserRouter>
-                <Courses />
-            </BrowserRouter>
-        )
-        // eslint-disable-next-line testing-library/prefer-screen-queries
-        expect(getByText("Amet Nam porro veli")).toBeInTheDocument();
-    })
- })
+// add custom jest matchers from jest-dom
+import '@testing-library/jest-dom'
+import { BrowserRouter } from 'react-router-dom'
+import Courses from '.'
+// the component to test
+
+const server = setupServer(
+    rest.get('https://cisdi.mfaiztriputra.id/api/topic', (req, res, ctx) => {
+        return res(ctx.json({
+            data: [
+                {
+                    "id": 1,
+                    "title": "Amet Nam porro veli",
+                    "description": "Impedit sed qui cum",
+                    "short_description": "Ea quasi culpa nulla",
+                    "author": "Inventore libero est",
+                    "cover_image": "topics/Q4cY6k0NQHQy5AMizmN0pHbHLrjK1ZqUOwviRbnU.jpg",
+                    "certificate": null,
+                    "created_at": "2022-06-17T15:08:46.000000Z",
+                    "updated_at": "2022-06-17T15:08:46.000000Z",
+                    "deleted_at": null,
+                    "count_lesson": 1
+                },
+                {
+                    "id": 2,
+                    "title": "Voluptatem omnis re",
+                    "description": "Voluptatem eiusmod",
+                    "short_description": "Id libero voluptate",
+                    "author": "Magnam est possimus",
+                    "cover_image": "topics/WYMovXvlJD6eSyvDm2vb68g715RPzbRt23IlBmRA.jpg",
+                    "certificate": null,
+                    "created_at": "2022-06-17T15:10:35.000000Z",
+                    "updated_at": "2022-06-17T15:10:35.000000Z",
+                    "deleted_at": null,
+                    "count_lesson": 0
+                },
+                {
+                    "id": 3,
+                    "title": "Nesciunt asperiores",
+                    "description": "Distinctio Pariatur",
+                    "short_description": "Consequatur accusant",
+                    "author": "Necessitatibus volup",
+                    "cover_image": "topics/uYsEFHXLUfIOMz7oK7VzvkHSzdZKTt9yx7u4In8A.jpg",
+                    "certificate": null,
+                    "created_at": "2022-06-17T15:11:59.000000Z",
+                    "updated_at": "2022-06-17T15:11:59.000000Z",
+                    "deleted_at": null,
+                    "count_lesson": 0
+                }
+            ]
+        }
+        ))
+    }),
+)
+
+beforeAll(() => server.listen())
+afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
+
+test('render halaman kumpulan materi', async () => {
+    render(
+        <BrowserRouter>
+            <Courses />
+        </BrowserRouter>
+    )
+
+    await waitFor(() => screen.getByRole('heading'))
+
+    expect(screen.getByRole('heading')).toHaveTextContent('Topik Pembahasan')
+
+    expect(screen.getByText('Nesciunt asperiores')).toBeInTheDocument()
+})

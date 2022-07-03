@@ -45,7 +45,6 @@ export const Dropdown = ({ dataLesson, id }) => {
             if(res.data.status === 'success'){
                 window.location.reload()
             }
-            console.log(res.data)
         })
     }
     const deleteFavorite = (ids) => {
@@ -53,7 +52,6 @@ export const Dropdown = ({ dataLesson, id }) => {
             if(res.data.status === 'success'){
                 window.location.reload()
             }
-            console.log(res.data)
         })
     }
 
@@ -64,7 +62,7 @@ export const Dropdown = ({ dataLesson, id }) => {
                     <div className='border-b py-3 px-6 border-gray-200 flex justify-between' key={idx}>
                         <Link className="block active:font-bold hover:underline" to={`/course/${data.id}`}>{data.name}</Link>
                         <div className='flex gap-x-2'>
-                            <button onClick={() => {
+                            <button data-testid='like' onClick={() => {
                                 if (data['is_favorit'] === 0) {
                                     favorite(data.id)
                                 }
@@ -108,7 +106,7 @@ const Accordion = ({ dataLo, id, isDone }) => {
         <IconContext.Provider value={{ color: 'gray', size: '20px' }}>
             <AccordionSection>
                 <Container>
-                    <Link to={`/question/${id}/pre_test`} d>
+                    <Link to={`/question/${id}/pre_test`}>
                         <Wrap className='bg-red-600 text-white rounded-lg' onClick={() => toggle(100)} key={100}>
                             <h1 className="text-left font-semibold">Pre test</h1>
                         </Wrap>
@@ -142,7 +140,7 @@ const Accordion = ({ dataLo, id, isDone }) => {
                     <Link to={`/complete/${id}`}>
                         <button className='w-96 mt-8'>
                             <Wrap className='bg-red-600 text-white justify-center rounded-full' onClick={() => toggle(100)} key={100}>
-                                <h1 className="font-semibold">Selesaikan Pelatihan</h1>
+                                <h1 className="font-semibold" data-testid='selesai'>Selesaikan Pelatihan</h1>
                             </Wrap>
                         </button>
                     </Link>

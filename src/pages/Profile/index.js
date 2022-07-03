@@ -22,10 +22,6 @@ function Profile() {
 
     return (
         <>
-            <Helmet>
-                <meta charSet="utf-8" />
-                <title>Profile</title>
-            </Helmet>
             <div className='container mx-auto p-3'>
                 <h2 className='font-bold text-3xl text-red-600 text-center my-4'>CISDI</h2>
                 <h2 className='font-bold text-2xl mb-3'>Profile</h2>
@@ -35,7 +31,7 @@ function Profile() {
                     </div>
                     <div className='mx-20 mb-3'>
                         <p className='font-bold text-md mb-2'>Nama Lengkap</p>
-                        <input type="text" placeholder="Nama lengkap anda" value={profile.name} className='w-full rounded p-2' readOnly />
+                        <input aria-label="name-input" type="text" placeholder="Nama lengkap anda" value={profile.name} className='w-full rounded p-2' readOnly />
                     </div>
                     <div className='mx-20 mb-3'>
                         <p className='font-bold text-md mb-2'>Nama Pengguna</p>

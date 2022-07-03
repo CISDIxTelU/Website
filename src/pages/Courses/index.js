@@ -35,7 +35,7 @@ function Courses({loadings}) {
                 </div>
                 :
                 <>
-                    <div className="bg-red-600 h-full flex flex-col wrap items-center justify-center">
+                    <div className="bg-red-600 h-full w-full flex flex-col wrap items-center justify-center">
                         <Carousel />
                     </div>
 

@@ -1,53 +1,54 @@
-import { fireEvent, render, screen, waitForElement } from "@testing-library/react";
-import axios from "axios";
-import { BrowserRouter } from "react-router-dom";
-import Course from ".";
+// import dependencies
+import React from 'react'
 
-const dummyLanding = 
-    {
-        "id": 1,
-        "id_lo": 1,
-        "name": "awdawd",
-        "video_url": null,
-        "video_duration": null,
-        "lesson_text": "<p>awdawd<br></p>",
-        "lesson_attachment": null,
-        "created_at": "2022-04-02T07:38:10.000000Z",
-        "updated_at": "2022-04-02T07:38:10.000000Z",
-        "deleted_at": null
-    }
+// import API mocking utilities from Mock Service Worker
+import { rest } from 'msw'
+import { setupServer } from 'msw/node'
 
-describe('course detail page', () => {
-    jest.mock('axios')
-    test('button course page', async () => {
-        render(
-            <BrowserRouter>
-                <Course />
-            </BrowserRouter>
-        )
-        fireEvent.click(
-            screen.queryByRole('button', { name: 'Tandakan Selesai & Lanjut Materi' })
-        )
+// import react-testing methods
+import { render, waitFor, screen, fireEvent } from '@testing-library/react'
 
-        // eslint-disable-next-line testing-library/await-async-utils
-        await expect(screen.getAllByTestId('button')).toBeTruthy();
-    })
+// add custom jest matchers from jest-dom
+import '@testing-library/jest-dom'
+import { BrowserRouter } from 'react-router-dom'
+import Course from '.'
+// the component to test
 
-    test('render course page', async () => {
-        jest.spyOn(axios, 'get').mockResolvedValue({
-            data: {
-                data: dummyLanding
-            }
-        })
+const server = setupServer(
+    rest.get('https://cisdi.mfaiztriputra.id/api/lesson/1', (req, res, ctx) => {
+        return res(ctx.json({
+            data: 
+                {
+                    "id": 1,
+                    "id_lo": 1,
+                    "name": "Priscilla Lee",
+                    "video_url": 'https://youtube.com',
+                    "video_duration": null,
+                    "lesson_text": "<p>Magnam commodi aliqu.</p>",
+                    "lesson_attachment": 'data.pdf',
+                    "created_at": "2022-06-17T15:26:38.000000Z",
+                    "updated_at": "2022-06-17T15:26:38.000000Z",
+                    "deleted_at": null
+                }
+        }
+        ))
+    }),
+)
 
-        const { getByTestId } = render(
-            <BrowserRouter>
-                <Course />
-            </BrowserRouter>
-        )
+beforeAll(() => server.listen())
+afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
 
-        // eslint-disable-next-line testing-library/prefer-screen-queries
-        const listNode = await waitForElement(() => getByTestId('course'));
-        expect(listNode.children).toHaveLength(2);
-    })
+test('render halaman materi', async () => {
+    render(
+        <BrowserRouter>
+            <Course />
+        </BrowserRouter>
+    )
+
+    await waitFor(() => screen.getByRole('heading'))
+
+    expect(screen.getByRole('heading')).toHaveTextContent('Priscilla Lee')
+
+    fireEvent.click(screen.getByRole('button'))
 })

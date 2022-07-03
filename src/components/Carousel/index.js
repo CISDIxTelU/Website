@@ -20,19 +20,19 @@ function Carousel() {
             navigation={true}
             modules={[Autoplay, Pagination, Navigation]}
             className="mySwiper"
-            style={{ backgroundColor: '#404042' }}
+            style={{ backgroundColor: '#404042', width: '100%' }}
         >
             <SwiperSlide>
-                <img src={Banner1} alt='foto1' className='image' />
+                <img src={Banner1} alt='foto1' />
             </SwiperSlide>
             <SwiperSlide>
-                <img src={Banner2} alt='foto1' className='image' />
+                <img src={Banner2} alt='foto1' />
             </SwiperSlide>
             <SwiperSlide>
-                <img src={Banner3} alt='foto1' className='image' />
+                <img src={Banner3} alt='foto1' />
             </SwiperSlide>
-            <SwiperSlide>
-                <img src={Banner4} alt='foto1' className='image' />
+            <SwiperSlide>w-fit
+                <img src={Banner4} alt='foto1' />
             </SwiperSlide>
         </Swiper>
     )

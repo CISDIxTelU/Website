@@ -28,7 +28,7 @@ const ModalComponent = ({ handleClose, title, description, open, foto }) => {
                             <img className="h-full w-full object-cover md:rounded-l-xl" src={foto} alt="Man looking at item at a store" />
                         </div>
                         <div className="p-8 flex-1 relative">
-                            <MdOutlineClose className='absolute right-10 top-5 text-red-600 cursor-pointer' size={30} onClick={handleClose} />
+                            <MdOutlineClose data-testid="close" className='absolute right-10 top-5 text-red-600 cursor-pointer' size={30} onClick={handleClose} />
                             <h1 className='font-bold text-4xl mb-3 text-red-600'>Jangan <br/>Lewatkan <br/>Pelatihan Ini!</h1>
                             <button className="block mt-1 text-lg leading-tight text-left font-medium text-black hover:underline"> {title}</button>
                             <p className="my-2 text-gray-500">
