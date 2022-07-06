@@ -17,6 +17,7 @@ const Favorite = () => {
             }
             axios.get(`${BASE_URL}/favorit`, config).then(res => {
                 const data = res.data.data
+                console.log(data)
                 setData(data)
             })
         }
@@ -36,14 +37,18 @@ const Favorite = () => {
                 </div>
 
                 <h2 className='font-bold text-lg my-5'>Daftar Materi Favorit</h2>
-                <div className='grid grid-cols-2 gap-5'>
-                    {data.map(data => {
-                        console.log(data)
-                        return (
-                            <CardFavorite title={data.title} />
-                        )
-                    })}
-                </div>
+                {
+                    data.length === 0 ?
+                        <p className='text-center'>Tidak ada materi favorit</p>
+                        :
+                        <div className='grid grid-cols-2 gap-5'>
+                            {data.map(data => {
+                                return (
+                                    <CardFavorite title={data.detail_lesson?.name} />
+                                )
+                            })}
+                        </div>
+                }
             </div>
         </div>
     )

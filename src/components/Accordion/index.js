@@ -61,8 +61,8 @@ export const Dropdown = ({ dataLesson, id }) => {
         <div style={{ width: "100 %", marginBottom: '30px' }}>
             {dataLesson.map((data, idx) => {
                 return (
-                    <div className='border-b py-3 px-6 border-gray-200 flex justify-between' key={idx}>
-                        <Link className="block active:font-bold hover:underline" to={`/course/${data.id}`}>{data.name}</Link>
+                    <div className='border-b py-3 px-6 border-gray-200 flex justify-between items-center' key={idx}>
+                        <Link className="block active:font-bold text-sm md:text-md hover:underline" to={`/course/${data.id}`}>{data.name}</Link>
                         <div className='flex gap-x-2'>
                             <button onClick={() => {
                                 if (data['is_favorit'] === 0) {
@@ -140,7 +140,7 @@ const Accordion = ({ dataLo, id, isDone }) => {
                         </Wrap>
                     </button>
                     <Link to={`/complete/${id}`}>
-                        <button className='w-96 mt-8'>
+                        <button className='w-fit md:w-96 mt-8'>
                             <Wrap className='bg-red-600 text-white justify-center rounded-full' onClick={() => toggle(100)} key={100}>
                                 <h1 className="font-semibold">Selesaikan Pelatihan</h1>
                             </Wrap>

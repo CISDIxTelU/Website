@@ -20,7 +20,7 @@ function Carousel() {
             navigation={true}
             modules={[Autoplay, Pagination, Navigation]}
             className="mySwiper"
-            style={{ backgroundColor: '#404042' }}
+            style={{ backgroundColor: '#404042', width: '100%' }}
         >
             <SwiperSlide>
                 <img src={Banner1} alt='foto1' className='image' />
