@@ -21,10 +21,10 @@ function CardTask({ title, progress, isDone, percentage, id }) {
       {isDone ? (
         <div className='flex-2'>
           <div className='bg-gray-700 py-2 px-7 rounded-t-lg'>
-            <b className='text-white'>Nilai</b>
+            <b className='text-white'>Presentasi</b>
           </div>
           <div className='bg-red-700 text-center py-4 rounded-b-lg'>
-            <b className='text-white text-5xl'>20</b>
+            <b className='text-white text-5xl'>{percentage}</b>
           </div>
         </div>
       )

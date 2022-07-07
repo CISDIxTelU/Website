@@ -17,6 +17,7 @@ function Profile() {
         }
         axios.get(`${BASE_URL}/profile`, config).then(res => {
             setProfile(res.data)
+            console.log(res.data)
         })
     }, [])
 
@@ -35,17 +36,17 @@ function Profile() {
                     </div>
                     <div className='mx-20 mb-3'>
                         <p className='font-bold text-md mb-2'>Nama Pengguna</p>
-                        <input type="text" placeholder="Nama lengkap anda" value={profile.username} className='w-full rounded p-2' readOnly />
+                        <input type="text" placeholder="Nama pengguna anda" value={profile.username} className='w-full rounded p-2' readOnly />
                     </div>
                     <div className='mx-20 mb-3'>
                         <p className='font-bold text-md mb-2'>Nomor Telepon</p>
-                        <input type="text" placeholder="Nama lengkap anda" value={profile.no_telp} className='w-full rounded p-2' />
+                        <input type="text" placeholder="Nomor telepon anda" value={profile.no_telp} className='w-full rounded p-2' />
                     </div>
                     <div className='mx-20 mb-3'>
                         <p className='font-bold text-md mb-2'>Asal Instansi</p>
                         <div className='relative inline-block w-full text-gray-700'>
                             <select className="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Asal instansi anda...">
-                                <option>asal instansi anda...</option>
+                                <option>{profile.asal_instansi}</option>
                                 <option>Another option</option>
                                 <option>And one more</option>
                             </select>
