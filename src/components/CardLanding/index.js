@@ -10,7 +10,7 @@ function CardLanding({ foto, judul, deskripsi, id }) {
         setOpen(false)
     }
     return (
-        <div style={{ width: 'fit-content' }}>
+        <div style={{ width: 'fit-content' }} id='card'>
             <div className="w-80 h-full rounded-xl bg-red-600 shadow-md overflow-hidden">
                 <div className='flex flex-col'>
                     <div className="md:shrink-0 h-44">

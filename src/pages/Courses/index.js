@@ -40,7 +40,7 @@ function Courses({loadings}) {
                     </div>
 
                     <div className="container p-3 mx-auto mb-10 h-full">
-                        <p className='font-black text-4xl mb-4 mt-8'>Halo!</p>
+                        <p className='font-black text-4xl mb-4 mt-8' id="greeting">Halo!</p>
                         <p className='text-lg font-normal'>Selamat datang di Health Learning Platform. Mau belajar apa kali ini?</p>
                         <h2 className="text-3xl my-5 font-bold">Topik Pembahasan</h2>
                         <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">

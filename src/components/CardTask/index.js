@@ -15,7 +15,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   },
 }));
 
-function CardTask({ title, progress, isDone, percentage }) {
+function CardTask({ title, progress, isDone, percentage, id }) {
   return (
     <div className='bg-card-task px-4 py-7 border-0 rounded-lg flex items-center mb-4'>
       {isDone ? (
@@ -32,7 +32,7 @@ function CardTask({ title, progress, isDone, percentage }) {
         <img src={PlayCircle} alt="circle play button" />
       }
       <div className='flex-1 mx-6'>
-        <b className='text-xl'>{title}</b>
+        <b className='text-xl' id={id}>{title}</b>
       </div>
       <div className='flex-1'>
         <b className='text-lg'>{percentage}% Complete</b>

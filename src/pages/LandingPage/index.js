@@ -32,11 +32,11 @@ function LandingPage() {
                     <div className='grid md:grid-cols-3 mb-12 gap-x-8 mx-auto' style={{ width: 'fit-content' }}>
                         {data.map((data, index) => {
                             let foto = `${process.env.REACT_APP_IMAGE_URL}/${data.cover_image}`;
-                            return <CardLanding data-testid='landing-page' foto={foto} id={index} judul={data.title} deskripsi={data.description} key={index} />
+                            return <CardLanding foto={foto} id={index} judul={data.title} deskripsi={data.description} key={index} />
                         })}
                     </div>
                     <div className='text-center'>
-                        <Link to='/login-option'>
+                        <Link to='/login-option' id="login">
                             <span className='flex-1 text-white bg-red-600 p-4 px-28 rounded-lg w-56 transition duration-300 ease-in-out hover:bg-gray-100 hover:text-red-600 hover:border-red-600 border-2' data-testid="masuk">Masuk</span>
                         </Link>
                     </div>

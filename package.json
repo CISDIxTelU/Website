@@ -41,7 +41,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --setupFiles ./src/setupTests.js",
     "eject": "react-scripts eject",
-    "dev": "react-scripts dev"
+    "dev": "react-scripts dev",
+    "e2e-test": "cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -64,6 +65,7 @@
   "devDependencies": {
     "@testing-library/react": "^12.1.2",
     "autoprefixer": "^10.4.7",
+    "cypress": "^10.3.0",
     "enzyme": "^3.11.0",
     "glob-all": "^3.2.1",
     "jest-canvas-mock": "^2.4.0",

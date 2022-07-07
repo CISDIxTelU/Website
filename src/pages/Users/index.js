@@ -11,13 +11,13 @@ function Users() {
                     <h2 className='text-white font-bold mb-3'>Login Sebagai...</h2>
                     <p className='text-white mb-10'>Pilih peran untuk melanjutkan!</p>
                     <div className='grid gap-2 grid-cols-2'>
-                        <a href='https://adminhlp.pencerahnusantara.org/login'>
+                        <a href='https://adminhlp.pencerahnusantara.org/login' id="pelatih">
                             <div className='border-2 border-white p-3 rounded-lg flex justify-center text-white items-center hover:bg-white hover:text-black'>
                                 <img src={Pelatih} alt='foto' width='70' />
                                 <p className='font-bold ml-5'>Pelatih</p>
                             </div>
                         </a>
-                        <Link to='/login'>
+                        <Link to='/login' id="peserta">
                             <div className='border-2 border-white p-3 rounded-lg flex justify-center text-white items-center hover:bg-white hover:text-black'>
                                 <img src={Peserta} alt='foto' width='70' />
                                 <p className='font-bold ml-5'>Peserta</p>
