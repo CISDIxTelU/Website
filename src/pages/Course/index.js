@@ -12,9 +12,10 @@ const IMAGE_URL = process.env.REACT_APP_IMAGE_URL;
 function Course() {
     const [dataLesson, setDataLesson] = useState([]);
     let { id_topic } = useParams();
+    // const navigate = useNavigate();
     // const [loading, setLoading] = useState(false);
     const [extension, setExtension] = useState('')
-    const history = useNavigate()
+    const { history, navigate } = useNavigate()
 
     const getData = (id) => {
         const config = {
@@ -32,7 +33,7 @@ function Course() {
     }, [id_topic]);
 
     const getFileExtension = async (filename) => {
-        if(filename){
+        if (filename) {
             const extension = await filename.split('.').pop();
             setExtension(extension)
         }
@@ -41,13 +42,15 @@ function Course() {
     getFileExtension(dataLesson.lesson_attachment)
 
     const createMarkUp = (data) => {
-        return {__html: data};
+        return { __html: data };
     }
     return (
         <div className="container mx-auto py-11">
             <div className="flex wrap justify-between py-3 gap-10">
                 <div className="py-2 w-full">
                     <div className="border rounded-lg bg-white p-6">
+                        {dataLesson.length !== 0 ?
+                            <>
                                 <h1 className="font-bold text-3xl my-3" data-testid='course'>{dataLesson.name}</h1>
                                 {dataLesson.video_url != null ? <iframe src={dataLesson.video_url} title="description" className="h-96 w-full"></iframe> : ''}
                                 {extension === 'jpg' && <img src={`${IMAGE_URL}/${dataLesson.lesson_attachment}`} alt="foto" className="h-96 w-full bg-gray-400" />}
@@ -61,6 +64,10 @@ function Course() {
                                         Download Materi
                                     </a>}
                                 </div>
+                            </>
+                            :
+                            <h1 className="font-bold text-3xl my-10 text-center" id="error">Tidak ada materi</h1>
+                        }
                     </div>
                 </div>
 

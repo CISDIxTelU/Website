@@ -7,6 +7,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const Favorite = () => {
     const [data, setData] = useState([])
+    const [name, setName] = useState([])
 
     useEffect(() => {
         const fetchData = () => {
@@ -17,14 +18,18 @@ const Favorite = () => {
             }
             axios.get(`${BASE_URL}/favorit`, config).then(res => {
                 const data = res.data.data
-                console.log(data)
                 setData(data)
+                console.log(data[0].id_lesson)
+                axios.get(`${BASE_URL}/lesson/${data[0].id_lesson}`, config).then(res => {
+                    console.log(res.data.data.name)
+                    setName(res.data.data.name)
+                })
             })
         }
-
+        
         fetchData()
     }, [])
-
+    
     return (
         <div className='bg-card-task py-10'>
             <div className='container bg-white mx-auto py-8 px-8 rounded-lg'>
@@ -39,12 +44,12 @@ const Favorite = () => {
                 <h2 className='font-bold text-lg my-5'>Daftar Materi Favorit</h2>
                 {
                     data.length === 0 ?
-                        <p className='text-center'>Tidak ada materi favorit</p>
+                        <p className='text-center' id="errorDone">Tidak ada materi favorit</p>
                         :
-                        <div className='grid grid-cols-2 gap-5'>
+                        <div className='grid md:grid-cols-2 gap-5'>
                             {data.map(data => {
                                 return (
-                                    <CardFavorite title={data.detail_lesson?.name} />
+                                    <CardFavorite title={name} />
                                 )
                             })}
                         </div>

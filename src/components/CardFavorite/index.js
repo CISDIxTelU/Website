@@ -8,7 +8,7 @@ function CardHistory({title, count}) {
             <div className='flex'>
                 <img src={Banner1} alt='foto' className='w-24 h-24 rounded-lg object-none' />
                 <div className='flex-1 ml-5'>
-                    <b className='text-lg'>{title}</b>
+                    <b className='text-lg' id="title">{title}</b>
                     <FaHeart fill='#EB5757' className='float-right text-2xl' />
                 </div>
             </div>

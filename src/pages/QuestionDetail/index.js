@@ -39,7 +39,7 @@ function QuestionDetail() {
             <div className='container mx-auto p-3 py-10'>
                 <div className='flex justify-center items-center relative mb-7'>
                     <FaChevronLeft className='absolute left-0 text-xl cursor-pointer' onClick={onClick} />
-                    <h1 className='font-bold text-3xl text-red-600'>Sesi Pembahasan</h1>
+                    <h1 className='font-bold text-3xl text-red-600' id="explain">Sesi Pembahasan</h1>
                 </div>
                 <h1 className='font-bold text-3xl mb-3'>Pembahasan</h1>
                 <p className='text-gray-600'>Berikut merupakan pembahasan dari pertanyaan yang telah Anda jawab sebelumnya.</p>
@@ -49,7 +49,7 @@ function QuestionDetail() {
                         <CardQuestionDetail data={data} key={idx} />
                     )
                 })}
-                <button type="submit" className='w-full bg-red-600 text-white font-bold py-3 hover:bg-opacity-75 rounded-lg' onClick={() => navigate(`/question/grade/${id}`, { state: { grade: grade.grade } })}>Selesaikan Quiz</button>
+                <button type="submit" id="submit" className='w-full bg-red-600 text-white font-bold py-3 hover:bg-opacity-75 rounded-lg' onClick={() => navigate(`/question/grade/${id}`, { state: { grade: grade.grade } })}>Selesaikan Quiz</button>
             </div>
         </div>
     )

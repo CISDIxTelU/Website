@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 describe('courses', () => {
+    // course tidak kosong
     it('courses render card', () => {
         cy.visit('http://localhost:3000/')
         cy.get('#login').click()
@@ -13,5 +14,7 @@ describe('courses', () => {
         cy.get('#login').click()
         cy.get('#greeting').should('have.text', 'Halo!')
         cy.get('.grid #card').should('have.length', 3)
+        cy.wait(2000)
+        cy.screenshot('courses')
     })   
 })

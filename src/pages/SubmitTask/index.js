@@ -38,7 +38,7 @@ function SubmitTask() {
     return (
         <div className='bg-gray-100 p-10'>
             <div className='sm:container mx-auto pt-8 pb-10 md:px-10 px-3 bg-white rounded-lg'>
-                <h1 className='font-bold text-3xl text-center text-red-600'>Unggah Tugas</h1>
+                <h1 className='font-bold text-3xl text-center text-red-600' id="title">Unggah Tugas</h1>
                 <div className='bg-slate-50 w-full rounded-lg p-4 my-5'>
                     <h3 className='font-semibold'>Uraian Tugas</h3>
                     <h4 className='font-semibold mt-4'>{dataTask.title}</h4>

@@ -64,7 +64,7 @@ const History = () => {
                 <div className='my-4'>
                     {
                         complete.length === 0 ?
-                            <p className='text-center'>tidak ada materi selesai</p> :
+                            <p className='text-center' id="errorDone">tidak ada materi selesai</p> :
                             complete.map(data => {
                                 return <CardTask title={data.topic.title} id={data.id} isDone={true} percentage={data.precentage_done} key={data.id} />
                             })

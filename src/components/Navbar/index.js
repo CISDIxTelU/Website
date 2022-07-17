@@ -23,7 +23,7 @@ function Navbar({ name }) {
                 <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
                     <Link
                         className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-                        to="/materi"
+                        to="/courses"
                     >
                         <img alt='foto' src={LogoCisdi} className='w-32 lg:w-27' />
                     </Link>
@@ -147,6 +147,7 @@ function Navbar({ name }) {
                             <Link
                                 className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                                 to="/favourite"
+                                id="favorite"
                             >
                                 <span className="ml-2 text-xl">Favorit</span>
                             </Link>

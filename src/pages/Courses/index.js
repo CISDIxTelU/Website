@@ -46,7 +46,7 @@ function Courses({loadings}) {
                         <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
                             {data.map((obj, idx) => {
                                 return (
-                                    <Card foto={`${process.env.REACT_APP_IMAGE_URL}/${obj.cover_image}`} key={idx} deskripsi={obj.description} judul={obj.title} materi={obj.author} linkTo={`/detail-course/${obj.id}`} count={obj.count_lesson} />
+                                    <Card foto={`${process.env.REACT_APP_IMAGE_URL}/${obj.cover_image}`} key={idx} id={idx} deskripsi={obj.description} judul={obj.title} materi={obj.author} linkTo={`/detail-course/${obj.id}`} count={obj.count_lesson} />
                                 )
                             })}
                         </div>

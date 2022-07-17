@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
-describe('login', () => {
-    it('login successfully', () => {
+describe('profile', () => {
+    it('profile successfully', () => {
         cy.visit('http://localhost:3000/')
         cy.get('#login').click()
         cy.get('h2').should('have.text', 'Login Sebagai...')
@@ -13,6 +13,7 @@ describe('login', () => {
         cy.get('#login').click()
         cy.get('#greeting').should('have.text', 'Halo!')
         cy.get('#placeholder').click()
-        cy.get('button').should('have.text', 'Buka Profil Diri')
+        cy.visit('http://localhost:3000/profile')
+        cy.get('.text-2xl').should('have.text', 'Profile')
     })   
 })

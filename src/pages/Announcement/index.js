@@ -23,7 +23,7 @@ const Announcement = () => {
   return (
     <div className='bg-card-task py-10'>
       <div className='container bg-white mx-auto py-8 px-8 rounded-lg'>
-        <h1 className='font-bold text-3xl text-center text-red-600 my-5'>Pemberitahuan</h1>
+        <h1 className='font-bold text-3xl text-center text-red-600 my-5' id="title">Pemberitahuan</h1>
         <div className='my-4'>
           {
             data.length === 0 ?

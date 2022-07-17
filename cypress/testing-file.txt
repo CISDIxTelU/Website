@@ -1,0 +1,62 @@
+QnA Hackathon TechnoScape 5.0
+
+1. Backend dinilai ga? atau sekedar Front end?
+Jawab : Akan dinilai secara keseluruhan baik FE maupun BE
+
+2. Apakah ada penilaian di database? Atau showcase saja?
+Jawab : Data nya harus ada realisasi dan make API dari Brick
+
+3. Apakah setup project sebelum lomba dimulai?
+Jawab : Diperbolehkan. Inisiasi boleh, untuk install library dll diperbolehkan.
+
+4. Penggunaan API apakah boleh selain brick?
+Jawab : Manfaatkan token dari brick sebaik baiknya
+
+5. Demo aplikasi pada presentasi apakah dilakukan secara live atau menggunakan video demo aplikasi yang telah dibuat sebelumnya?
+Jawab : Lebih baik ditampilkan dalam bentuk video maksimal 3 menit
+
+6. Apakah terdapat ketentuan khusus terkait penggunaan Bahasa program, framework, atau standard teknis lainnya?
+Jawab : Bahasa Pemrograman dibebaskan 
+
+7. Untuk pengerjaan projectnya apakah setelah opening hackathon?
+Jawab : Iya untuk pengerjaan dilakukan ketika Hari H
+
+8.  Apakah boleh menggunakan library?
+Jawab : Boleh memakai library
+
+9. Saat sesi presentasinya harus full team yang presentasi atau boleh perwakilan satu orang ?
+Jawab : Untuk presentasi diharapkan bisa hadir semua
+
+10. Untuk tema nya apakah hanya finance?
+Jawab : Untuk tema nya hanya finance dan Kemungkinan bakal ada case khusus akan diberikan di hari h.
+Tapi tidak ada case spesifik
+ 
+ 11. Berarti nanti ketika kita signup sudah otomatis mendapatkan token/credit ya? jadi tidak perlu bayar atau isi kredit?
+ Jawab : Dapat Free dan tidak ada expired
+
+ 12. Aplikasinya apakah harus dapat ditest juri secara langsung (deployed app) atau hanya demoin aja saat presentasi
+Jawab : Deployment tidak harus. Yang penting demo
+
+13. Untuk link repo yang dikumpulkan itu harus monorepo (frontend backend jadi satu repo) atau boleh ngumpulin beberapa link repo yang berbeda?
+Jawab : Boleh menggunakan multi repo
+
+14. Clean code yg dinilai itu dari penggunaan seperti konsep MVC, clean architecture, onion architecture, dsb. Atau gmana?
+Jawab : Yang penting kode rapi dan dapat terbaca dengan jelas. untuk architeture sendiri tidak terlalu dinilai
+
+15. UI UX yang dinilai apakah pada kodenya atau boleh melalui figma ya?
+Jawab : Kode harus sesuai dengan desain dan fungsionalitas
+
+16. Kak, tadi itu cuman aplikasi mobile dan web ya, gk boleh app desktop?
+Jawab : Diperbolehkan jika ingin membuat aplikasi desktop 
+
+17. Link Figma apakah dikumpulkan?
+Jawab : Lebih baik dikumpulkan
+
+18. Kalau mentoring dan presentasi berarti full inggris atau boleh bahasa indonesia?
+Jawab : Bahasa Indonesia
+
+19. Kalo mo nanya ke panitia di jam biasa, ttp ke contact kemaren ya?
+Jawab : Hubungi kontak yang tersedia di PowerPoint
+
+20. untuk presentasi apakah boleh memakai atribut instansi/universitas seperti almamater?
+Jawab : Tidak ada ketentuan, jadi bebas boleh memakai atribut 
