@@ -19,7 +19,6 @@ const Favorite = () => {
             axios.get(`${BASE_URL}/favorit`, config).then(res => {
                 const data = res.data.data
                 setData(data)
-                console.log(data[0].id_lesson)
                 axios.get(`${BASE_URL}/lesson/${data[0].id_lesson}`, config).then(res => {
                     console.log(res.data.data.name)
                     setName(res.data.data.name)

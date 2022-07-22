@@ -105,7 +105,7 @@ const Certificate = () => {
             throw error
         })
         getTopic()
-    }, [id])
+    }, [])
 
     return (
         <div className='bg-gray-100 p-10'>
