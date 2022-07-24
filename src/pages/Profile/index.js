@@ -58,7 +58,7 @@ function Profile() {
                     </div>
                     <div className='mx-20 mb-3'>
                         <p className='font-bold text-md mb-2'>Nama Pengguna</p>
-                        <input type="text" placeholder="Nama pengguna anda" defaultValue={profile.username} className='w-full rounded p-2' />
+                        <input type="text" placeholder="Nama pengguna anda" defaultValue={profile.username} className='w-full rounded p-2' readOnly />
                     </div>
                     <div className='mx-20 mb-3'>
                         <p className='font-bold text-md mb-2'>Nomor Telepon</p>

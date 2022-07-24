@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { FaSistrix } from 'react-icons/fa';
+import { Navigate } from 'react-router-dom';
 import { CardFavorite } from '../../components';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -19,16 +20,13 @@ const Favorite = () => {
             axios.get(`${BASE_URL}/favorit`, config).then(res => {
                 const data = res.data.data
                 setData(data)
-                axios.get(`${BASE_URL}/lesson/${data[0].id_lesson}`, config).then(res => {
-                    console.log(res.data.data.name)
-                    setName(res.data.data.name)
-                })
             })
         }
         
         fetchData()
     }, [])
     
+    console.log(data)
     return (
         <div className='bg-card-task py-10'>
             <div className='container bg-white mx-auto py-8 px-8 rounded-lg'>
@@ -48,7 +46,7 @@ const Favorite = () => {
                         <div className='grid md:grid-cols-2 gap-5'>
                             {data.map(data => {
                                 return (
-                                    <CardFavorite title={name} />
+                                    <CardFavorite title={data.lesson.name} idLesson={data.id_lesson} />
                                 )
                             })}
                         </div>

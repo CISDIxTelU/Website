@@ -29,10 +29,12 @@ function LandingPage() {
                     <h1 className='font-bold text-3xl text-white mb-56'>Ayo Belajar Bersama di Health Learning Platform!</h1>
                 </div>
                 <div className='w-full py-24 bg-gray-100'>
-                    <div className='grid md:grid-cols-3 mb-12 gap-x-8 mx-auto' style={{ width: 'fit-content' }}>
+                    <div className='grid md:grid-cols-3 mb-12 gap-x-8 gap-y-5 mx-auto' style={{ width: 'fit-content' }}>
                         {data.map((data, index) => {
                             let foto = `${process.env.REACT_APP_IMAGE_URL}/${data.cover_image}`;
-                            return <CardLanding foto={foto} id={index} judul={data.title} deskripsi={data.description} key={index} />
+                            if(data.id <= 3){
+                                return <CardLanding foto={foto} id={index} judul={data.title} deskripsi={data.description} key={index} />
+                            }
                         })}
                     </div>
                     <div className='text-center'>

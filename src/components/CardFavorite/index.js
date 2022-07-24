@@ -1,9 +1,11 @@
 import React from 'react'
 import { FaHeart } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 import { Banner1 } from '../../assets'
 
-function CardHistory({title, count}) {
+function CardHistory({title, count, idLesson}) {
     return (
+        <Link to={`/detail-course/${idLesson}`}>
         <div className='shadow-md p-3 border-l-8 border-red-700'>
             <div className='flex'>
                 <img src={Banner1} alt='foto' className='w-24 h-24 rounded-lg object-none' />
@@ -15,6 +17,7 @@ function CardHistory({title, count}) {
             <hr className='my-3'/>
             <b className='text-gray-300'>{count} Materi</b>
         </div>
+        </Link>
     )
 }
 
