@@ -7,7 +7,20 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const History = () => {
     const [data, setData] = useState([])
-
+    const [complete, setComplete] = useState([
+        // {
+        //     "certificate": null,
+        //     "created_at": "2022-06-17T15:32:36.000000Z",
+        //     "id": 1,
+        //     "id_topic": 1,
+        //     "id_user": 3,
+        //     "precentage_done": 100,
+        //     "status": "completed",
+        //     "topic": {
+        //         'title': 'testing 123'
+        //     }
+        // }
+    ])
     useEffect(() => {
         const config = {
             headers: {
@@ -16,7 +29,9 @@ const History = () => {
         }
         axios.get(`${BASE_URL}/history`, config).then(res => {
             const data = res.data.data
-            console.log(data)
+            if (data.status === 'completed') {
+                setComplete(data)
+            }
             setData(data)
         })
     }, [])
@@ -35,23 +50,25 @@ const History = () => {
                 <h2 className='font-bold text-lg'>Sedang Berlangsung</h2>
                 <div className='my-4'>
                     {
-                        data.map(data => {
-                            if (data.status === 'progress') {
+                        data.length === 0 ?
+                            <p className='text-center'>tidak ada materi selesai</p> :
+                            data.map(data => {
                                 return (
                                     <CardTask title={data?.topic?.title} id={data?.id} percentage={data?.precentage_done} key={data?.id} />
                                 )
-                            }
-                        })}
+                            })
+                    }
                 </div>
 
                 <h2 className='font-bold text-lg'>Selesai</h2>
                 <div className='my-4'>
                     {
-                        data.map(data => {
-                            if (data.status === 'completed') {
+                        complete.length === 0 ?
+                            <p className='text-center' id="errorDone">tidak ada materi selesai</p> :
+                            complete.map(data => {
                                 return <CardTask title={data.topic.title} id={data.id} isDone={true} percentage={data.precentage_done} key={data.id} />
-                            }
-                        })}
+                            })
+                    }
                 </div>
             </div>
         </div>

@@ -8,26 +8,22 @@ const Announcement = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const fetchData = () => {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`
-        }
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
       }
-      axios.get(`${BASE_URL}/announcement`, config).then(res => {
-        const data = res.data.data
-        console.log(data)
-        setData(data)
-      })
     }
-
-    fetchData()
+    axios.get(`${BASE_URL}/announcement`, config).then(res => {
+      setData(res.data.data)
+    }).catch(err => {
+      // console.log(err)
+    })
   }, [])
 
   return (
     <div className='bg-card-task py-10'>
       <div className='container bg-white mx-auto py-8 px-8 rounded-lg'>
-        <h1 className='font-bold text-3xl text-center text-red-600 my-5'>Pemberitahuan</h1>
+        <h1 className='font-bold text-3xl text-center text-red-600 my-5' id="title">Pemberitahuan</h1>
         <div className='my-4'>
           {
             data.length === 0 ?
@@ -37,9 +33,9 @@ const Announcement = () => {
                 </div>
               )
               :
-              data.map(data => {
+              data.map(index => {
                 return (
-                  <CardAnnouncement title={data.title} description={data.text} key={data.id} />
+                  <CardAnnouncement title={index.title} description={index.text} key={index.id} />
                 )
               })
           }

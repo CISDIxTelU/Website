@@ -43,7 +43,7 @@ function QuestionGrade() {
                     <div className='bg-white px-3 py-5 shadow-2xl w-full md:w-1/2 md:mx-auto rounded-lg'>
                         <div className='flex justify-between mb-3'>
                             <div>
-                                <p className='text-lg'>Nilai anda</p>
+                                <p className='text-lg' id="score">Nilai anda</p>
                             </div>
                             <p className='text-lg text-red-600'>{final}/100</p>
                         </div>

@@ -1,0 +1,60 @@
+/// <reference types="cypress" />
+
+describe('history', () => {
+    // history sudah berhasil
+    it('history successfully', () => {
+        cy.viewport(1920, 1080)
+        cy.visit('http://localhost:3000/')
+        cy.get('#login').click()
+        cy.get('h2').should('have.text', 'Login Sebagai...')
+        cy.get('#peserta').click()
+        cy.get('#email')
+            .type('kader')
+        cy.get('#password')
+            .type('password')
+        cy.get('#login').click()
+        cy.get('#greeting').should('have.text', 'Halo!')
+        cy.get('#history').click()
+        cy.get('h1').should('have.text', 'Riwayat')
+        cy.wait(2000)
+        cy.screenshot('history')
+    })
+
+    // history jika tidak kosong
+    it('history data not empty', () => {
+        cy.viewport(1920, 1080)
+        cy.visit('http://localhost:3000/')
+        cy.get('#login').click()
+        cy.get('h2').should('have.text', 'Login Sebagai...')
+        cy.get('#peserta').click()
+        cy.get('#email')
+            .type('kader')
+        cy.get('#password')
+            .type('password')
+        cy.get('#login').click()
+        cy.get('#greeting').should('have.text', 'Halo!')
+        cy.get('#history').click()
+        cy.get('#1').should('have.text', 'Amet Nam porro veli')
+        cy.wait(2000)
+        cy.screenshot('history-not-empty')
+    })
+
+    // history jika kosong
+    it('history done data empty', () => {
+        cy.viewport(1920, 1080)
+        cy.visit('http://localhost:3000/')
+        cy.get('#login').click()
+        cy.get('h2').should('have.text', 'Login Sebagai...')
+        cy.get('#peserta').click()
+        cy.get('#email')
+            .type('kader')
+        cy.get('#password')
+            .type('password')
+        cy.get('#login').click()
+        cy.get('#greeting').should('have.text', 'Halo!')
+        cy.get('#history').click()
+        cy.get('#errorDone').should('have.text', 'tidak ada materi selesai')
+        cy.wait(2000)
+        cy.screenshot('history-empty')
+    })
+})

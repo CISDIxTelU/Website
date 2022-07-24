@@ -66,17 +66,23 @@ const Certificate = () => {
             formData.append('file', canvasImage)
 
             axios.post(`${BASE_URL}/certificate/${id}`, formData, config).then(res => {
-                    console.log(res.data)
-                }).catch(err => {
-                    console.log(err)
-                })
+                if (res.data) {
+                    setMessage('Terima kasih, anda telah mengirimkan sertifikat')
+                }
+            }).catch(err => {
+                setMessage('Mohon maaf, anda telah gagal mengirimkan sertifikat')
+            })
         })
     }
 
     const getTemplate = () => {
+        if (name === '') return setMessage('tulis nama lengkap anda terlebih dahulu')
         axios.get(`${BASE_URL}/certificate/template`, config).then(res => {
+            setMessage('')
             setImage(!image)
             generateCertificate()
+        }).catch(err => {
+            throw err
         })
     }
 
@@ -84,33 +90,37 @@ const Certificate = () => {
         axios.get(`${BASE_URL}/topic/${id}`, config).then(res => {
             const topic = res.data.data_topic.title
             setTopic(topic)
+        }).catch(err => {
+            throw err
         })
     }
 
     useEffect(() => {
         axios.get(`${BASE_URL}/certificate/${id}`, config).then(res => {
-            console.log(res.data.status)
-            if(res.data.status === 'success'){
+            if (res.data.status === 'success') {
                 setIsDone(true)
                 setMessage('Terima kasih anda sudah mencetak sertifikat anda !')
             }
+        }).catch(error => {
+            throw error
         })
         getTopic()
-    }, [id])
+    }, [])
 
     return (
         <div className='bg-gray-100 p-10'>
             <div className='sm:container mx-auto pt-8 pb-10 px-10 bg-white rounded-lg'>
-                <h1 className='font-bold text-3xl text-center text-red-600'>Membuat Sertifikat</h1>
+                <h1 className='font-bold text-3xl text-center text-red-600' id="title">Membuat Sertifikat</h1>
                 <div className='bg-slate-50 w-full rounded-lg p-4 my-5'>
                     <h3 className='font-semibold text-2xl mb-2'>Selamat!</h3>
                     <p>Anda telah menyelesaikan topik ini. Semoga ilmu yang telah dipelajari bermanfaat bagi Anda dan orang-orang di sekitar Anda. Sebagai bukti telah menyelesaikan topik ini, silakan tulis nama lengkap Anda di bawah ini dan klik “Kirim” untuk ditulis di sertifikat.</p>
                     <div className='py-5'>
                         <label className='text-gray-600 font-semibold'>Nama Lengkap</label>
-                        {isDone ? <input type="text" placeholder={message} className='w-full rounded-lg p-3 my-2' disabled /> : <input type="text" placeholder='nama lengkap anda' className='w-full rounded-lg p-3 my-2' onChange={e => setName(e.target.value)} />}
+                        {isDone ? <input type="text" placeholder={message} className='w-full rounded-lg p-3 my-2' disabled /> : <input type="text" placeholder='nama lengkap anda' className='w-full rounded-lg p-3 my-2' id="input-name" onChange={e => setName(e.target.value)} />}
+                        <p className='text-red-400 ' id="message">{message}</p>
                     </div>
                     <div className='text-center'>
-                        {isDone ? <button className='bg-gray-500 py-3 text-white rounded font-semibold w-32 px-5 hover:bg-gray-700'>Kirim</button> : <button className='bg-red-600 py-3 text-white rounded font-semibold w-32 px-5 hover:bg-red-700' onClick={getTemplate}>submit</button>}
+                        {isDone ? <button className='bg-gray-500 py-3 text-white rounded font-semibold w-32 px-5 hover:bg-gray-700'>Kirim</button> : <button className='bg-red-600 py-3 text-white rounded font-semibold w-32 px-5 hover:bg-red-700' onClick={getTemplate} id="submit">Kirim</button>}
                     </div>
                 </div>
 
@@ -119,15 +129,18 @@ const Certificate = () => {
                     <h3 className='font-semibold text-2xl mb-2'>Tinjauan Sertifikat</h3>
                     <p>Pastikan nama Anda sudah benar. Apabila ada kesalahan, silakan tulis ulang nama Anda pada kolom sebelumnya. Apabila sudah sesuai, silakan klik “Unduh Sertifikat” untuk mengunduh sertifikat Anda.</p>
                     <div className='py-5 px-0'>
-                        <canvas id="canvas" width="1440px" height="1000px" className='mb-5'>
-                            <img alt="foto" id='sertifikat' className='overflow-auto'></img>
-                        </canvas>
+                        <div className='overflow-auto'>
+                            <canvas id="canvas" width="1440px" height="1000px" className='mb-5'>
+                                <img alt="foto" id='sertifikat' className='overflow-auto'></img>
+                            </canvas>
+                        </div>
                         <div className='text-center'>
                             <button
                                 type='submit'
                                 id='download-btn'
                                 className='bg-red-600 py-3 text-white rounded font-semibold w-32 hover:bg-red-700'
-                                >Unduh Sertifikat</button>
+                            >Unduh Sertifikat</button>
+                            <p className='text-gray-500 mt-3'>{message}</p>
                         </div>
                     </div>
                 </div>

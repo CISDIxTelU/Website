@@ -1,0 +1,23 @@
+
+describe('upload certificate', () => {
+    it('upload certificate if hit button', () => {
+        cy.visit('http://localhost:3000/')
+        cy.get('#login').click()
+        cy.get('h2').should('have.text', 'Login Sebagai...')
+        cy.get('#peserta').click()
+        cy.get('#email')
+            .type('admin')
+        cy.get('#password')
+            .type('password')
+        cy.get('#login').click()
+        cy.get('#greeting').should('have.text', 'Halo!')
+        cy.get('.grid #card0').click()
+        cy.get('#feedback').click()
+        cy.wait(900)
+        cy.get('#sertifikat').click()
+        cy.get('#title').should('have.text', 'Membuat Sertifikat')
+        cy.get('#input-name').type('david william')
+        cy.get('#submit').click()
+        cy.wait(1000)
+    })
+})

@@ -21,7 +21,7 @@ function DetailCourse() {
             }
         }
 
-        axios.get(`${BASE_URL}/topic/${id}`, config).then(res => {
+        axios.get(`${BASE_URL}/topic/${id ?? 1}`, config).then(res => {
             console.log(res.data)
             setDonePreTest(res.data.is_pre_test_done)
             setData(res.data.data_topic);
@@ -32,13 +32,13 @@ function DetailCourse() {
 
     return (
         <div className='bg-gray-100 p-10'>
-            {errors.data && <div className='bg-red-300 p-3'>
+            {/* {errors.data && <div className='bg-red-300 p-3'>
                 {errors.data}
-            </div>}
+            </div>} */}
             <div className='sm:container mx-auto pt-8 pb-10 px-10 bg-white rounded-lg'>
                 <h1 className='font-bold text-3xl text-center text-red-600'>Topik Pembahasan</h1>
                 <img className="h-96 object-cover w-full my-4" src={`${process.env.REACT_APP_IMAGE_URL}/${data.cover_image}`} alt="Man looking at item at a store" />
-                <h2 className='font-bold text-2xl mt-5 mb-3'>{data.title}</h2>
+                <h2 className='font-bold text-2xl mt-5 mb-3' id="title">{data.title}</h2>
                 <p className='text-base text-justify'>{data.description}</p>
                 <div className='flex justify-between my-4'>
                     <p className='font-bold'>By : {data.author}</p>

@@ -23,7 +23,7 @@ function Navbar({ name }) {
                 <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
                     <Link
                         className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-                        to="/materi"
+                        to="/courses"
                     >
                         <img alt='foto' src={LogoCisdi} className='w-32 lg:w-27' />
                     </Link>
@@ -39,7 +39,7 @@ function Navbar({ name }) {
                             <Menu as="div" className="relative inline-block text-left">
                                 <div className='flex items-center'>
                                     <Menu.Button className="text-sm relative font-medium text-white bg-blue-200 mr-3 rounded-full hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75" style={{ backgroundImage: `url(${DummyProfile})`, backgroundSize: '60px', backgroundPosition: 'center center', objectFit: 'cover', backgroundRepeat: 'no-repeat', width: '40px', height: '40px' }}>
-                                        <FaChevronDown className='text-white absolute -right-5 top-3' />
+                                        <FaChevronDown className='text-white absolute -right-5 top-3' id="placeholder" />
                                     </Menu.Button>
                                 </div>
                                 <Transition
@@ -59,7 +59,19 @@ function Navbar({ name }) {
                                                         className={`${active ? ' text-red-600 underline' : 'text-gray-900'
                                                             } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                                                         onClick={profile}
+                                                        id="profiles"
                                                     >
+                                                          {active ? (
+                                                                <FaRegUserCircle
+                                                                    className="w-5 h-5 mr-2 text-red-400"
+                                                                    aria-hidden="true"
+                                                                />
+                                                            ) : (
+                                                                <FaRegUserCircle
+                                                                    className="w-5 h-5 mr-2"
+                                                                    aria-hidden="true"
+                                                                />
+                                                            )}
                                                         Buka Profil Diri
                                                     </button>
                                                 )}
@@ -126,6 +138,7 @@ function Navbar({ name }) {
                             <Link
                                 className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                                 to="/history"
+                                id="history"
                             >
                                 <span className="ml-2 text-xl">Riwayat</span>
                             </Link>
@@ -134,6 +147,7 @@ function Navbar({ name }) {
                             <Link
                                 className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                                 to="/favourite"
+                                id="favorite"
                             >
                                 <span className="ml-2 text-xl">Favorit</span>
                             </Link>

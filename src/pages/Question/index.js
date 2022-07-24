@@ -16,7 +16,6 @@ function Question() {
 
     const selectAnswer = (answer, id) => {
         const exist = userAnswer.content.find(idx => idx.id === id);
-        // console.log('id : ', id, 'answer : ', answer)
         if(exist) return;
         setUserAnswer({ content: [...userAnswer.content, { 'id': id, 'answerUser': answer },] })
     };

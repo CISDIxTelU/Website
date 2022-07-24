@@ -12,26 +12,28 @@ const IMAGE_URL = process.env.REACT_APP_IMAGE_URL;
 function Course() {
     const [dataLesson, setDataLesson] = useState([]);
     let { id_topic } = useParams();
-    const [loading, setLoading] = useState(false);
+    // const navigate = useNavigate();
+    // const [loading, setLoading] = useState(false);
     const [extension, setExtension] = useState('')
-    const history = useNavigate()
+    const { history, navigate } = useNavigate()
 
-    useEffect(() => {
-        setLoading(true)
+    const getData = (id) => {
         const config = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }
-        axios.get(`${BASE_URL}/lesson/${id_topic}`, config).then(res => {
+        axios.get(`${BASE_URL}/lesson/${id ?? 1}`, config).then(res => {
             setDataLesson(res.data.data);
-            setLoading(false)
         }).catch(e => {
         })
+    }
+    useEffect(() => {
+        getData(id_topic)
     }, [id_topic]);
 
     const getFileExtension = async (filename) => {
-        if(filename){
+        if (filename) {
             const extension = await filename.split('.').pop();
             setExtension(extension)
         }
@@ -40,19 +42,16 @@ function Course() {
     getFileExtension(dataLesson.lesson_attachment)
 
     const createMarkUp = (data) => {
-        console.log(DOMPurify.sanitize((data)));
-        return {__html: data};
+        return { __html: data };
     }
     return (
         <div className="container mx-auto py-11">
             <div className="flex wrap justify-between py-3 gap-10">
                 <div className="py-2 w-full">
                     <div className="border rounded-lg bg-white p-6">
-                        {loading ? (
-                            <Lottie animationData= {animationCourse} />
-                        ) : (
+                        {dataLesson.length !== 0 ?
                             <>
-                                <h1 className="font-bold text-3xl my-3">{dataLesson.name}</h1>
+                                <h1 className="font-bold text-3xl my-3" data-testid='course'>{dataLesson.name}</h1>
                                 {dataLesson.video_url != null ? <iframe src={dataLesson.video_url} title="description" className="h-96 w-full"></iframe> : ''}
                                 {extension === 'jpg' && <img src={`${IMAGE_URL}/${dataLesson.lesson_attachment}`} alt="foto" className="h-96 w-full bg-gray-400" />}
                                 <div dangerouslySetInnerHTML={createMarkUp(dataLesson.lesson_text)} />
@@ -66,7 +65,9 @@ function Course() {
                                     </a>}
                                 </div>
                             </>
-                        )}
+                            :
+                            <h1 className="font-bold text-3xl my-10 text-center" id="error">Tidak ada materi</h1>
+                        }
                     </div>
                 </div>
 

@@ -19,7 +19,7 @@
     "dotenv": "^11.0.0",
     "html-react-parser": "^1.4.9",
     "jest": "^28.1.0",
-    "lottie-react": "^2.2.1",
+    "lottie-react": "^2.3.1",
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-circular-progressbar": "^2.0.4",
@@ -39,9 +39,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --setupFiles ./src/setupTests.js",
     "eject": "react-scripts eject",
-    "dev": "react-scripts dev"
+    "dev": "react-scripts dev",
+    "e2e-test": "cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -64,7 +65,12 @@
   "devDependencies": {
     "@testing-library/react": "^12.1.2",
     "autoprefixer": "^10.4.7",
+    "cypress": "^10.3.0",
+    "enzyme": "^3.11.0",
     "glob-all": "^3.2.1",
+    "jest-canvas-mock": "^2.4.0",
+    "jest-localstorage-mock": "^2.4.21",
+    "msw": "^0.42.3",
     "postcss": "^8.4.14",
     "react-test-renderer": "^17.0.2",
     "tailwindcss": "^3.0.24"

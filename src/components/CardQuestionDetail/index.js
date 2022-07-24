@@ -6,22 +6,22 @@ function CardQuestionDetail({ data }) {
     return (
         <div className='rounded-lg bg-gray-100 border-l-8 shadow p-3 border-red-600 mb-3'>
             <div className='font-bold text-base mb-3' dangerouslySetInnerHTML={{ __html: data.question }} />
-            <div className={'answer_1' === data.user_answer ? `mb-2 flex items-center border bg-white border-2 ${data.is_right ? 'border-green-400': 'border-red-400'} rounded-lg p-2` : 'mb-2 flex items-center border bg-white border-2 border-black rounded-lg p-2'}>
+            <div className={'answer_1' === data.user_answer ? `mb-2 flex items-center border bg-white border-2 ${data.is_right ? 'border-green-400' : 'border-red-400'} rounded-lg p-2` : 'mb-2 flex items-center border bg-white border-2 border-black rounded-lg p-2'}>
                 <b className='mr-2 ml-3'>A.</b>
                 <label>{data.answer_1}</label>
                 {data.key === 'answer_1' ? <FaCheckSquare className='text-green-600 ml-auto text-xl' /> : ''}
             </div>
-            <div className={'answer_2' === data.user_answer ? `mb-2 flex items-center border bg-white border-2 ${data.is_right ? 'border-green-400': 'border-red-400'} rounded-lg p-2` : 'mb-2 flex items-center border bg-white border-2 border-black rounded-lg p-2'}>
+            <div className={'answer_2' === data.user_answer ? `mb-2 flex items-center border bg-white border-2 ${data.is_right ? 'border-green-400' : 'border-red-400'} rounded-lg p-2` : 'mb-2 flex items-center border bg-white border-2 border-black rounded-lg p-2'}>
                 <b className='mr-2 ml-3'>B.</b>
                 <label>{data.answer_2}</label>
                 {data.key === 'answer_2' ? <FaCheckSquare className='text-green-600 ml-auto text-xl' /> : ''}
             </div>
-            <div className={'answer_3' === data.user_answer ? `mb-2 flex items-center border bg-white border-2 ${data.is_right ? 'border-green-400': 'border-red-400'} rounded-lg p-2` : 'mb-2 flex items-center border bg-white border-2 border-black rounded-lg p-2'}>
+            <div className={'answer_3' === data.user_answer ? `mb-2 flex items-center border bg-white border-2 ${data.is_right ? 'border-green-400' : 'border-red-400'} rounded-lg p-2` : 'mb-2 flex items-center border bg-white border-2 border-black rounded-lg p-2'}>
                 <b className='mr-2 ml-3'>C.</b>
                 <label>{data.answer_3}</label>
                 {data.key === 'answer_3' ? <FaCheckSquare className='text-green-600 ml-auto text-xl' /> : ''}
             </div>
-            <div className={'answer_4' === data.user_answer ? `mb-2 flex items-center border bg-white border-2 ${data.is_right ? 'border-green-400': 'border-red-400'} rounded-lg p-2` : 'mb-2 flex items-center border bg-white border-2 border-black rounded-lg p-2'}>
+            <div className={'answer_4' === data.user_answer ? `mb-2 flex items-center border bg-white border-2 ${data.is_right ? 'border-green-400' : 'border-red-400'} rounded-lg p-2` : 'mb-2 flex items-center border bg-white border-2 border-black rounded-lg p-2'}>
                 <b className='mr-2 ml-3'>D.</b>
                 <label>{data.answer_4}</label>
                 {data.key === 'answer_4' ? <FaCheckSquare className='text-green-600 ml-auto text-xl' /> : ''}

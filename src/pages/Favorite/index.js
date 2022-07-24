@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { FaSistrix } from 'react-icons/fa';
+import { Navigate } from 'react-router-dom';
 import { CardFavorite } from '../../components';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const Favorite = () => {
     const [data, setData] = useState([])
+    const [name, setName] = useState([])
 
     useEffect(() => {
         const fetchData = () => {
@@ -20,10 +22,11 @@ const Favorite = () => {
                 setData(data)
             })
         }
-
+        
         fetchData()
     }, [])
-
+    
+    console.log(data)
     return (
         <div className='bg-card-task py-10'>
             <div className='container bg-white mx-auto py-8 px-8 rounded-lg'>
@@ -36,14 +39,18 @@ const Favorite = () => {
                 </div>
 
                 <h2 className='font-bold text-lg my-5'>Daftar Materi Favorit</h2>
-                <div className='grid grid-cols-2 gap-5'>
-                    {data.map(data => {
-                        console.log(data)
-                        return (
-                            <CardFavorite title={data.title} />
-                        )
-                    })}
-                </div>
+                {
+                    data.length === 0 ?
+                        <p className='text-center' id="errorDone">Tidak ada materi favorit</p>
+                        :
+                        <div className='grid md:grid-cols-2 gap-5'>
+                            {data.map(data => {
+                                return (
+                                    <CardFavorite title={data.lesson.name} idLesson={data.id_lesson} />
+                                )
+                            })}
+                        </div>
+                }
             </div>
         </div>
     )

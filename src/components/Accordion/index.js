@@ -45,7 +45,6 @@ export const Dropdown = ({ dataLesson, id }) => {
             if(res.data.status === 'success'){
                 window.location.reload()
             }
-            console.log(res.data)
         })
     }
     const deleteFavorite = (ids) => {
@@ -53,7 +52,6 @@ export const Dropdown = ({ dataLesson, id }) => {
             if(res.data.status === 'success'){
                 window.location.reload()
             }
-            console.log(res.data)
         })
     }
 
@@ -61,10 +59,10 @@ export const Dropdown = ({ dataLesson, id }) => {
         <div style={{ width: "100 %", marginBottom: '30px' }}>
             {dataLesson.map((data, idx) => {
                 return (
-                    <div className='border-b py-3 px-6 border-gray-200 flex justify-between' key={idx}>
-                        <Link className="block active:font-bold hover:underline" to={`/course/${data.id}`}>{data.name}</Link>
+                    <div className='border-b py-3 px-6 border-gray-200 flex justify-between items-center' key={idx}>
+                        <Link className="block active:font-bold text-sm md:text-md hover:underline" to={`/course/${data.id}`} id="dropdown">{data.name}</Link>
                         <div className='flex gap-x-2'>
-                            <button onClick={() => {
+                            <button id='like' onClick={() => {
                                 if (data['is_favorit'] === 0) {
                                     favorite(data.id)
                                 }
@@ -74,7 +72,7 @@ export const Dropdown = ({ dataLesson, id }) => {
                             }
                             }
                             >
-                                {data['is_favorit'] ? <FaHeart fill='#EB5757' /> : <FaRegHeart />}
+                                {data['is_favorit'] ? <FaHeart id="isLike" fill='#EB5757' /> : <FaRegHeart id="dislike" />}
                             </button>
                             {data['is_done'] === 1 ? <FaCheckCircle fill='#00CE62' /> : <FaCheckCircle />}
                         </div>
@@ -108,7 +106,7 @@ const Accordion = ({ dataLo, id, isDone }) => {
         <IconContext.Provider value={{ color: 'gray', size: '20px' }}>
             <AccordionSection>
                 <Container>
-                    <Link to={`/question/${id}/pre_test`} d>
+                    <Link to={`/question/${id}/pre_test`} id="preTest">
                         <Wrap className='bg-red-600 text-white rounded-lg' onClick={() => toggle(100)} key={100}>
                             <h1 className="text-left font-semibold">Pre test</h1>
                         </Wrap>
@@ -116,7 +114,7 @@ const Accordion = ({ dataLo, id, isDone }) => {
                     {dataLo.map((item, index) => {
                         return (
                             <div key={index}>
-                                <Wrap className='bg-white justify-between rounded-lg' onClick={() => toggle(index)} key={index}>
+                                <Wrap className='bg-white justify-between rounded-lg' onClick={() => toggle(index)} key={index} id="accordion">
                                     <h1 className="text-left font-semibold">{item.name}</h1>
                                     <span>{clicked === index ? <FiMinus /> : <FiPlus />}</span>
                                 </Wrap>
@@ -124,25 +122,25 @@ const Accordion = ({ dataLo, id, isDone }) => {
                             </div>
                         );
                     })}
-                    <Link to={isDone ? `/question/${id}/post_test` : ''}>
+                    <Link to={isDone ? `/question/${id}/post_test` : ''} id="postTest">
                         <Wrap className='bg-red-600 text-white rounded-lg' onClick={() => toggle(100)} key={100}>
                             <h1 className="text-left font-semibold">Post test</h1>
                         </Wrap>
                     </Link>
-                    <Link to={`/task-upload/${id}`}>
+                    <Link to={`/task-upload/${id}`} id="taskTest">
                         <Wrap className='bg-red-600 text-white rounded-lg' onClick={() => toggle(100)} key={100}>
                             <h1 className="text-left font-semibold">Unggah Tugas</h1>
                         </Wrap>
                     </Link>
-                    <button className='w-full' onClick={() => handleOpen()}>
+                    <button className='w-full' onClick={() => handleOpen()} id="feedback">
                         <Wrap className='bg-red-600 text-white rounded-lg' onClick={() => toggle(100)} key={100}>
                             <h1 className="text-left font-semibold">Feedback</h1>
                         </Wrap>
                     </button>
                     <Link to={`/complete/${id}`}>
-                        <button className='w-96 mt-8'>
+                        <button className='w-fit md:w-96 mt-8'>
                             <Wrap className='bg-red-600 text-white justify-center rounded-full' onClick={() => toggle(100)} key={100}>
-                                <h1 className="font-semibold">Selesaikan Pelatihan</h1>
+                                <h1 className="font-semibold" data-testid='selesai'>Selesaikan Pelatihan</h1>
                             </Wrap>
                         </button>
                     </Link>

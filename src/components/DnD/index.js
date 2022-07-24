@@ -55,8 +55,8 @@ function Dropzone(props) {
     return (
         <section className="container">
             <form onSubmit={submitTask}>
-                <div {...getRootProps({ className: 'dropzone' })} className='rounded-lg border border-dashed p-10 border-red-600'>
-                    <input {...getInputProps()} name='file' type='file' />
+                <div {...getRootProps({ className: 'dropzone' })} id="input-file" className='rounded-lg border border-dashed p-10 border-red-600'>
+                    <input {...getInputProps()} name='file' type='file' id="input-file" />
                     <FaFolderOpen className='text-red-700 w-28 h-28 mx-auto' />
                     <p className='font-semibold text-center'>Seret dokumen, foto, atau video kamu<br /> kesini untuk memulai unggah tugas.</p>
                     <div className='relative w-fit mx-auto'>
@@ -68,8 +68,8 @@ function Dropzone(props) {
                     </div>
                 </div>
                 <ul>{files}</ul>
-                <button className='bg-red-600 p-3 rounded-xl text-white hover:bg-red-800 md:w-48 w-full mt-5' type='submit'>Kirim</button>
-                <p className={`${Status === true ? 'text-green-400': 'text-red-400'}`}>{Status === true ? 'file berhasil dikirim' : 'file tidak berhasil dikirim. coba lagi'}</p>
+                <button className='bg-red-600 p-3 rounded-xl text-white hover:bg-red-800 md:w-48 w-full mt-5' type='submit' id="button">Kirim</button>
+                <p className={`${Status === true ? 'text-green-400': 'text-red-400'}`} id="message">{Status === true ? 'file berhasil dikirim' : 'file tidak berhasil dikirim. coba lagi'}</p>
             </form>
         </section>
     );
